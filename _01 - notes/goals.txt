@@ -1,0 +1,17 @@
+Basics:
+- Have wheels move forward and backwards
+- Left and Right are moved with functions through using forwards and backwards on seperate wheels
+- Use motors to spin turret on axis
+
+Adanced/Future Code:
+- Control arm joints with motors
+- Pneumatics for the arm extentsion
+- grasping "thing"
+- Pneumatics for e-brake
+- auto-settle/level on charge station (gyro)
+- Semi-autonomus arm control
+- 
+
+
+Super advanced things:
+- Buttons on digital screen that does "things"

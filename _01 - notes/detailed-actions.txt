@@ -1,0 +1,74 @@
+// from - https://docs.google.com/document/d/1IgspPStN2jwH2odwO2wEYP2eR6mwZ7Zh9gYAE16DC40/edit?usp=sharing
+
+
+Need at least 12 different codes
+
+Red alliance 1, 2, and 3 will be flipped later, this is just a basic reference for understanding the sides.
+If we use some kind of device that will help auto level the robot, then the code will be added onto the code that goes onto the charge station
+The robot will be facing towards the nodes, making placing the initial game piece easier.
+Code will look differently depending on which program we use
+We still need to figure out how the piece will be set into the node, whether with the claw set in or pushed in by some force
+
+
+
+
+Blue Alliance Station 1
+Plan for code
+Set game piece in bottom node,  turn around to face away from community, then drive out of community (shortest of 3 drives)
+Pseudocode
+ 
+Blue Alliance Station 2
+Plan for code
+Set game piece in bottom node,  turn around to face away from community, then drive around charge station and out of community (least likely to happen)
+Pseudocode
+
+Blue Alliance Station 3
+Plan for code
+Set game piece in bottom node, turn around to face away from community, then drive out of community (further than station 1)
+Pseudocode
+
+Blue Alliance Station 1 (Onto Charge Station)
+Plan for code
+Set game piece into node, turn left, drive forward, turn left, drive onto charge station - then auto level on charge station
+Pseudocode
+
+Blue Alliance Station 2 (Onto Charge Station)
+Plan for code
+Set game piece into node, turn around to face charge station, then drive straight onto charge station - then auto level on charge station
+Pseudocode
+
+Blue Alliance Station 3 (Onto Charge Station)
+Plan for code
+Set game piece into node, turn right, drive forward, turn right, then drive onto charge station - then auto level on charge station
+Pseudocode
+
+Red Alliance Station 1
+Plan for code
+Set game piece in bottom node, turn around to face away from community, then drive out of community (shortest of 3 drives)
+Pseudocode
+
+Red Alliance Station 2
+Plan for code
+Set game piece in bottom node,  turn around to face away from community, then drive around charge station out of community (least likely to happen)
+Pseudocode
+
+Red Alliance Station 3
+Plan for code
+Set game piece in bottom node,  turn around to face away from community, then drive forward out of community (further than station 1)
+Pseudocode
+
+Red Alliance Station 1 (Onto Charge Station)
+Plan for code
+Set game piece into node, turn right, drive forward, turn right, drive onto charge station - then auto level on charge station
+Pseudocode
+
+Red Alliance Station 2 (Onto Charge Station)
+Plan for code
+Set game piece into node,  turn around to face away from community, then drive straight onto charge station - then auto level on charge station
+Pseudocode
+
+Red Alliance Station 3 (Onto Charge Station)
+Plan for code
+Set game piece into node, turn left, drive forward, turn left, then drive onto charge station - then auto level on charge station
+Pseudocode
+
