@@ -10,8 +10,9 @@ Adanced/Future Code:
 - Pneumatics for e-brake
 - auto-settle/level on charge station (gyro)
 - Semi-autonomus arm control
-- 
 
 
 Super advanced things:
 - Buttons on digital screen that does "things"
+- shuffleboard for buttons (and other things, HMI for driver station)
+- Auto routines
