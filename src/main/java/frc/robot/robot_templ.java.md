@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
    * @see edu.wpi.first.wpilibj.IterativeRobotBase#teleopPeriodic()
    */
   @Override
-  public void teleopPeriodic()}{}
+  public void teleopPeriodic(){
     // Drive with arcade drive.
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
@@ -44,11 +44,13 @@ public class Robot extends TimedRobot {
     System.out.println("X-AXIS: " + -m_stick.getX() * speedSlider);
     System.out.println("Y-AXIS: " + -m_stick.getY() * speedSlider);
     System.out.println("Z-AXIS:"+ -m_stick.getZ() * speedSlider);
-   m_robotDrive.stopMotor();// stop robot
+   m_robotDrive.tankDrive() stopMotor();// stop robot
    m_leftMotor.stopMotor();//stop robot
-   System.out.println(m_rightMotor.set(speedSlider);//start robot ) m_rightMotor.set(speedSlider);//start robot 
-   start.m_leftMotor;//start robot ) m_leftMotor.set(speedSlider);//start robot 
-   start.m_rightMotor;//start robot) m_leftMotor.set(speedSlider);//start robot
-   start.m_robotDrive;//stop robot) m_leftMotor.set m_rightMotor.set;(speedSlider);//stop robot
+   m_leftMotor.set(speedSlider);
+   m_rightMotor.set(speedSlider);//start robot
+   
   
    start.motorcontrol;//stop robot start robot) m_leftMotor m_rightMotor.set;(speedSlider);//stop robot start robot
+
+  }
+   
