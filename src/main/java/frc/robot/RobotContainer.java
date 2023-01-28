@@ -6,10 +6,12 @@ package frc.robot;
 
 import frc.robot.commands.SimpleDriveCommand;
 import frc.robot.subsystems.SimpleDriveSubsystem;
+import frc.robot.commands.MoveTurret;
+import frc.robot.subsystems.Turret;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
-/**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
+ /* This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
@@ -17,16 +19,24 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private static final RobotContainer m_robotContainer = new RobotContainer();
+
+  // The robot's subsystems
+  public static final Turret m_turret = new Turret();
   private final SimpleDriveSubsystem m_simpledrive = new SimpleDriveSubsystem();
+
+  // Autonomous Commands
+  // private final Command m_placeobject = new PlaceObject(m_turret);   
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-
-    System.out.println(m_simpledrive.toString());
+    m_turret.setDefaultCommand(new MoveTurret(m_turret));
     m_simpledrive.setDefaultCommand(new SimpleDriveCommand(m_simpledrive));
   }
+
+
   public static RobotContainer getInstance() {
     return m_robotContainer;
   }
