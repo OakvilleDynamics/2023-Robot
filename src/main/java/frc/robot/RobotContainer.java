@@ -4,48 +4,42 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.SimpleDriveCommand;
+import frc.robot.subsystems.SimpleDriveSubsystem;
 import frc.robot.commands.MoveTurret;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Turret;
-// import frc.robot.autonomous.PlaceObject;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
-/**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
+ /* This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private static final RobotContainer m_robotContainer = new RobotContainer();
 
   // The robot's subsystems
-  public static final Turret m_turret = new Turret();
-  // public final ShootingSystem m_shootingsystem = new ShootingSystem();
-  // public final ClimbingSystem m_climbingsystem = new ClimbingSystem();
+  public final Turret m_turret = new Turret();
+  private final SimpleDriveSubsystem m_simpledrive = new SimpleDriveSubsystem();
 
   // Autonomous Commands
-  // private final Command m_placeobject = new PlaceObject(m_turret);
+  // private final Command m_placeobject = new PlaceObject(m_turret);   
 
-
-  // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController m_driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-
     m_turret.setDefaultCommand(new MoveTurret(m_turret));
+    m_simpledrive.setDefaultCommand(new SimpleDriveCommand(m_simpledrive));
   }
 
+
+  public static RobotContainer getInstance() {
+    return m_robotContainer;
+  }
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
    * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
@@ -57,12 +51,13 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
+    //new Trigger(m_simpleDriveSubsystem::exampleCondition)
+    //    .onTrue(new SimpleDriveCommand(m_simpleDriveSubsystem));
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    //m_driverController.().whileTrue(m_simpleDriveSubsystem.drive(m_driverController.getX(),m_driverController.getY()));
+    
   }
 
   /**
@@ -70,8 +65,8 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
+  /*public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     return Autos.exampleAuto(m_exampleSubsystem);
-  }
+  }*/
 }
