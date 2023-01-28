@@ -7,7 +7,10 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.MoveTurret;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Turret;
+// import frc.robot.autonomous.PlaceObject;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -22,6 +25,15 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
+  // The robot's subsystems
+  public static final Turret m_turret = new Turret();
+  // public final ShootingSystem m_shootingsystem = new ShootingSystem();
+  // public final ClimbingSystem m_climbingsystem = new ClimbingSystem();
+
+  // Autonomous Commands
+  // private final Command m_placeobject = new PlaceObject(m_turret);
+
+
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -30,6 +42,8 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+
+    m_turret.setDefaultCommand(new MoveTurret(m_turret));
   }
 
   /**
