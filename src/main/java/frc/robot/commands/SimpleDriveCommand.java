@@ -24,8 +24,9 @@ public class SimpleDriveCommand extends CommandBase {
    */
   public SimpleDriveCommand(SimpleDriveSubsystem subsystem) {
     m_subsystem = subsystem;
+    System.out.println(subsystem.toString());
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(m_subsystem);
   }
 
   // Called when the command is initially scheduled.

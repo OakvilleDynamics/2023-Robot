@@ -6,7 +6,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
-import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class SimpleDriveSubsystem extends SubsystemBase {
@@ -26,8 +25,13 @@ public class SimpleDriveSubsystem extends SubsystemBase {
    * @return a command
    */
   public void drive(double x, double y) {
-    
-    
+    // Ignore the small movements for x and y
+    if (x < 0.3 && x > -0.3) {
+      x = 0;
+    } 
+    if (y < 0.3 && y > -0.3) {
+      y = 0;
+    }
     m_robotDrive.arcadeDrive(-y, -x);
   }
 

@@ -4,12 +4,8 @@
 
 package frc.robot;
 
-import frc.robot.Constants;
-import frc.robot.commands.Autos;
 import frc.robot.commands.SimpleDriveCommand;
 import frc.robot.subsystems.SimpleDriveSubsystem;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -20,19 +16,15 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  //private final SimpleDriveSubsystem m_simpleDriveSubsystem = new SimpleDriveSubsystem();
   private static final RobotContainer m_robotContainer = new RobotContainer();
-  public final SimpleDriveSubsystem m_simpledrive = new SimpleDriveSubsystem();
-
-  // Replace with CommandPS4Controller or CommandJoystick if needed
-  //private final CommandJoystick m_driverController =
-  //    new CommandJoystick(OperatorConstants.kDriverControllerPort);
+  private final SimpleDriveSubsystem m_simpledrive = new SimpleDriveSubsystem();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
 
+    System.out.println(m_simpledrive.toString());
     m_simpledrive.setDefaultCommand(new SimpleDriveCommand(m_simpledrive));
   }
   public static RobotContainer getInstance() {
