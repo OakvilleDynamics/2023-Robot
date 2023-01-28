@@ -14,11 +14,16 @@ public class Turret extends SubsystemBase {
     turntable.setInverted(true);
   }
 
-  public void rotateLeft(double d) {
+  public void rotateLeft() {
     turntable.set(ControlMode.PercentOutput, 1);
   }
 
   public void rotateRight() {
     turntable.set(ControlMode.PercentOutput, -1);
   }
+
+  public void rotateStop() {
+    turntable.set(ControlMode.PercentOutput, 0);
+  }
+
 }

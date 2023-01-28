@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.MoveTurret;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Turret;
 // import frc.robot.autonomous.PlaceObject;
@@ -25,7 +26,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   // The robot's subsystems
-  public final Turret m_turret = new Turret();
+  public static final Turret m_turret = new Turret();
   // public final ShootingSystem m_shootingsystem = new ShootingSystem();
   // public final ClimbingSystem m_climbingsystem = new ClimbingSystem();
 
@@ -41,6 +42,8 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+
+    m_turret.setDefaultCommand(new MoveTurret(m_turret));
   }
 
   /**
