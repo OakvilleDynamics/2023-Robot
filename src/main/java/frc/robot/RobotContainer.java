@@ -21,7 +21,7 @@ public class RobotContainer {
   private static final RobotContainer m_robotContainer = new RobotContainer();
 
   // The robot's subsystems
-  public static final Turret m_turret = new Turret();
+  public final Turret m_turret = new Turret();
   private final SimpleDriveSubsystem m_simpledrive = new SimpleDriveSubsystem();
 
   // Autonomous Commands

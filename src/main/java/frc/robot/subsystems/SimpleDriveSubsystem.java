@@ -5,23 +5,54 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+
+import com.revrobotics.*;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class SimpleDriveSubsystem extends SubsystemBase {
-  private final PWMSparkMax m_leftMotor = new PWMSparkMax(0);
-  private final PWMSparkMax m_rightMotor = new PWMSparkMax(1);
-  private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
-  
+
+ // Inits motors
+ private final CANSparkMax m_leftRear;
+ private final CANSparkMax m_leftFront;
+ private final CANSparkMax m_rightFront;
+ private final CANSparkMax m_rightRear;
+ 
+ private final DifferentialDrive m_robotDrive;
+
+
+ 
   /** Creates a new ExampleSubsystem. */
-  public SimpleDriveSubsystem() {}
+  public SimpleDriveSubsystem() {
+  
+    
+
+ // Assigns motors
+ m_leftFront = new CANSparkMax(Constants.canID[2], MotorType.kBrushed);
+ m_leftFront.setInverted(true);
+
+ m_leftRear = new CANSparkMax(Constants.canID[3], MotorType.kBrushed);
+ m_leftRear.setInverted(true);
+
+ m_rightFront = new CANSparkMax(Constants.canID[1], MotorType.kBrushed);
+ m_rightFront.setInverted(false);
+
+ m_rightRear = new CANSparkMax(Constants.canID[0], MotorType.kBrushed);
+ m_rightRear.setInverted(false);
+ 
+ MotorControllerGroup left = new MotorControllerGroup(m_leftRear, m_leftFront);
+ MotorControllerGroup right = new MotorControllerGroup(m_rightFront, m_rightRear); 
+ m_robotDrive = new DifferentialDrive(left, right);
+
+  }
 
   //Assigns motors
   
 
   /**
    * Example command factory method.
-   *
    * @return a command
    */
   public void drive(double x, double y) {
@@ -31,6 +62,9 @@ public class SimpleDriveSubsystem extends SubsystemBase {
     } 
     if (y < 0.3 && y > -0.3) {
       y = 0;
+    }
+    if (x != 0 || y != 0) {
+      System.out.println("Drive X: " + x + " Y: " + y);
     }
     m_robotDrive.arcadeDrive(-y, -x);
   }

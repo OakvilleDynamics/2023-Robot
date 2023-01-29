@@ -26,23 +26,19 @@ public class MoveTurret extends CommandBase {
         //        m_turret.rotateLeft(inputs[2]);
         if (driveJoystick.getRawButton(3) == true)
         {
-            System.out.println("Button 3 Pressed");
             m_turret.rotateLeft();
         }
         else
         {
-            System.out.println("Button 3 Not Pressed");
             m_turret.rotateStop();
         }
 
         if (driveJoystick.getRawButton(4) == true)
         {
-            System.out.println("Button 4 Pressed");
             m_turret.rotateRight();
         }
         else
         {
-            System.out.println("Button 4 Not Pressed");
             m_turret.rotateStop();
         }
     }
