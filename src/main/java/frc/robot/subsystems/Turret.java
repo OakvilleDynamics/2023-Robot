@@ -1,11 +1,14 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Turret extends SubsystemBase {
+
+  private double motorValue = -1.0;
 
   // Inits motors
   private TalonSRX turntable = new TalonSRX(15);
@@ -15,15 +18,14 @@ public class Turret extends SubsystemBase {
   }
 
   public void rotateLeft() {
-    turntable.set(ControlMode.PercentOutput, -1.0);
+    turntable.set(TalonSRXControlMode.PercentOutput, -0.99);
   }
 
   public void rotateRight() {
-    turntable.set(ControlMode.PercentOutput, 1.0);
+    turntable.set(TalonSRXControlMode.PercentOutput, 1.0);
   }
 
   public void rotateStop() {
-    turntable.set(ControlMode.PercentOutput, 0.0);
+    turntable.set(TalonSRXControlMode.PercentOutput, 0.0);
   }
-
 }

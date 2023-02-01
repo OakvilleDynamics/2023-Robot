@@ -28,12 +28,7 @@ public class MoveTurret extends CommandBase {
         {
             m_turret.rotateLeft();
         }
-        else
-        {
-            m_turret.rotateStop();
-        }
-
-        if (driveJoystick.getRawButton(4) == true)
+        else if (driveJoystick.getRawButton(4) == true)
         {
             m_turret.rotateRight();
         }
