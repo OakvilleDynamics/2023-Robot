@@ -19,6 +19,9 @@ public class SimpleDriveSubsystem extends SubsystemBase {
  private final CANSparkMax m_leftFront;
  private final CANSparkMax m_rightFront;
  private final CANSparkMax m_rightRear;
+ // private final CANSparkMax m_rightMid;
+ // private final CANSparkMax m_leftMid;
+ // add this for 6 motor drivetrain
  
  private final DifferentialDrive m_robotDrive;
 
@@ -33,17 +36,26 @@ public class SimpleDriveSubsystem extends SubsystemBase {
  m_leftFront = new CANSparkMax(Constants.canID[2], MotorType.kBrushed);
  m_leftFront.setInverted(true);
 
+ // m_leftMid = new CANSparkMax(Constants.canID[4], MotorType.kBrushed);
+ // m_leftMid.setInverted(true);
+ // add this code in whenever we change to the 6 motor drivetrain, change canID to whatever needed
+
  m_leftRear = new CANSparkMax(Constants.canID[3], MotorType.kBrushed);
  m_leftRear.setInverted(true);
 
  m_rightFront = new CANSparkMax(Constants.canID[1], MotorType.kBrushed);
  m_rightFront.setInverted(false);
 
+ // m_rightMid = new CANSparkMax(Constants.canID[5], MotorType.kBrushed);
+ // m_rightMid.setInverted(false);
+ // add this code in whenever we change to the 6 motor drivetrain, change canID to whatever needed
+
  m_rightRear = new CANSparkMax(Constants.canID[0], MotorType.kBrushed);
  m_rightRear.setInverted(false);
  
  MotorControllerGroup left = new MotorControllerGroup(m_leftRear, m_leftFront);
  MotorControllerGroup right = new MotorControllerGroup(m_rightFront, m_rightRear); 
+ // add m_leftMid to left and m_rightMid to right when we change to 6 motor drivetrain
  m_robotDrive = new DifferentialDrive(left, right);
 
   }

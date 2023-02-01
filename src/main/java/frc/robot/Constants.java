@@ -18,5 +18,10 @@ public final class Constants {
 // IDS TO REFER TO CAN-CONNECTED DEVICES
   // Each device has a specific device ID, visible through the Phoenix Tuner utility.
   // RB, RF, LF, LB
+  
   public static final int[] canID = {1, 2, 4, 10};
+
+  // Add canID of the two new motors from 6 gear motor drivetrain to the list once we change to coding that robot
+  // Add RM and LM as well when changing
+  
 }
