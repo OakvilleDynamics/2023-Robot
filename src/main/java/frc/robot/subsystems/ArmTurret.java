@@ -1,16 +1,17 @@
 package frc.robot.subsystems;
 
+// This talon srx import is different than the TalonDrive import
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class Turret extends SubsystemBase {
+public class ArmTurret extends SubsystemBase {
 
   // Inits motors
   private TalonSRX turntable = new TalonSRX(15);
 
-  public Turret(){
+  public ArmTurret(){
     turntable.setInverted(true);
   }
 

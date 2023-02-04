@@ -2,7 +2,7 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -11,12 +11,14 @@ import frc.robot.Constants;
 public class TalonDrive extends SubsystemBase {
 
  // Inits motors
- private TalonSRX m_leftFront = new TalonSRX(1);
- private TalonSRX m_leftMid = new TalonSRX(2);
- private TalonSRX m_leftBack = new TalonSRX(3);
- private TalonSRX m_rightFront = new TalonSRX(4);
- private TalonSRX m_rightMid = new TalonSRX(5);
- private TalonSRX m_rightBack = new TalonSRX(6);
+
+ // The talons are not set up with the correct device numbers for now
+ private WPI_TalonSRX m_leftFront = new WPI_TalonSRX(1);
+ private WPI_TalonSRX m_leftMid = new WPI_TalonSRX(2);
+ private WPI_TalonSRX m_leftBack = new WPI_TalonSRX(3);
+ private WPI_TalonSRX m_rightFront = new WPI_TalonSRX(4);
+ private WPI_TalonSRX m_rightMid = new WPI_TalonSRX(5);
+ private WPI_TalonSRX m_rightBack = new WPI_TalonSRX(6);
  
  private final DifferentialDrive m_robotDrive;
 

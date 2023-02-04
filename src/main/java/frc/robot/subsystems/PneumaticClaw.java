@@ -6,9 +6,9 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class PneumaticArm extends SubsystemBase {
+public class PneumaticClaw extends SubsystemBase {
   /** Creates a new PneumaticArm. */
-  public PneumaticArm() {}
+  public PneumaticClaw() {}
 
   @Override
   public void periodic() {

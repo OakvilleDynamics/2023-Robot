@@ -7,7 +7,7 @@ package frc.robot;
 import frc.robot.commands.DriveTrain;
 import frc.robot.subsystems.SparkMaxDrive;
 import frc.robot.commands.MoveTurret;
-import frc.robot.subsystems.Turret;
+import frc.robot.subsystems.ArmTurret;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -21,7 +21,7 @@ public class RobotContainer {
   private static final RobotContainer m_robotContainer = new RobotContainer();
 
   // The robot's subsystems
-  public final Turret m_turret = new Turret();
+  public final ArmTurret m_turret = new ArmTurret();
   private final SparkMaxDrive m_simpledrive = new SparkMaxDrive();
 
   // Autonomous Commands
