@@ -6,9 +6,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class Pneumatics extends CommandBase {
-  /** Creates a new PneumaticCommand. */
-  public Pneumatics() {
+public class MoveRamp extends CommandBase {
+  /** Creates a new MoveRamp. */
+  public MoveRamp() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
