@@ -3,15 +3,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Turret;
+import frc.robot.subsystems.ArmTurret;
+import frc.robot.Constants;
 
 public class MoveTurret extends CommandBase {
     // Subsystems
-    private final Turret m_turret;
+    private final ArmTurret m_turret;
 
     // Controllers
-    private final Joystick driveJoystick = new Joystick(0);
-    public MoveTurret(Turret subsystem) {
+    private final Joystick driveJoystick = new Joystick(Constants.controllerJoystickID);
+    public MoveTurret(ArmTurret subsystem) {
         m_turret = subsystem;
         addRequirements(m_turret);
     }

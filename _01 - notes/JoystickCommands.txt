@@ -1,0 +1,16 @@
+Driver Joystick 1
+1. Drive Forward/Backward/Left/ Right - Large Joystick
+2. Front Brakes - Side button
+3. Back Brakes - Side button
+4. Ramp - side bottom buttons - could be on controller Joystick - press once down, press again up
+5. Side Rails - side bottom buttons - could be on controller Joystick - press once down, press again up
+6. High/Low gear shifter - slider 
+
+Controller Joystick 2
+1. Turret Left/Right - top bottom left/right buttons
+2. Bottom Arm Up/Down - large Joystick
+3. Top Arm Up/Down - small Joystick
+4. Claw squeeze/release - trigger
+5. Claw extendo - slidder
+6. Detent for bottom arm - out and in action - one button, press once out, press again in
+7. Detent for top arm - out and in action - one button, press once out, press again in

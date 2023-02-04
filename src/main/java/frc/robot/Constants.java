@@ -24,5 +24,9 @@ public final class Constants {
 
   // Add canID of the two new motors from 6 gear motor drivetrain to the list once we change to coding that robot
   // Add RM and LM as well when changing
+
+  // creates the joystick identifications, 0 is for the drivetrain, 1 is for the arm and other functions
+  public static final int driverJoystickID = 0;
+  public static final int controllerJoystickID = 1;
   
 }

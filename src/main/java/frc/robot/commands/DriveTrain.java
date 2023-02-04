@@ -4,25 +4,25 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.SimpleDriveSubsystem;
+import frc.robot.subsystems.SparkMaxDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class SimpleDriveCommand extends CommandBase {
+public class DriveTrain extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final SimpleDriveSubsystem m_subsystem;
+  private final SparkMaxDrive m_subsystem;
 
   private final Joystick driverJoystick =
-      new Joystick(Constants.driverControllerPort);
+      new Joystick(Constants.driverJoystickID);
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public SimpleDriveCommand(SimpleDriveSubsystem subsystem) {
+  public DriveTrain(SparkMaxDrive subsystem) {
     m_subsystem = subsystem;
     System.out.println(subsystem.toString());
     // Use addRequirements() here to declare subsystem dependencies.
