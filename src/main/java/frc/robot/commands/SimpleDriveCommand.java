@@ -15,7 +15,7 @@ public class SimpleDriveCommand extends CommandBase {
   private final SimpleDriveSubsystem m_subsystem;
 
   private final Joystick driverJoystick =
-      new Joystick(Constants.driverControllerPort);
+      new Joystick(Constants.driverJoystickID);
 
   /**
    * Creates a new ExampleCommand.

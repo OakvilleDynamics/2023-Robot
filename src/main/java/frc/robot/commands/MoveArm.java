@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 
 public class MoveArm extends CommandBase {
 
@@ -13,7 +14,7 @@ public class MoveArm extends CommandBase {
   // public final *arm* m_arm
 
   //controllers
-  //private final Joystick driveJoystick = new Joystick(0);
+  private final Joystick armJoystick = new Joystick(Constants.driverJoystickID);
 
 
   /** Creates a new MoveArm. */
@@ -29,22 +30,33 @@ public class MoveArm extends CommandBase {
   @Override
   public void execute() {
     //Commands for moving the arm in all directions
-  /*  if (driveJoystick.getRawButton(W) == true)
+  /*  if (armJoystick.getRawButton(W) == true)
         {
             m_arm.moveLeft(); 
         }
-    else if (driveJoystick.getRawButton(X) == true)
+    else if (armJoystick.getRawButton(X) == true)
         {
             m_arm.moveRight();
         }
-    else if (driveJoystick.getRawButton(Y) == true)
+    else if (armJoystick.getRawButton(Y) == true)
         {
             m_arm.moveUp();
         }
-    else if (driveJoystick.getRawButton(Z) == true)
+    else if (armJoystick.getRawButton(Z) == true)
         {
             m_arm.moveDown();
         }    */
+
+        /* We need to create a limiter for how far the arm can extend out before being able to use the extendo arm
+         * To do this, we need to detect the angle of the arm somehow, and enable the extendo when the conditions are met
+         * 
+         * if ("arm angle limit" == true) {
+         * 
+         * //enable arm rotation blocker (this either will be a pneumatic blocker or a physical one)
+         * m_arm.armBlocker();
+         * 
+         * }
+         */
       }
 
   // Called once the command ends or is interrupted.

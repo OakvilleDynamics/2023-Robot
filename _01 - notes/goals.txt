@@ -16,3 +16,5 @@ Super advanced things:
 - Buttons on digital screen that does "things"
 - shuffleboard for buttons (and other things, HMI for driver station)
 - Auto routines
+
+Saturday Feb 4 Goals:
