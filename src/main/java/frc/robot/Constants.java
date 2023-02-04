@@ -13,6 +13,8 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static final int driverControllerPort = 0;
+  public static final int armControllerPort = 1;
 
 // IDS TO REFER TO CAN-CONNECTED DEVICES
   // Each device has a specific device ID, visible through the Phoenix Tuner utility.
