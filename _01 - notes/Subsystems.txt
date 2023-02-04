@@ -1,0 +1,6 @@
+1. Arm 
+2. Arm Turret
+3. Brakes
+4. Claw
+5. Ramp & Side Rails
+6. Drive - Talon or Spark Max - will include hight/low shift

@@ -4,10 +4,12 @@
 
 package frc.robot;
 
+import frc.robot.commands.Brakes;
 import frc.robot.commands.DriveTrain;
 import frc.robot.subsystems.SparkMaxDrive;
 import frc.robot.commands.MoveTurret;
 import frc.robot.subsystems.ArmTurret;
+import frc.robot.subsystems.PneumaticBrakes;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -23,6 +25,7 @@ public class RobotContainer {
   // The robot's subsystems
   public final ArmTurret m_turret = new ArmTurret();
   private final SparkMaxDrive m_simpledrive = new SparkMaxDrive();
+  public final PneumaticBrakes m_Brakes = new PneumaticBrakes();
 
   // Autonomous Commands
   // private final Command m_placeobject = new PlaceObject(m_turret);   
@@ -34,6 +37,7 @@ public class RobotContainer {
     configureBindings();
     m_turret.setDefaultCommand(new MoveTurret(m_turret));
     m_simpledrive.setDefaultCommand(new DriveTrain(m_simpledrive));
+    m_Brakes.setDefaultCommand(new Brakes(m_Brakes));
   }
 
 

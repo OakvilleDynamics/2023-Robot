@@ -7,16 +7,20 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.subsystems.PneumaticBrakes;
 
 public class Brakes extends CommandBase {
 
-   private final Joystick driverJoystick =
-      new Joystick(Constants.driverJoystickID);
+  //subsystems
+  private final PneumaticBrakes m_Brakes;
 
-  public Brakes() {
-    
+  //controllers
+  private final Joystick driverJoystick = new Joystick(Constants.driverJoystickID);
+  public Brakes(PneumaticBrakes subsystem) {
+        m_Brakes = subsystem;
+        addRequirements(m_Brakes);
 
-  }
+      }
 
   // Called when the command is initially scheduled.
   @Override
@@ -28,7 +32,13 @@ public class Brakes extends CommandBase {
 
     if (driverJoystick.getRawButton(7) == true) {
 
-      //Brakes Enable
+      m_Brakes.brakeOn();
+
+    }
+
+    if (driverJoystick.getRawButton(8) == true) {
+
+      m_Brakes.brakeOff();
 
     }
 
