@@ -1,6 +1,4 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
+// MAKE SURE TO COMMENT/TURN INTO TEXT ON EITHER THIS OR TALONDRIVE DEPENDING ON WHAT MOTORS WE USE
 
 package frc.robot.subsystems;
 
@@ -12,7 +10,7 @@ import frc.robot.Constants;
 import com.revrobotics.*;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public class SimpleDriveSubsystem extends SubsystemBase {
+public class SparkMaxDrive extends SubsystemBase {
 
  // Inits motors
  private final CANSparkMax m_leftRear;
@@ -28,7 +26,7 @@ public class SimpleDriveSubsystem extends SubsystemBase {
 
  
   /** Creates a new ExampleSubsystem. */
-  public SimpleDriveSubsystem() {
+  public SparkMaxDrive() {
   
     
 
