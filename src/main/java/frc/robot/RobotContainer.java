@@ -38,6 +38,7 @@ public class RobotContainer {
     m_turret.setDefaultCommand(new MoveTurret(m_turret));
     m_simpledrive.setDefaultCommand(new DriveTrain(m_simpledrive));
     m_Brakes.setDefaultCommand(new Brakes(m_Brakes));
+    //m_arm.setDefaultCommand(new MoveArm(m_arm));
   }
 
 

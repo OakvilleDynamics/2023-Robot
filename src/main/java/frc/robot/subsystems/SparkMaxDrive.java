@@ -57,10 +57,8 @@ public class SparkMaxDrive extends SubsystemBase {
  m_robotDrive = new DifferentialDrive(left, right);
 
   }
-
-  //Assigns motors
   
-
+  
   /**
    * Example command factory method.
    * @return a command
