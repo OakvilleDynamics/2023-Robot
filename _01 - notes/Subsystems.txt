@@ -3,4 +3,4 @@
 3. Brakes
 4. Claw
 5. Ramp & Side Rails
-6. Drive - Talon or Spark Max - will include hight/low shift
+6. Drive - Talon - will include hight/low shift

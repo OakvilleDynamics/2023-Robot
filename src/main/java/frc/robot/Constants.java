@@ -29,12 +29,18 @@ public final class Constants {
   public static final int driverJoystickID = 0;
   public static final int controllerJoystickID = 1;
 
-  // constants for brake button assignments 
+  // identifiers for gear shift
+  public static final double gearThrottleHigh = -1.0;
+  public static final double gearThrottleLow = 1.0;
+
+    // constants for brake button assignments 
   public static final int joystickButtonBrakeOn = 7;
   public static final int joystickButtonBrakeOff = 8;
   
   // constants for pnuematicControllers
   public static final int pneumaticBrakeControllerID = 0;
+  public static final int pneumaticGearControllerID = 1;
+
   
 
 
