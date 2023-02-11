@@ -6,6 +6,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 
@@ -16,7 +17,7 @@ public Solenoid brakeSolenoid = null;
 //intialize the pneumatic brakes
   public PneumaticBrakes() {
 
-    brakeSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
+    brakeSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticBrakeControllerID);
 
   }
   //turn the brakes on 

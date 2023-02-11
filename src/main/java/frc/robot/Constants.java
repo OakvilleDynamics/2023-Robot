@@ -28,5 +28,14 @@ public final class Constants {
   // creates the joystick identifications, 0 is for the drivetrain, 1 is for the arm and other functions
   public static final int driverJoystickID = 0;
   public static final int controllerJoystickID = 1;
+
+  // constants for brake button assignments 
+  public static final int joystickButtonBrakeOn = 7;
+  public static final int joystickButtonBrakeOff = 8;
   
+  // constants for pnuematicControllers
+  public static final int pneumaticBrakeControllerID = 0;
+  
+
+
 }

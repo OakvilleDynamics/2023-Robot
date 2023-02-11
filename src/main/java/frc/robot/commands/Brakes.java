@@ -30,13 +30,13 @@ public class Brakes extends CommandBase {
   @Override
   public void execute() {
 
-    if (driverJoystick.getRawButton(7) == true) {
+    if (driverJoystick.getRawButton(Constants.joystickButtonBrakeOn) == true) {
 
       m_Brakes.brakeOn();
 
     }
 
-    if (driverJoystick.getRawButton(8) == true) {
+    if (driverJoystick.getRawButton(Constants.joystickButtonBrakeOff) == true) {
 
       m_Brakes.brakeOff();
 
