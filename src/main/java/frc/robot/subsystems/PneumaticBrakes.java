@@ -6,31 +6,35 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class PneumaticBrakes extends SubsystemBase {
 
-public Solenoid brakeSolenoid = null;
+public Solenoid m_frontSolenoid = null;
+public Solenoid m_backSolenoid = null;
 
 //intialize the pneumatic brakes
   public PneumaticBrakes() {
 
-    brakeSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
+    m_frontSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.frontBrakeSolenoidChannel);
+    m_backSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.backBrakeSolenoidChannel);
 
   }
   //turn the brakes on 
   public void brakeOn () {
 
-    brakeSolenoid.set(true);
+   m_frontSolenoid.set(true);
+   m_backSolenoid.set(true);
 
   }
 
   // turn the brakes off
   public void brakeOff () {
 
-    brakeSolenoid.set(false);
-
+    m_frontSolenoid.set(false);
+    m_backSolenoid.set(false);
   }
 
   @Override
