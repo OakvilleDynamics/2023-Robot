@@ -2,6 +2,7 @@
 simgui-ds.json
 simgui-window.json
 simgui.json
+networktables.json
 
 # This gitignore has been specially created by the WPILib team.
 # If you remove items from this file, intellisense might break.
