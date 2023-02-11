@@ -33,6 +33,9 @@ public final class Constants {
   public static final int gearSolenoidChannel = 1;
   public static final double gearThrottleHigh = -1.0;
   public static final double gearThrottleLow = 1.0;
+  
+  public static final int frontBrakeSolenoidChannel = 3;
+  public static final int backBrakeSolenoidChannel = 2;
 
   
 }
