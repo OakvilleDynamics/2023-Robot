@@ -10,32 +10,34 @@ import frc.robot.Constants;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 
-public class PneumaticBrakes extends SubsystemBase {
+public class PneumaticJacks extends SubsystemBase {
 
 public Solenoid m_frontSolenoid = null;
 public Solenoid m_backSolenoid = null;
 
 //intialize the pneumatic brakes
-  public PneumaticBrakes() {
+  public PneumaticJacks() {
 
-    m_frontSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticFrontBrakeControllerID);
-    m_backSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticBackBrakeControllerID);
-
-  }
-  //turn the brakes on 
-  public void brakeOn () {
-
-   m_frontSolenoid.set(true);
-   m_backSolenoid.set(true);
+    m_frontSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticFrontJackControllerID);
+    m_backSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticBackJackControllerID);
 
   }
 
-  // turn the brakes off
-  public void brakeOff () {
+  public void frontOn () {
+    m_frontSolenoid.set(true);
+  }
 
+  public void frontOff () {
     m_frontSolenoid.set(false);
-    m_backSolenoid.set(false);
   }
+
+  public void backOn () {
+    m_backSolenoid.set(true);
+   }
+ 
+   public void backOff () {
+     m_backSolenoid.set(false);
+   }
 
   @Override
   public void periodic() {
