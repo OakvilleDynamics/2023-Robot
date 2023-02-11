@@ -17,7 +17,7 @@ public Solenoid gearSolenoid = null;
 //intialize the pneumatic brakes
   public PneumaticShift() {
 
-    gearSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.gearSolenoidChannel);
+    gearSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticGearControllerID);
 
   }
   //turn the brakes on 
