@@ -18,8 +18,8 @@ public Solenoid m_backSolenoid = null;
 //intialize the pneumatic brakes
   public PneumaticBrakes() {
 
-    m_frontSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.frontBrakeSolenoidChannel);
-    m_backSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.backBrakeSolenoidChannel);
+    m_frontSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticFrontBrakeControllerID);
+    m_backSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticBackBrakeControllerID);
 
   }
   //turn the brakes on 

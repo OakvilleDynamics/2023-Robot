@@ -35,9 +35,7 @@ public class Brakes extends CommandBase {
       m_Brakes.brakeOn();
       System.out.println("brake on");
     }
-
-    if (driverJoystick.getRawButton(Constants.joystickButtonBrakeOff) == true) {
-
+    else{
       m_Brakes.brakeOff();
       System.out.println("brake off");
     }

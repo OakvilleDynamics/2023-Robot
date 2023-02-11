@@ -33,11 +33,11 @@ public final class Constants {
   public static final int controllerJoystickID = 1;
   // constants for brake button assignments 
   public static final int joystickButtonBrakeOn = 7;
-  public static final int joystickButtonBrakeOff = 8;
 
   // constants for pnuematicControllers
-  public static final int pneumaticBrakeControllerID = 0;
   public static final int pneumaticGearControllerID = 1;
+  public static final int pneumaticFrontBrakeControllerID = 3;
+  public static final int pneumaticBackBrakeControllerID = 2;
 
   // constants for motor controllers
   public static final int talonDriveLeftFrontID = 1;
@@ -56,9 +56,6 @@ public final class Constants {
   public static final double gearThrottleHigh = -1.0;
   public static final double gearThrottleLow = 1.0;
   
-  public static final int frontBrakeSolenoidChannel = 3;
-  public static final int backBrakeSolenoidChannel = 2;
-
   // constants for turret control directions
   public static final int joystickTurretLeft = 3;
   public static final int joystickTurretRight = 4;
