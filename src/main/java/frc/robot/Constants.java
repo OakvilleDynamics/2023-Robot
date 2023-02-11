@@ -28,5 +28,11 @@ public final class Constants {
   // creates the joystick identifications, 0 is for the drivetrain, 1 is for the arm and other functions
   public static final int driverJoystickID = 0;
   public static final int controllerJoystickID = 1;
+
+  // identifiers for gear shift
+  public static final int gearSolenoidChannel = 1;
+  public static final double gearThrottleHigh = -1.0;
+  public static final double gearThrottleLow = 1.0;
+
   
 }
