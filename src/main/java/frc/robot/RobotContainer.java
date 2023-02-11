@@ -6,7 +6,7 @@ package frc.robot;
 
 import frc.robot.commands.Brakes;
 import frc.robot.commands.DriveTrain;
-import frc.robot.subsystems.SparkMaxDrive;
+import frc.robot.subsystems.TalonDrive;
 import frc.robot.commands.MoveTurret;
 import frc.robot.subsystems.ArmTurret;
 import frc.robot.subsystems.PneumaticBrakes;
@@ -24,7 +24,7 @@ public class RobotContainer {
 
   // The robot's subsystems
   public final ArmTurret m_turret = new ArmTurret();
-  private final SparkMaxDrive m_simpledrive = new SparkMaxDrive();
+  private final TalonDrive m_simpledrive = new TalonDrive();
   public final PneumaticBrakes m_Brakes = new PneumaticBrakes();
 
   // Autonomous Commands
