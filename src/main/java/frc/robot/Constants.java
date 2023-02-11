@@ -55,6 +55,9 @@ public final class Constants {
   // identifiers for gear shift
   public static final double gearThrottleHigh = -1.0;
   public static final double gearThrottleLow = 1.0;
+  
+  public static final int frontBrakeSolenoidChannel = 3;
+  public static final int backBrakeSolenoidChannel = 2;
 
   // constants for turret control directions
   public static final int joystickTurretLeft = 3;

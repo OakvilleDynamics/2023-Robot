@@ -1,6 +1,6 @@
 1. Arm 
-2. Arm Turret
-3. Brakes
-4. Claw
+2. Done - Arm Turret
+3. Done - Brakes
+4. Claw 
 5. Ramp & Side Rails
 6. Drive - Talon - will include hight/low shift
