@@ -23,13 +23,11 @@ public class MoveTurret extends CommandBase {
 
     @Override
     public void execute() {
-        //double[] inputs = procInputs(driveJoystick.getRawButtonPressed());// get if buttonTwo or buttonThree are pushed
-        //        m_turret.rotateLeft(inputs[2]);
-        if (driveJoystick.getRawButton(3) == true)
+        if (driveJoystick.getRawButton(Constants.joystickTurretLeft) == true)
         {
             m_turret.rotateLeft();
         }
-        else if (driveJoystick.getRawButton(4) == true)
+        else if (driveJoystick.getRawButton(Constants.joystickTurretRight) == true)
         {
             m_turret.rotateRight();
         }
