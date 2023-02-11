@@ -4,7 +4,7 @@ Driver Joystick 1
 3. Back Brakes - Side button
 4. Ramp - side bottom buttons - could be on controller Joystick - press once down, press again up
 5. Side Rails - side bottom buttons - could be on controller Joystick - press once down, press again up
-6. High/Low gear shifter - slider 
+6. High/Low gear shifter - slider (slider forward high, slider back low)
 
 Controller Joystick 2
 1. Turret Left/Right - top bottom left/right buttons
