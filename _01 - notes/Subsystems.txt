@@ -1,6 +1,6 @@
 1. Arm 
 2. Done - Arm Turret
-3. Jacks - front & back, can operate independently to tilt platform to help other robot get on top
+3. Done - Jacks - front & back, can operate independently to tilt platform to help other robot get on top
 4. Claw 
 5. Ramp & Side Rails
-6. Drive - Talon - will include hight/low shift
+6. Done - Drive - Talon - will include hight/low shift
