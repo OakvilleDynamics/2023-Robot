@@ -1,7 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot;
 
 /**
@@ -36,12 +32,21 @@ public final class Constants {
   public static final int joystickButtonBackJackOn = 8;
   //Constants for claw button assignments
   public static final int joystickButtonClawOn = 1;
+  //Constants for ramp button assignments
+  public static final int joystickButtonRampOn = 4;
+  public static final int joystickButtonRampOff = 5;
+  //Constants for guardrail button assignments
+  public static final int joystickGuardrailOn = 6;
+  public static final int joystickGuardrailOff = 7;
+
 
   // constants for pnuematicControllers
   public static final int pneumaticGearControllerID = 1;
   public static final int pneumaticFrontJackControllerID = 3;
   public static final int pneumaticBackJackControllerID = 2;
   public static final int pneumaticClawControllerID = 4;
+  public static final int pneumaticRampControllerID = 5;
+  public static final int pneumaticGuardrailControllerID = 6;
 
   // constants for motor controllers
   public static final int talonDriveLeftFrontID = 1;

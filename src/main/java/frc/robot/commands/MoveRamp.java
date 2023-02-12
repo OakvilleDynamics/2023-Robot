@@ -4,27 +4,52 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
+import frc.robot.subsystems.PneumaticRamp;
 
 public class MoveRamp extends CommandBase {
-  /** Creates a new MoveRamp. */
-  public MoveRamp() {
-    // Use addRequirements() here to declare subsystem dependencies.
-  }
+  private boolean m_isRampOn = false;
+  private boolean m_isRampOff = false;
 
-  // Called when the command is initially scheduled.
+   //subsystems
+   private final PneumaticRamp m_Ramp;
+
+ //controllers
+ private final Joystick driverJoystick = new Joystick(Constants.driverJoystickID);
+ public MoveRamp(PneumaticRamp subsystem) {
+       m_Ramp = subsystem;
+       addRequirements(m_Ramp);
+
+     }
+
   @Override
   public void initialize() {}
 
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
 
-  // Called once the command ends or is interrupted.
+    if (driverJoystick.getRawButton(Constants.joystickButtonRampOn) == true) {
+      if (m_isRampOn){
+        m_Ramp.rampOn();
+        m_isRampOn=true;
+        System.out.println("Ramp On");
+      }
+      }
+    
+    if (driverJoystick.getRawButton(Constants.joystickButtonRampOff) == true) {
+      if (m_isRampOff){
+        m_Ramp.rampOff();
+        m_isRampOff=true;
+        System.out.println("Ramp Off");
+      }
+    }  
+  }
+
   @Override
   public void end(boolean interrupted) {}
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;
