@@ -34,11 +34,14 @@ public final class Constants {
   // constants for jack button assignments 
   public static final int joystickButtonFrontJackOn = 7;
   public static final int joystickButtonBackJackOn = 8;
+  //Constants for claw button assignments
+  public static final int joystickButtonClawOn = 1;
 
   // constants for pnuematicControllers
   public static final int pneumaticGearControllerID = 1;
   public static final int pneumaticFrontJackControllerID = 3;
   public static final int pneumaticBackJackControllerID = 2;
+  public static final int pneumaticClawControllerID = 4;
 
   // constants for motor controllers
   public static final int talonDriveLeftFrontID = 1;
