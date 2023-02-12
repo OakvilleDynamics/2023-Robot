@@ -7,63 +7,63 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.subsystems.Arm;
 
 public class MoveArm extends CommandBase {
 
-  //subsystems 
-  // public final *arm* m_arm
+  private final Arm m_armSubsystem;
 
   //controllers
-  private final Joystick armJoystick = new Joystick(Constants.driverJoystickID);
-
-
-  /** Creates a new MoveArm. */
-  public MoveArm() {
+  private final Joystick controllerJoystick = new Joystick(Constants.controllerJoystickID);
+  public MoveArm(Arm subsystem) {
+    m_armSubsystem = subsystem;
+    addRequirements(m_armSubsystem);
 
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
 
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //Commands for moving the arm in all directions
-  /*  if (armJoystick.getRawButton(W) == true)
-        {
-            m_arm.moveLeft(); 
-        }
-    else if (armJoystick.getRawButton(X) == true)
-        {
-            m_arm.moveRight();
-        }
-    else if (armJoystick.getRawButton(Y) == true)
-        {
-            m_arm.moveUp();
-        }
-    else if (armJoystick.getRawButton(Z) == true)
-        {
-            m_arm.moveDown();
-        }    */
+   
+    //controls bottom arm with the joystick handle
+    if (controllerJoystick.getY() <= 0.3)
+    {
+        m_armSubsystem.bottomArmDown();
+    }
+  
+    else if (controllerJoystick.getY() >= -0.3)
+    {
+        m_armSubsystem.bottomArmUp();
+    }
 
-        /* We need to create a limiter for how far the arm can extend out before being able to use the extendo arm
-         * To do this, we need to detect the angle of the arm somehow, and enable the extendo when the conditions are met
-         * 
-         * if ("arm angle limit" == true) {
-         * 
-         * //enable arm rotation blocker (this either will be a pneumatic blocker or a physical one)
-         * m_arm.armBlocker();
-         * 
-         * }
-         */
-      }
+    else
+    {
+        m_armSubsystem.bottomArmStop();
+    }
 
-  // Called once the command ends or is interrupted.
+    // controls the top arm with the pov stick on the handle
+    if (controllerJoystick.getPOV() == 0)
+    {
+        m_armSubsystem.topArmUp();
+    }
+  
+    else if (controllerJoystick.getPOV() == 180)
+    {
+        m_armSubsystem.topArmDown();
+    }
+
+    else
+    {
+        m_armSubsystem.topArmStop();
+    }
+
+  }
+
   @Override
   public void end(boolean interrupted) {}
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;

@@ -57,6 +57,10 @@ public final class Constants {
   public static final int talonDriveRightBackID = 6;
   public static final int talonTurretDeviceID = 15;
 
+  // constants for PWM motors
+  public static final int pwmBottomArmID = 7;
+  public static final int pwmTopArmID = 8;
+
 
 
   // LOGICAL CONSTANTS FOR OPERATIONS
@@ -72,6 +76,14 @@ public final class Constants {
   public static final double turntableRotateLeft = -0.99;     // We set this to -0.99 due to some bug that caused the arm to not turn when set to -1.0
   public static final double turntableRotateRight = 1.0;
   public static final double turntableRotateStop = 0.0;
+  
+  // constants for arm motor speeds
+  public static final double bottomArmUpSpeed = 1.0;
+  public static final double bottomArmDownSpeed = -1.0;
+  public static final double bottomArmStopSpeed = 0.0;
+  public static final double topArmUpSpeed = 1.0;
+  public static final double topArmDownSpeed = -1.0;
+  public static final double topArmStopSpeed = 0.0;
 
 
 }
