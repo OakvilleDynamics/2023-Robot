@@ -16,7 +16,7 @@ public class PneumaticClaw extends SubsystemBase {
   public PneumaticClaw() {
 
     m_clawSolenoid =
-        new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticClawControllerID);
+        new Solenoid(Constants.pcmModuleAlpha,PneumaticsModuleType.CTREPCM, Constants.pneumaticClawControllerID);
   }
 
   public void clawOn() {
