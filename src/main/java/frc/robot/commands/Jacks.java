@@ -31,22 +31,22 @@ public class Jacks extends CommandBase {
       if (m_isFrontJackOn) {
         m_Jacks.frontOff();
         m_isFrontJackOn = false;
-        System.out.println("frontJackOff");
+        System.out.println("Jacks - front Off");
       } else {
         m_Jacks.frontOn();
         m_isFrontJackOn = true;
-        System.out.println("frontJackOn");
+        System.out.println("Jacks - front On");
       }
     }
     if (driverJoystick.getRawButton(Constants.joystickButtonBackJackOn) == true) {
       if (m_isBackJackOn) {
         m_Jacks.backOff();
         m_isBackJackOn = false;
-        System.out.println("backJackOff");
+        System.out.println("Jacks - back Off");
       } else {
         m_Jacks.backOn();
         m_isBackJackOn = true;
-        System.out.println("backJackOn");
+        System.out.println("Jacks - back On");
       }
     }
   }
