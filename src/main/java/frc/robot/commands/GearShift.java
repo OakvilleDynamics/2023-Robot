@@ -3,8 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 // pneumatics enabled == slow
-// pneumatics disabled == fast 
-
+// pneumatics disabled == fast
 
 package frc.robot.commands;
 
@@ -15,16 +14,16 @@ import frc.robot.subsystems.PneumaticShift;
 
 public class GearShift extends CommandBase {
 
-  //subsystems
+  // subsystems
   private final PneumaticShift m_Shift;
 
-  //controllers
+  // controllers
   private final Joystick driverJoystick = new Joystick(Constants.driverJoystickID);
-  public GearShift(PneumaticShift subsystem) {
-        m_Shift = subsystem;
-        addRequirements(m_Shift);
 
-      }
+  public GearShift(PneumaticShift subsystem) {
+    m_Shift = subsystem;
+    addRequirements(m_Shift);
+  }
 
   // Called when the command is initially scheduled.
   @Override
@@ -38,16 +37,13 @@ public class GearShift extends CommandBase {
 
       System.out.println("Low Gear");
       m_Shift.lowGear();
-
     }
 
     if (driverJoystick.getThrottle() == Constants.gearThrottleHigh) {
 
       System.out.println("High Gear");
       m_Shift.highGear();
-      
     }
-
   }
 
   // Called once the command ends or is interrupted.

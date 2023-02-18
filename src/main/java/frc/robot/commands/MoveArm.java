@@ -13,12 +13,12 @@ public class MoveArm extends CommandBase {
 
   private final Arm m_armSubsystem;
 
-  //controllers
+  // controllers
   private final Joystick controllerJoystick = new Joystick(Constants.controllerJoystickID);
+
   public MoveArm(Arm subsystem) {
     m_armSubsystem = subsystem;
     addRequirements(m_armSubsystem);
-
   }
 
   @Override
@@ -26,39 +26,24 @@ public class MoveArm extends CommandBase {
 
   @Override
   public void execute() {
-   
-    //controls bottom arm with the joystick handle
-    if (controllerJoystick.getY() <= 0.3)
-    {
-        m_armSubsystem.bottomArmDown();
-    }
-  
-    else if (controllerJoystick.getY() >= -0.3)
-    {
-        m_armSubsystem.bottomArmUp();
-    }
 
-    else
-    {
-        m_armSubsystem.bottomArmStop();
+    // controls bottom arm with the joystick handle
+    if (controllerJoystick.getY() <= 0.3) {
+      m_armSubsystem.bottomArmDown();
+    } else if (controllerJoystick.getY() >= -0.3) {
+      m_armSubsystem.bottomArmUp();
+    } else {
+      m_armSubsystem.bottomArmStop();
     }
 
     // controls the top arm with the pov stick on the handle
-    if (controllerJoystick.getPOV() == 0)
-    {
-        m_armSubsystem.topArmUp();
+    if (controllerJoystick.getPOV() == 0) {
+      m_armSubsystem.topArmUp();
+    } else if (controllerJoystick.getPOV() == 180) {
+      m_armSubsystem.topArmDown();
+    } else {
+      m_armSubsystem.topArmStop();
     }
-  
-    else if (controllerJoystick.getPOV() == 180)
-    {
-        m_armSubsystem.topArmDown();
-    }
-
-    else
-    {
-        m_armSubsystem.topArmStop();
-    }
-
   }
 
   @Override
