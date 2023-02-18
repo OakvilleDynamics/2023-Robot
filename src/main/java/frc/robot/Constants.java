@@ -34,8 +34,7 @@ public final class Constants {
   // Constants for claw button assignments
   public static final int joystickButtonClawOn = 1;
   // Constants for ramp button assignments
-  public static final int joystickButtonRampOn = 4;
-  public static final int joystickButtonRampOff = 5;
+  public static final int joystickButtonRamp = 4;
   // Constants for guardrail button assignments
   public static final int joystickGuardrailOn = 6;
   public static final int joystickGuardrailOff = 7;
@@ -49,8 +48,9 @@ public final class Constants {
   public static final int pneumaticFrontJackControllerID = 3;
   public static final int pneumaticBackJackControllerID = 2;
   public static final int pneumaticClawControllerID = 4;
-  public static final int pneumaticRampControllerID = 5;
-  public static final int pneumaticGuardrailControllerID = 6;
+  public static final int pneumaticRampForwardChannel = 5;
+  public static final int pneumaticRampReverseChannel = 6;
+  public static final int pneumaticGuardrailControllerID = 7;
 
   // constants for motor controllers
   public static final int talonDriveLeftFrontID = 1;

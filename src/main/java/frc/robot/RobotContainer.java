@@ -24,6 +24,7 @@ public class RobotContainer {
   private final TalonDrive m_simpledrive = new TalonDrive();
   public final PneumaticJacks m_Jacks = new PneumaticJacks();
   public final PneumaticShift m_Shift = new PneumaticShift();
+  public final PneumaticRamp m_ramp = new PneumaticRamp();
 
   // Autonomous Commands
   // private final Command m_placeobject = new PlaceObject(m_turret);
@@ -37,6 +38,7 @@ public class RobotContainer {
     m_simpledrive.setDefaultCommand(new DriveTrain(m_simpledrive));
     m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
     m_Shift.setDefaultCommand(new GearShift(m_Shift));
+    m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
   }
 
   public static RobotContainer getInstance() {
