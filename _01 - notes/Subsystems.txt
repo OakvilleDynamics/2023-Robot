@@ -1,6 +1,6 @@
-1. Arm 
-2. Done - Arm Turret
-3. Done - Jacks - front & back, can operate independently to tilt platform to help other robot get on top
-4. Claw 
-5. Ramp & Side Rails
-6. Done - Drive - Talon - will include hight/low shift
+1. DONE - Arm
+2. TODO - Arm Turret - update for spark max
+3. DONE - Jacks - front & back, can operate independently to tilt platform to help other robot get on top
+4. ???? - Claw 
+5. ???? - Ramp & Side Rails
+6. DONE - Drive - Talon - will include hight/low shift

@@ -26,7 +26,7 @@ public final class Constants {
   
   // creates the joystick identifications, 0 is for the drivetrain, 1 is for the arm and other functions
   public static final int driverJoystickID = 0;
-  public static final int controllerJoystickID = 1;
+  public static final int armJoystickID = 1;
   // constants for jack button assignments 
   public static final int joystickButtonFrontJackOn = 7;
   public static final int joystickButtonBackJackOn = 8;
@@ -58,8 +58,6 @@ public final class Constants {
   public static final int talonTurretDeviceID = 15;
 
   // constants for PWM motors
-  public static final int pwmBottomArmID = 7;
-  public static final int pwmTopArmID = 8;
 
 
 
@@ -85,5 +83,9 @@ public final class Constants {
   public static final double topArmDownSpeed = -1.0;
   public static final double topArmStopSpeed = 0.0;
 
+  public static final int bottomArmCanId = 7;
+  public static final boolean bottomArmInverted = false;
 
+  public static final int topArmCanId = 8;
+  public static final boolean topArmInverted = false;
 }

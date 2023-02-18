@@ -10,15 +10,15 @@ import frc.robot.Constants;
 import frc.robot.subsystems.Arm;
 
 public class MoveArm extends CommandBase {
+  private final double deadZone = 0.3;
 
   private final Arm m_armSubsystem;
 
   //controllers
-  private final Joystick controllerJoystick = new Joystick(Constants.controllerJoystickID);
+  private final Joystick armJoystick = new Joystick(Constants.armJoystickID);
   public MoveArm(Arm subsystem) {
     m_armSubsystem = subsystem;
     addRequirements(m_armSubsystem);
-
   }
 
   @Override
@@ -26,39 +26,37 @@ public class MoveArm extends CommandBase {
 
   @Override
   public void execute() {
-   
     //controls bottom arm with the joystick handle
-    if (controllerJoystick.getY() <= 0.3)
+    double armJoystickY = armJoystick.getY();
+    if (Math.abs(armJoystickY) < deadZone) {
+      m_armSubsystem.bottomArmStop();
+    }
+    else if (armJoystickY < 0)
     {
         m_armSubsystem.bottomArmDown();
     }
-  
-    else if (controllerJoystick.getY() >= -0.3)
+    else if (armJoystickY > 0)
     {
         m_armSubsystem.bottomArmUp();
     }
 
-    else
-    {
-        m_armSubsystem.bottomArmStop();
-    }
-
     // controls the top arm with the pov stick on the handle
-    if (controllerJoystick.getPOV() == 0)
+    int hatPos = armJoystick.getPOV();
+    if (hatPos == -1) {
+      m_armSubsystem.topArmStop();
+    }
+    else if (hatPos >= 315 || hatPos <= 45)
     {
         m_armSubsystem.topArmUp();
     }
-  
-    else if (controllerJoystick.getPOV() == 180)
+    else if (hatPos >= 135 && hatPos <= 225)
     {
         m_armSubsystem.topArmDown();
     }
-
     else
     {
         m_armSubsystem.topArmStop();
     }
-
   }
 
   @Override

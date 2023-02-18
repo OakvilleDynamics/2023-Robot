@@ -13,7 +13,7 @@ public class Claw extends CommandBase {
   private final PneumaticClaw m_Claw;
 
    //controllers
-  private final Joystick controllerJoystick = new Joystick(Constants.controllerJoystickID);
+  private final Joystick controllerJoystick = new Joystick(Constants.armJoystickID);
   public Claw(PneumaticClaw subsystem) {
         m_Claw = subsystem;
         addRequirements(m_Claw);
