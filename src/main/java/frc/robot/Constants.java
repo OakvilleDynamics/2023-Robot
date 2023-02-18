@@ -41,6 +41,10 @@ public final class Constants {
   public static final int joystickGuardrailOff = 7;
 
   // constants for pnuematicControllers
+  public static final int pcmModuleAlpha = 4;
+  public static final int pcmModuleBravo = 5;
+
+  // constants for the pneumatic channels
   public static final int pneumaticGearControllerID = 1;
   public static final int pneumaticFrontJackControllerID = 3;
   public static final int pneumaticBackJackControllerID = 2;

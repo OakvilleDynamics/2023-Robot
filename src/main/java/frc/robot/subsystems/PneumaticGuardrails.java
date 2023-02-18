@@ -11,7 +11,7 @@ public class PneumaticGuardrails extends SubsystemBase {
   public PneumaticGuardrails() {
 
     m_guardrailSolenoid =
-        new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticGuardrailControllerID);
+        new Solenoid(Constants.pcmModuleAlpha,PneumaticsModuleType.CTREPCM, Constants.pneumaticGuardrailControllerID);
   }
 
   public void guardrailOn() {

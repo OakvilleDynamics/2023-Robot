@@ -20,9 +20,9 @@ public class PneumaticJacks extends SubsystemBase {
   public PneumaticJacks() {
 
     m_frontSolenoid =
-        new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticFrontJackControllerID);
+        new Solenoid(Constants.pcmModuleBravo,PneumaticsModuleType.CTREPCM, Constants.pneumaticFrontJackControllerID);
     m_backSolenoid =
-        new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticBackJackControllerID);
+        new Solenoid(Constants.pcmModuleAlpha,PneumaticsModuleType.CTREPCM, Constants.pneumaticBackJackControllerID);
   }
 
   public void frontOn() {

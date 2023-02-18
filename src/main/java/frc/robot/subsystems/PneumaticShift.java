@@ -18,7 +18,11 @@ public class PneumaticShift extends SubsystemBase {
   // intialize the pneumatic brakes
   public PneumaticShift() {
 
-    gearSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticGearControllerID);
+    gearSolenoid =
+        new Solenoid(
+            Constants.pcmModuleAlpha,
+            PneumaticsModuleType.CTREPCM,
+            Constants.pneumaticGearControllerID);
   }
   // turn the brakes on
   public void lowGear() {
