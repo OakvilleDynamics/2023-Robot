@@ -27,36 +27,26 @@ public class MoveArm extends CommandBase {
 
   @Override
   public void execute() {
-    //controls bottom arm with the joystick handle
+    // controls bottom arm with the joystick handle
     double armJoystickY = armJoystick.getY();
     if (Math.abs(armJoystickY) < deadZone) {
       m_armSubsystem.bottomArmStop();
-    }
-    else if (armJoystickY < 0)
-    {
-        m_armSubsystem.bottomArmDown();
-    }
-    else if (armJoystickY > 0)
-    {
-        m_armSubsystem.bottomArmUp();
+    } else if (armJoystickY < 0) {
+      m_armSubsystem.bottomArmDown();
+    } else if (armJoystickY > 0) {
+      m_armSubsystem.bottomArmUp();
     }
 
     // controls the top arm with the pov stick on the handle
     int hatPos = armJoystick.getPOV();
     if (hatPos == -1) {
       m_armSubsystem.topArmStop();
-    }
-    else if (hatPos >= 315 || hatPos <= 45)
-    {
-        m_armSubsystem.topArmUp();
-    }
-    else if (hatPos >= 135 && hatPos <= 225)
-    {
-        m_armSubsystem.topArmDown();
-    }
-    else
-    {
-        m_armSubsystem.topArmStop();
+    } else if (hatPos >= 315 || hatPos <= 45) {
+      m_armSubsystem.topArmUp();
+    } else if (hatPos >= 135 && hatPos <= 225) {
+      m_armSubsystem.topArmDown();
+    } else {
+      m_armSubsystem.topArmStop();
     }
   }
 

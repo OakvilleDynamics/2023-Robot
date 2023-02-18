@@ -5,9 +5,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
 import frc.robot.Constants;
-
 import frc.robot.components.EncodingMotor;
 import frc.robot.components.SparkMax;
 
@@ -16,7 +14,8 @@ import frc.robot.components.SparkMax;
  * arm can extend */
 public class Arm extends SubsystemBase {
   // Inits motors
-  private EncodingMotor bottomArm = new SparkMax(Constants.bottomArmCanId, Constants.bottomArmInverted);
+  private EncodingMotor bottomArm =
+      new SparkMax(Constants.bottomArmCanId, Constants.bottomArmInverted);
   private EncodingMotor topArm = new SparkMax(Constants.topArmCanId, Constants.topArmInverted);
 
   public Arm() {}

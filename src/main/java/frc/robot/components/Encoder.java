@@ -1,6 +1,7 @@
 package frc.robot.components;
 
 public interface Encoder {
-    double getPosition();
-    double getVelocity();
+  double getPosition();
+
+  double getVelocity();
 }

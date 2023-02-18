@@ -11,7 +11,10 @@ public class PneumaticRamp extends SubsystemBase {
   public PneumaticRamp() {
 
     m_rampSolenoid =
-        new Solenoid(Constants.pcmModuleBravo,PneumaticsModuleType.CTREPCM, Constants.pneumaticRampControllerID);
+        new Solenoid(
+            Constants.pcmModuleBravo,
+            PneumaticsModuleType.CTREPCM,
+            Constants.pneumaticRampControllerID);
   }
 
   public void rampOn() {
