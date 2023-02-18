@@ -4,20 +4,18 @@
 
 package frc.robot;
 
-import frc.robot.commands.Jacks;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.DriveTrain;
-import frc.robot.commands.MoveTurret;
 import frc.robot.commands.GearShift;
-
-import frc.robot.subsystems.TalonDrive;
+import frc.robot.commands.Jacks;
+import frc.robot.commands.MoveTurret;
 import frc.robot.subsystems.ArmTurret;
 import frc.robot.subsystems.PneumaticJacks;
 import frc.robot.subsystems.PneumaticShift;
+import frc.robot.subsystems.TalonDrive;
 
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
-
- /* This class is where the bulk of the robot should be declared. Since Command-based is a
+/* This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
@@ -33,8 +31,7 @@ public class RobotContainer {
   public final PneumaticShift m_Shift = new PneumaticShift();
 
   // Autonomous Commands
-  // private final Command m_placeobject = new PlaceObject(m_turret);   
-
+  // private final Command m_placeobject = new PlaceObject(m_turret);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -45,7 +42,6 @@ public class RobotContainer {
     m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
     m_Shift.setDefaultCommand(new GearShift(m_Shift));
   }
-
 
   public static RobotContainer getInstance() {
     return m_robotContainer;
@@ -61,13 +57,13 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    //new Trigger(m_simpleDriveSubsystem::exampleCondition)
+    // new Trigger(m_simpleDriveSubsystem::exampleCondition)
     //    .onTrue(new SimpleDriveCommand(m_simpleDriveSubsystem));
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    //m_driverController.().whileTrue(m_simpleDriveSubsystem.drive(m_driverController.getX(),m_driverController.getY()));
-    
+    // m_driverController.().whileTrue(m_simpleDriveSubsystem.drive(m_driverController.getX(),m_driverController.getY()));
+
   }
 
   /**

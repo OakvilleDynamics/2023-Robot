@@ -4,31 +4,29 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class PneumaticClaw extends SubsystemBase {
-  
+
   public Solenoid m_clawSolenoid = null;
 
   public PneumaticClaw() {
 
-    m_clawSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticClawControllerID);
-
+    m_clawSolenoid =
+        new Solenoid(PneumaticsModuleType.CTREPCM, Constants.pneumaticClawControllerID);
   }
 
-  public void clawOn () {
+  public void clawOn() {
 
     m_clawSolenoid.set(true);
-
   }
 
-  public void clawOff () {
+  public void clawOff() {
 
     m_clawSolenoid.set(false);
-
   }
 
   @Override

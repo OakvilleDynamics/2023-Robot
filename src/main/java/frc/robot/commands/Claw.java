@@ -5,21 +5,19 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.PneumaticClaw;
 
-
 public class Claw extends CommandBase {
   private boolean m_isClawOn = false;
 
-  //subsystems
+  // subsystems
   private final PneumaticClaw m_Claw;
 
-   //controllers
+  // controllers
   private final Joystick controllerJoystick = new Joystick(Constants.controllerJoystickID);
-  public Claw(PneumaticClaw subsystem) {
-        m_Claw = subsystem;
-        addRequirements(m_Claw);
 
+  public Claw(PneumaticClaw subsystem) {
+    m_Claw = subsystem;
+    addRequirements(m_Claw);
   }
-    
 
   // Called when the command is initially scheduled.
   @Override
@@ -30,13 +28,13 @@ public class Claw extends CommandBase {
   public void execute() {
 
     if (controllerJoystick.getRawButton(Constants.joystickButtonClawOn) == true) {
-      if (m_isClawOn){
+      if (m_isClawOn) {
         m_Claw.clawOn();
-        m_isClawOn=true;
+        m_isClawOn = true;
         System.out.println("Claw On");
-      }else{ 
-        m_Claw.clawOff(); 
-        m_isClawOn=false;
+      } else {
+        m_Claw.clawOff();
+        m_isClawOn = false;
         System.out.println("Claw Off");
       }
     }

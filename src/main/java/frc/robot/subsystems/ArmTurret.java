@@ -11,7 +11,7 @@ public class ArmTurret extends SubsystemBase {
   // Inits motors
   private TalonSRX turntable = new TalonSRX(Constants.talonTurretDeviceID);
 
-  public ArmTurret(){
+  public ArmTurret() {
     turntable.setInverted(true);
   }
 
