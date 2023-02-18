@@ -16,8 +16,8 @@ import frc.robot.components.SparkMax;
  * arm can extend */
 public class Arm extends SubsystemBase {
   // Inits motors
-  private PWM bottomArm = new PWM(Constants.pwmBottomArmID);
-  private PWM topArm = new PWM(Constants.pwmTopArmID);
+  private EncodingMotor bottomArm = new SparkMax(Constants.bottomArmCanId, Constants.bottomArmInverted);
+  private EncodingMotor topArm = new SparkMax(Constants.topArmCanId, Constants.topArmInverted);
 
   public Arm() {}
 
