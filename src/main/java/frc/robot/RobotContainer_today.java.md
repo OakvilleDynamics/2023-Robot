@@ -40,8 +40,8 @@ public class RobotContainer {
 
     // Configure default commands
     m_drivetrain.setDefaultCommand(new Drive(m_drivetrain));
-   
-    //SmartDashboard.putData("Auto Mode", m_chooser);    
+
+    //SmartDashboard.putData("Auto Mode", m_chooser);
   }
   public static RobotContainer getInstance() {
     return m_robotContainer;

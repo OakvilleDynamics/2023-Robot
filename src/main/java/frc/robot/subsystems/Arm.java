@@ -12,20 +12,19 @@ import frc.robot.components.EncodingMotor;
 import frc.robot.components.SparkMax;
 
 /*We need an arm that can use an extendo-pneumatics function, and can limit how much the arm tilts/it's angle
-   * There needs to be a manual and automatic stop for the arm angle limiter, and when its been met the extendo
-   * arm can extend */
+ * There needs to be a manual and automatic stop for the arm angle limiter, and when its been met the extendo
+ * arm can extend */
 public class Arm extends SubsystemBase {
-  //Inits motors
-  private EncodingMotor bottomArm = new SparkMax(Constants.bottomArmCanId, Constants.bottomArmInverted);
-  private EncodingMotor topArm = new SparkMax(Constants.topArmCanId, Constants.topArmInverted);
-  
-  public Arm() {
-  }
+  // Inits motors
+  private PWM bottomArm = new PWM(Constants.pwmBottomArmID);
+  private PWM topArm = new PWM(Constants.pwmTopArmID);
+
+  public Arm() {}
 
   public void bottomArmUp() {
     bottomArm.setForward();
   }
-  
+
   public void bottomArmDown() {
     bottomArm.setReverse();
   }
@@ -37,7 +36,7 @@ public class Arm extends SubsystemBase {
   public void topArmUp() {
     topArm.setForward();
   }
-  
+
   public void topArmDown() {
     topArm.setReverse();
   }

@@ -14,8 +14,9 @@ public class MoveArm extends CommandBase {
 
   private final Arm m_armSubsystem;
 
-  //controllers
-  private final Joystick armJoystick = new Joystick(Constants.armJoystickID);
+  // controllers
+  private final Joystick controllerJoystick = new Joystick(Constants.armJoystickID);
+
   public MoveArm(Arm subsystem) {
     m_armSubsystem = subsystem;
     addRequirements(m_armSubsystem);

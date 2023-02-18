@@ -4,18 +4,17 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.TalonDrive;
 import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
+import frc.robot.subsystems.TalonDrive;
 
 /** An example command that uses an example subsystem. */
 public class DriveTrain extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final TalonDrive m_subsystem;
 
-  private final Joystick driverJoystick =
-      new Joystick(Constants.driverJoystickID);
+  private final Joystick driverJoystick = new Joystick(Constants.driverJoystickID);
 
   /**
    * Creates a new ExampleCommand.
@@ -42,8 +41,8 @@ public class DriveTrain extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-        // m_drivetrain.drive(0.0, 0.0);
-        System.out.println("TankDrive interrupted");
+    // m_drivetrain.drive(0.0, 0.0);
+    System.out.println("TankDrive interrupted");
   }
 
   // Returns true when the command should end.

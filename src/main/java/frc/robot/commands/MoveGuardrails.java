@@ -7,17 +7,17 @@ import frc.robot.subsystems.PneumaticGuardrails;
 
 public class MoveGuardrails extends CommandBase {
   private boolean m_isGuardrailOn = false;
-  
-  //subsystems
+
+  // subsystems
   private final PneumaticGuardrails m_Gaurdrail;
 
-  //controllers
+  // controllers
   private final Joystick driverJoystick = new Joystick(Constants.driverJoystickID);
-  public MoveGuardrails(PneumaticGuardrails subsystem) {
-        m_Gaurdrail = subsystem;
-        addRequirements(m_Gaurdrail);
 
-      }
+  public MoveGuardrails(PneumaticGuardrails subsystem) {
+    m_Gaurdrail = subsystem;
+    addRequirements(m_Gaurdrail);
+  }
 
   // Called when the command is initially scheduled.
   @Override
@@ -28,20 +28,19 @@ public class MoveGuardrails extends CommandBase {
   public void execute() {
 
     if (driverJoystick.getRawButton(Constants.joystickGuardrailOn) == true) {
-      if (m_isGuardrailOn){
+      if (m_isGuardrailOn) {
         m_Gaurdrail.guardrailOn();
-        m_isGuardrailOn=true;
+        m_isGuardrailOn = true;
         System.out.println("Guardrail On");
       }
-      } 
+    }
     if (driverJoystick.getRawButton(Constants.joystickGuardrailOff) == true) {
-      if (m_isGuardrailOn){
+      if (m_isGuardrailOn) {
         m_Gaurdrail.guardrailOff();
-        m_isGuardrailOn=false;
+        m_isGuardrailOn = false;
         System.out.println("Guardrail Off");
       }
-    }  
-
+    }
   }
 
   // Called once the command ends or is interrupted.
