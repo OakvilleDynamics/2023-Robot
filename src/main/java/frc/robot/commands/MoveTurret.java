@@ -10,7 +10,7 @@ public class MoveTurret extends CommandBase {
   private final ArmTurret m_turret;
 
   // Controllers
-  private final Joystick driveJoystick = new Joystick(Constants.controllerJoystickID);
+  private final Joystick driveJoystick = new Joystick(Constants.armJoystickID);
 
   public MoveTurret(ArmTurret subsystem) {
     m_turret = subsystem;

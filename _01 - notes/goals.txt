@@ -1,5 +1,13 @@
-Basics:
+# DONE
 - Have wheels move forward and backwards
+- Arm - need to add code to interface with 2x spark max
+
+# TODO
+- ArmTurret - change to spark max
+- Pneumatics - ???
+- Claw - ???
+
+Basics:
 - Left and Right are moved with functions through using forwards and backwards on seperate wheels
 - Use motors to spin turret on axis
 

@@ -6,16 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.DriveTrain;
-import frc.robot.commands.GearShift;
-import frc.robot.commands.Jacks;
-import frc.robot.commands.MoveRamp;
-import frc.robot.commands.MoveTurret;
-import frc.robot.subsystems.ArmTurret;
-import frc.robot.subsystems.PneumaticJacks;
-import frc.robot.subsystems.PneumaticRamp;
-import frc.robot.subsystems.PneumaticShift;
-import frc.robot.subsystems.TalonDrive;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 /* This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -27,6 +19,7 @@ public class RobotContainer {
   private static final RobotContainer m_robotContainer = new RobotContainer();
 
   // The robot's subsystems
+  public final Arm m_arm = new Arm();
   public final ArmTurret m_turret = new ArmTurret();
   private final TalonDrive m_simpledrive = new TalonDrive();
   public final PneumaticJacks m_Jacks = new PneumaticJacks();
@@ -40,6 +33,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+    m_arm.setDefaultCommand(new MoveArm(m_arm));
     m_turret.setDefaultCommand(new MoveTurret(m_turret));
     m_simpledrive.setDefaultCommand(new DriveTrain(m_simpledrive));
     m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
