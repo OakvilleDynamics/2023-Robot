@@ -9,9 +9,11 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.DriveTrain;
 import frc.robot.commands.GearShift;
 import frc.robot.commands.Jacks;
+import frc.robot.commands.MoveRamp;
 import frc.robot.commands.MoveTurret;
 import frc.robot.subsystems.ArmTurret;
 import frc.robot.subsystems.PneumaticJacks;
+import frc.robot.subsystems.PneumaticRamp;
 import frc.robot.subsystems.PneumaticShift;
 import frc.robot.subsystems.TalonDrive;
 
@@ -29,6 +31,7 @@ public class RobotContainer {
   private final TalonDrive m_simpledrive = new TalonDrive();
   public final PneumaticJacks m_Jacks = new PneumaticJacks();
   public final PneumaticShift m_Shift = new PneumaticShift();
+  public final PneumaticRamp m_ramp = new PneumaticRamp();
 
   // Autonomous Commands
   // private final Command m_placeobject = new PlaceObject(m_turret);
@@ -41,6 +44,7 @@ public class RobotContainer {
     m_simpledrive.setDefaultCommand(new DriveTrain(m_simpledrive));
     m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
     m_Shift.setDefaultCommand(new GearShift(m_Shift));
+    m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
   }
 
   public static RobotContainer getInstance() {

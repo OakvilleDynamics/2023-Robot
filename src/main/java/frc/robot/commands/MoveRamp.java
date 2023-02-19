@@ -10,8 +10,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.PneumaticRamp;
 
 public class MoveRamp extends CommandBase {
-  private boolean m_isRampOn = false;
-  private boolean m_isRampOff = false;
+  private boolean m_isRampUp = false;
 
   // subsystems
   private final PneumaticRamp m_Ramp;
@@ -30,19 +29,15 @@ public class MoveRamp extends CommandBase {
   @Override
   public void execute() {
 
-    if (driverJoystick.getRawButton(Constants.joystickButtonRampOn) == true) {
-      if (m_isRampOn) {
-        m_Ramp.rampOn();
-        m_isRampOn = true;
-        System.out.println("Ramp On");
-      }
-    }
-
-    if (driverJoystick.getRawButton(Constants.joystickButtonRampOff) == true) {
-      if (m_isRampOff) {
-        m_Ramp.rampOff();
-        m_isRampOff = true;
-        System.out.println("Ramp Off");
+    if (driverJoystick.getRawButton(Constants.joystickButtonRamp) == true) {
+      if (m_isRampUp) {
+        m_Ramp.rampDown();
+        m_isRampUp = false;
+        System.out.println("Ramp - down");
+      } else {
+        m_Ramp.rampUp();
+        m_isRampUp = true;
+        System.out.println("Ramp - up");
       }
     }
   }
