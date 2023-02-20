@@ -15,8 +15,8 @@ import frc.robot.components.SparkMax;
 public class Arm extends SubsystemBase {
   // Inits motors
   private EncodingMotor bottomArm =
-      new SparkMax(Constants.bottomArmCanId, Constants.bottomArmInverted);
-  private EncodingMotor topArm = new SparkMax(Constants.topArmCanId, Constants.topArmInverted);
+      new SparkMax(Constants.sparkArmBottomDeviceID, Constants.bottomArmInverted);
+  private EncodingMotor topArm = new SparkMax(Constants.sparkArmTopDeviceID, Constants.topArmInverted);
 
   public Arm() {}
 

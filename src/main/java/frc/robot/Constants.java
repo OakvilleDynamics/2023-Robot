@@ -53,13 +53,16 @@ public final class Constants {
   public static final int pneumaticGuardrailControllerID = 7;
 
   // constants for motor controllers
-  public static final int talonDriveLeftFrontID = 1;
-  public static final int talonDriveLeftMidID = 2;
-  public static final int talonDriveLeftBackID = 3;
-  public static final int talonDriveRightFrontID = 4;
-  public static final int talonDriveRightMidID = 5;
-  public static final int talonDriveRightBackID = 6;
-  public static final int talonTurretDeviceID = 15;
+  public static final int talonDriveLeftFrontID = 10;
+  public static final int talonDriveLeftMidID = 11;
+  public static final int talonDriveLeftBackID = 12;
+  public static final int talonDriveRightFrontID = 13;
+  public static final int talonDriveRightMidID = 14;
+  public static final int talonDriveRightBackID = 15;
+
+  public static final int sparkTurretDeviceID = 16;
+  public static final int sparkArmBottomDeviceID = 17;
+  public static final int sparkArmTopDeviceID = 18;
 
   // constants for PWM motors
 
@@ -79,9 +82,7 @@ public final class Constants {
   public static final double turntableRotateRight = 1.0;
   public static final double turntableRotateStop = 0.0;
 
-  public static final int bottomArmCanId = 7;
   public static final boolean bottomArmInverted = false;
 
-  public static final int topArmCanId = 8;
   public static final boolean topArmInverted = false;
 }
