@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
@@ -29,6 +30,9 @@ public class TalonDrive extends SubsystemBase {
     m_rightFront.setInverted(false);
     m_rightMid.setInverted(false);
     m_rightBack.setInverted(false);
+
+    m_leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    m_rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
 
     MotorControllerGroup left = new MotorControllerGroup(m_leftBack, m_leftFront, m_leftMid);
     MotorControllerGroup right = new MotorControllerGroup(m_rightBack, m_rightFront, m_rightMid);
