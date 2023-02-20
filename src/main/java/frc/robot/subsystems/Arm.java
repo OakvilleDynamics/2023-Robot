@@ -16,7 +16,8 @@ public class Arm extends SubsystemBase {
   // Inits motors
   private EncodingMotor bottomArm =
       new SparkMax(Constants.sparkArmBottomDeviceID, Constants.bottomArmInverted);
-  private EncodingMotor topArm = new SparkMax(Constants.sparkArmTopDeviceID, Constants.topArmInverted);
+  private EncodingMotor topArm =
+      new SparkMax(Constants.sparkArmTopDeviceID, Constants.topArmInverted);
 
   public Arm() {}
 
