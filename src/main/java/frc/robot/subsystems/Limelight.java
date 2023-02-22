@@ -156,7 +156,7 @@ public class Limelight {
      * @return Array of doubles containing the robot's position and rotation in the field-space
      *     (X,Y,Z,Roll,Pitch,Yaw) and total latency (cl+tl)
      */
-    public static double[] botpose() {
+    public static double[] getBotPose() {
       return limelight.getEntry("botpose").getDoubleArray(new double[6]);
     }
 
@@ -167,7 +167,7 @@ public class Limelight {
      * @return Array of doubles containing the robot's position and rotation in the field-space
      *     (X,Y,Z,Roll,Pitch,Yaw) and total latency (cl+tl)
      */
-    public static double[] botpose_wpiblue() {
+    public static double[] getBotPose_BlueAlliance() {
       return limelight.getEntry("botpose_wpiblue").getDoubleArray(new double[6]);
     }
 
@@ -180,7 +180,7 @@ public class Limelight {
      * @return Array of doubles containing the robot's position and rotation in the field-space
      *     (X,Y,Z,Roll,Pitch,Yaw) and total latency (cl+tl)
      */
-    public static double[] botpose_wpired() {
+    public static double[] getBotPose_RedAlliance() {
       return limelight.getEntry("botpose_wpired").getDoubleArray(new double[6]);
     }
 
@@ -191,7 +191,7 @@ public class Limelight {
      * @return Array of doubles containing the camera's position and rotation in the target-space of
      *     the primary in-view AprilTag (X,Y,Z,Roll,Pitch,Yaw)
      */
-    public static double[] camerapose_targetspace() {
+    public static double[] getCameraPoseTargetSpace() {
       return limelight.getEntry("camerapose_targetspace").getDoubleArray(new double[6]);
     }
 
@@ -202,12 +202,10 @@ public class Limelight {
      * @return Array of doubles containing the primary in-view AprilTag's position and rotation in
      *     the camera-space (X,Y,Z,Roll,Pitch,Yaw)
      */
-    public static double[] targetpose_cameraspace() {
+    public static double[] getTargetPoseCameraSpace() {
       return limelight.getEntry("targetpose_cameraspace").getDoubleArray(new double[6]);
     }
 
-    // 3D transform of the primary in-view AprilTag in the coordinate system of the Robot (array
-    // (6))
     /**
      * 3D transform of the primary in-view AprilTag in the coordinate system of the Robot (array
      * (6))
@@ -215,7 +213,7 @@ public class Limelight {
      * @return Array of doubles containing the primary in-view AprilTag's position and rotation in
      *     the robot-space (X,Y,Z,Roll,Pitch,Yaw)
      */
-    public static double[] targetpose_robotspace() {
+    public static double[] getTargetPoseRobotSpace() {
       return limelight.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
     }
 
@@ -226,7 +224,7 @@ public class Limelight {
      * @return Array of doubles containing the robot's position and rotation in the target-space of
      *     the primary in-view AprilTag (X,Y,Z,Roll,Pitch,Yaw)
      */
-    public static double[] botpose_targetspace() {
+    public static double[] getBotPoseTargetSpace() {
       return limelight.getEntry("botpose_targetspace").getDoubleArray(new double[6]);
     }
 
@@ -236,7 +234,7 @@ public class Limelight {
      * @return Array of doubles containing the camera's position and rotation in the robot-space
      *     (X,Y,Z,Roll,Pitch,Yaw)
      */
-    public static double[] camerapose_robotspace() {
+    public static double[] getCameraPoseRobotSpace() {
       return limelight.getEntry("camerapose_robotspace").getDoubleArray(new double[6]);
     }
 
