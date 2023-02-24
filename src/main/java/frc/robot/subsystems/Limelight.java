@@ -26,7 +26,7 @@ public class Limelight {
      * Horizontal Offset From Crosshair To Target (LL1: -27 degrees to 27 degrees | LL2: -29.8 to
      * 29.8 degrees)
      *
-     * @return -27 to 27 degrees
+     * @return LL1: -27 to 27 degrees | LL2: -29.8 to 29.8 degrees
      */
     public static double getTargetXOffset() {
       return limelight.getEntry("tx").getDouble(0.0);
@@ -36,7 +36,7 @@ public class Limelight {
      * Vertical Offset From Crosshair To Target (LL1: -20.5 degrees to 20.5 degrees | LL2: -24.85 to
      * 24.85 degrees)
      *
-     * @return -20.5 to 20.5 degrees
+     * @return LL1: -20.5 to 20.5 degrees | L2: -24.85 to 24.85 degrees
      */
     public static double getTargetYOffset() {
       return limelight.getEntry("ty").getDouble(0.0);
@@ -62,7 +62,7 @@ public class Limelight {
 
     /**
      * Capture pipeline latency (ms). Time between the end of the exposure of the middle row of the
-     * sensor to the beginning of the tracking pipeline.
+     * sensor to the beginning of the tracking pipeline. Use getTotalLatency for end-to-end latency
      *
      * @return Latency in ms
      */
@@ -85,7 +85,7 @@ public class Limelight {
      * @return Pixel length
      */
     public static double getTargetShortSideLength() {
-      return limelight.getEntry("tshort").getDouble(0.0);
+      return limelight.getEntry("tshort").getInteger(0);
     }
 
     /**
@@ -94,7 +94,7 @@ public class Limelight {
      * @return Pixel length
      */
     public static double getTargetLongSideLength() {
-      return limelight.getEntry("tlong").getDouble(0.0);
+      return limelight.getEntry("tlong").getInteger(0);
     }
 
     /**
@@ -103,7 +103,7 @@ public class Limelight {
      * @return Pixel length
      */
     public static double getTargetHorizontalSideLength() {
-      return limelight.getEntry("thor").getDouble(0.0);
+      return limelight.getEntry("thor").getInteger(0);
     }
 
     /**
@@ -112,16 +112,16 @@ public class Limelight {
      * @return Pixel length
      */
     public static double getTargetVerticalSideLength() {
-      return limelight.getEntry("tvert").getDouble(0.0);
+      return limelight.getEntry("tvert").getInteger(0);
     }
 
     /**
      * Returns the active pipeline index of the camera (0 .. 9)
      *
-     * @return
+     * @return Pipeline index
      */
     public static double getPipe() {
-      return limelight.getEntry("getpipe").getDouble(0.0);
+      return limelight.getEntry("getpipe").getInteger(0);
     }
 
     /**
