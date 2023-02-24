@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.PneumaticShift;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class GearShift extends CommandBase {
 
@@ -37,12 +38,14 @@ public class GearShift extends CommandBase {
 
       System.out.println("Low Gear");
       m_Shift.lowGear();
+      SmartDashboard.putBoolean("Gear Selection", m_Shift.gearSolenoid.get());
     }
 
     if (driverJoystick.getThrottle() == Constants.gearThrottleHigh) {
 
       System.out.println("High Gear");
       m_Shift.highGear();
+      SmartDashboard.putBoolean("Gear Selection", m_Shift.gearSolenoid.get());
     }
   }
 

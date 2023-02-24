@@ -4,10 +4,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.shuffleboard.*;
+import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 /* This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -39,6 +43,14 @@ public class RobotContainer {
     m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
     m_Shift.setDefaultCommand(new GearShift(m_Shift));
     m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
+
+    Shuffleboard.getTab("Gear Selection")
+        .add("Gear Selection", SmartDashboard.putBoolean("thingsSTUFF", m_Shift.gearSolenoid.get()))
+        .withSize(2, 1) // make the widget 2x1
+        .withPosition(0, 0); // place it in the top-left corner
+    // SmartDashboard.putData(m_Shift.gearSolenoid.get());
+    // SmartDashboard.putBoolean("STUFFTHING", m_Shift.gearSolenoid.);
+
   }
 
   public static RobotContainer getInstance() {
