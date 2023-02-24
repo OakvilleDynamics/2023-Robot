@@ -11,9 +11,7 @@ public class Limelight {
   // Limelight Network Table
   private static NetworkTable limelight = NetworkTableInstance.getDefault().getTable("limelight");
 
-  /**
-   * All Targeting Data from the Limelight
-   */
+  /** All Targeting Data from the Limelight */
   public static class TargetData {
     /**
      * Checks whether the Limelight has any valid targets (0 or 1)
@@ -145,9 +143,7 @@ public class Limelight {
     }
   }
 
-  /**
-   * All AprilTag/3D Data from the Limelight
-   */
+  /** All AprilTag/3D Data from the Limelight */
   public static class AprilTag {
     /**
      * Returns the robot's position and rotation in the field-space Translation (X,Y,Z)
@@ -248,12 +244,10 @@ public class Limelight {
     }
   }
 
-  /**
-   * All Camera Controls from the Limelight
-   */
+  /** All Camera Controls from the Limelight */
   public static class CameraControls {
     /**
-     * Sets the LED mode of the Limelight 0 = use the LED Mode set in the current pipeline 1 = force
+     * Sets the LED mode of the Limelight0 = use the LED Mode set in the current pipeline 1 = force
      * off 2 = force blink 3 = force on
      *
      * @param mode LED Mode integer
