@@ -80,4 +80,142 @@ public class TalonDrive extends SubsystemBase {
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
   }
+
+  /** Resets the encoders to zero */
+  public void resetEncoders() {
+    m_leftFront.setSelectedSensorPosition(0);
+    m_rightFront.setSelectedSensorPosition(0);
+  }
+
+  /**
+   * Gets the left encoder position
+   *
+   * @return the left encoder position
+   */
+  public double getLeftEncoder() {
+    return m_leftFront.getSelectedSensorPosition();
+  }
+
+  /**
+   * Gets the right encoder position
+   *
+   * @return the right encoder position
+   */
+  public double getRightEncoder() {
+    return m_rightFront.getSelectedSensorPosition();
+  }
+
+  /**
+   * Motor enum for getting motor controller specific values
+   */
+  public enum Motors {
+    LEFT_FRONT(0),
+    LEFT_MID(1),
+    LEFT_BACK(2),
+    RIGHT_FRONT(3),
+    RIGHT_MID(4),
+    RIGHT_BACK(5);
+
+    Motors(int value) {}
+  }
+
+  /**
+   * Gets the current output of the specified motor
+   *
+   * @param motor The motor to get the current of
+   * @return The current of the specified motor in amps
+   */
+  public double getOutputMotorCurrent(Motors motor) {
+    switch (motor) {
+      case LEFT_FRONT:
+        return m_leftFront.getStatorCurrent();
+      case LEFT_MID:
+        return m_leftMid.getStatorCurrent();
+      case LEFT_BACK:
+        return m_leftBack.getStatorCurrent();
+      case RIGHT_FRONT:
+        return m_rightFront.getStatorCurrent();
+      case RIGHT_MID:
+        return m_rightMid.getStatorCurrent();
+      case RIGHT_BACK:
+        return m_rightBack.getStatorCurrent();
+      default:
+        return 0;
+    }
+  }
+
+  /**
+   * Gets the current input of the specified motor
+   *
+   * @param motor The motor to get the current of
+   * @return The current of the specified motor in amps
+   */
+  public double getInputMotorCurrent(Motors motor) {
+    switch (motor) {
+      case LEFT_FRONT:
+        return m_leftFront.getSupplyCurrent();
+      case LEFT_MID:
+        return m_leftMid.getSupplyCurrent();
+      case LEFT_BACK:
+        return m_leftBack.getSupplyCurrent();
+      case RIGHT_FRONT:
+        return m_rightFront.getSupplyCurrent();
+      case RIGHT_MID:
+        return m_rightMid.getSupplyCurrent();
+      case RIGHT_BACK:
+        return m_rightBack.getSupplyCurrent();
+      default:
+        return 0;
+    }
+  }
+
+  /**
+   * Gets the bus volatge of the specified motor
+   *
+   * @param motor The motor to get the current of
+   * @return The current of the specified motor in amps
+   */
+  public double getMotorBusVoltage(Motors motor) {
+    switch (motor) {
+      case LEFT_FRONT:
+        return m_leftFront.getBusVoltage();
+      case LEFT_MID:
+        return m_leftMid.getBusVoltage();
+      case LEFT_BACK:
+        return m_leftBack.getBusVoltage();
+      case RIGHT_FRONT:
+        return m_rightFront.getBusVoltage();
+      case RIGHT_MID:
+        return m_rightMid.getBusVoltage();
+      case RIGHT_BACK:
+        return m_rightBack.getBusVoltage();
+      default:
+        return 0;
+    }
+  }
+
+  /**
+   * Gets the temperature of the specified motor
+   *
+   * @param motor The motor to get the current of
+   * @return The current of the specified motor in amps
+   */
+  public double getMotorTemperature(Motors motor) {
+    switch (motor) {
+      case LEFT_FRONT:
+        return m_leftFront.getTemperature();
+      case LEFT_MID:
+        return m_leftMid.getTemperature();
+      case LEFT_BACK:
+        return m_leftBack.getTemperature();
+      case RIGHT_FRONT:
+        return m_rightFront.getTemperature();
+      case RIGHT_MID:
+        return m_rightMid.getTemperature();
+      case RIGHT_BACK:
+        return m_rightBack.getTemperature();
+      default:
+        return 0;
+    }
+  }
 }
