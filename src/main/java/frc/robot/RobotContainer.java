@@ -92,6 +92,6 @@ public class RobotContainer {
     pathMap.put("Red ID 6", red6);
     
     // TODO: Change path based on which one is chosen
-    return m_simpledrive.followTrajectoryCommand(blue1, true);;
+    return m_simpledrive.followTrajectoryCommand(blue1, true);
   }
 }
