@@ -23,8 +23,11 @@ public class Limelight {
     }
 
     /**
-     * Horizontal Offset From Crosshair To Target (LL1: -27 degrees to 27 degrees | LL2: -29.8 to
-     * 29.8 degrees)
+     * Horizontal Offset From Crosshair To Target
+     *
+     * <p>LL1: -27 degrees to 27 degrees
+     *
+     * <p>LL2: -29.8 to 29.8 degrees
      *
      * @return LL1: -27 to 27 degrees | LL2: -29.8 to 29.8 degrees
      */
@@ -33,8 +36,11 @@ public class Limelight {
     }
 
     /**
-     * Vertical Offset From Crosshair To Target (LL1: -20.5 degrees to 20.5 degrees | LL2: -24.85 to
-     * 24.85 degrees)
+     * Vertical Offset From Crosshair To Target
+     *
+     * <p>LL1: -20.5 degrees to 20.5 degrees
+     *
+     * <p>LL2: -24.85 to 24.85 degrees
      *
      * @return LL1: -20.5 to 20.5 degrees | L2: -24.85 to 24.85 degrees
      */
@@ -247,23 +253,63 @@ public class Limelight {
   /** All Camera Controls from the Limelight */
   public static class CameraControls {
     /**
-     * Sets the LED mode of the Limelight0 = use the LED Mode set in the current pipeline 1 = force
-     * off 2 = force blink 3 = force on
+     * Sets the LED mode of the Limelight
+     *
+     * <p>0 = use the LED Mode set in the current pipeline
+     *
+     * <p>1 = force off
+     *
+     * <p>2 = force blink
+     *
+     * <p>3 = force on
      *
      * @param mode LED Mode integer
      */
-    public static void setLEDMode(int mode) {
-      limelight.getEntry("ledMode").setNumber(mode);
+    public static void setLEDMode(LEDMode mode) {
+      limelight.getEntry("ledMode").setNumber(mode.value);
     }
 
     /**
-     * Sets the camera mode of the Limelight 0 = Vision Processor 1 = Driver Camera (Increases
-     * exposure, disables vision processing)
+     * LED modes for the Limelight
+     */
+    public enum LEDMode {
+      USE_CURRENT_PIPELINE(0),
+      FORCE_OFF(1),
+      FORCE_BLINK(2),
+      FORCE_ON(3);
+
+      private final int value;
+
+      LEDMode(int value) {
+        this.value = value;
+      }
+    }
+
+    /**
+     * Sets the camera mode of the Limelight
+     *
+     * <p>0 = Vision Processor
+     *
+     * <p>1 = Driver Camera (Increases exposure, disables vision processing)
      *
      * @param mode Camera Mode integer
      */
-    public static void setCameraMode(int mode) {
-      limelight.getEntry("camMode").setNumber(mode);
+    public static void setCameraMode(CameraMode mode) {
+      limelight.getEntry("camMode").setNumber(mode.value);
+    }
+
+    /**
+     * Camera modes for the Limelight
+     */
+    public enum CameraMode {
+      VISION_PROCESSOR(0),
+      DRIVER_CAMERA(1);
+
+      public final int value;
+
+      CameraMode(int value) {
+        this.value = value;
+      }
     }
 
     /**
@@ -276,25 +322,59 @@ public class Limelight {
     }
 
     /**
-     * Sets the stream mode of the Limelight 0 = Standard - Side-by-side streams if a webcam is
-     * attached to Limelight 1 = PiP Main - The secondary camera stream is placed in the lower-right
-     * corner of the primary camera stream 2 = PiP Secondary - The primary camera stream is placed
-     * in the lower-right corner of the secondary camera stream
+     * Sets the stream mode of the Limelight
+     *
+     * <p>0 = Standard - Side-by-side streams if a webcam is attached to Limelight
+     *
+     * <p>1 = PiP Main - The secondary camera stream is placed in the lower-right corner of the
+     * primary camera stream
+     *
+     * <p>2 = PiP Secondary - The primary camera stream is placed in the lower-right corner of the
+     * secondary camera stream
      *
      * @param mode Stream Mode integer
      */
-    public static void setStreamMode(int mode) {
-      limelight.getEntry("stream").setNumber(mode);
+    public static void setStreamMode(StreamMode mode) {
+      limelight.getEntry("stream").setNumber(mode.value);
     }
 
     /**
-     * Sets the snapshot mode of the Limelight 0 = Stop taking snapshots 1 = Take two snapshots per
-     * second
+     * Stream modes for the Limelight
+     */
+    public enum StreamMode {
+      STANDARD(0),
+      PIP_MAIN(1),
+      PIP_SECONDARY(2);
+
+      public final int value;
+
+      StreamMode(int value) {
+        this.value = value;
+      }
+    }
+
+    /**
+     * Sets the snapshot mode of the Limelight
+     *
+     * <p>0 = Stop taking snapshots
+     *
+     * <p>1 = Take two snapshots per second
      *
      * @param mode Snapshot Mode integer
      */
-    public static void setSnapshotMode(int mode) {
-      limelight.getEntry("snapshot").setNumber(mode);
+    public static void setSnapshotMode(SnapshotMode mode) {
+      limelight.getEntry("snapshot").setNumber(mode.value);
+    }
+
+    public enum SnapshotMode {
+      STOP(0),
+      TAKE_TWO_PER_SECOND(1);
+
+      private final int value;
+
+      SnapshotMode(int value) {
+        this.value = value;
+      }
     }
 
     /**
