@@ -4,6 +4,11 @@
 
 package frc.robot;
 
+import java.util.HashMap;
+
+import com.pathplanner.lib.*;
+
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.*;
@@ -69,8 +74,24 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  /*public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
-  }*/
+  public Command getAutonomousCommand() {
+    //Max velocity and max accelerations are just defaults, we should move them to constants
+    PathPlannerTrajectory blue1 = PathPlanner.loadPath("Blue April ID 1", new PathConstraints(4, 3));
+    PathPlannerTrajectory blue2 = PathPlanner.loadPath("Blue April ID 2", new PathConstraints(4, 3));
+    PathPlannerTrajectory blue3 = PathPlanner.loadPath("Blue April ID 3", new PathConstraints(4, 3));
+    PathPlannerTrajectory red4 = PathPlanner.loadPath("Red April ID 4", new PathConstraints(4, 3));
+    PathPlannerTrajectory red5 = PathPlanner.loadPath("Red April ID 5", new PathConstraints(4, 3));
+    PathPlannerTrajectory red6 = PathPlanner.loadPath("Red April ID 6", new PathConstraints(4, 3));
+
+    HashMap<String, PathPlannerTrajectory> pathMap = new HashMap<>();
+    pathMap.put("Blue ID 1", blue1);
+    pathMap.put("Blue ID 2", blue2);
+    pathMap.put("Blue ID 3", blue3);
+    pathMap.put("Red ID 4", red4);
+    pathMap.put("Red ID 5", red5);
+    pathMap.put("Red ID 6", red6);
+    
+    // TODO: Change path based on which one is chosen
+    return m_simpledrive.followTrajectoryCommand(blue1, true);;
+  }
 }
