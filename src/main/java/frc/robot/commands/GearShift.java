@@ -27,7 +27,10 @@ public class GearShift extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_Shift.lowGear();
+    System.out.println("Default to Low Gear!");
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override

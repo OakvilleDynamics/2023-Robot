@@ -4,15 +4,13 @@
 
 package frc.robot;
 
-import java.util.HashMap;
-
 import com.pathplanner.lib.*;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import java.util.HashMap;
 
 /* This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -30,6 +28,7 @@ public class RobotContainer {
   public final PneumaticJacks m_Jacks = new PneumaticJacks();
   public final PneumaticShift m_Shift = new PneumaticShift();
   public final PneumaticRamp m_ramp = new PneumaticRamp();
+  private final Limelight m_limelight = new Limelight();
 
   // Autonomous Commands
   // private final Command m_placeobject = new PlaceObject(m_turret);
@@ -75,10 +74,13 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    //Max velocity and max accelerations are just defaults, we should move them to constants
-    PathPlannerTrajectory blue1 = PathPlanner.loadPath("Blue April ID 1", new PathConstraints(4, 3));
-    PathPlannerTrajectory blue2 = PathPlanner.loadPath("Blue April ID 2", new PathConstraints(4, 3));
-    PathPlannerTrajectory blue3 = PathPlanner.loadPath("Blue April ID 3", new PathConstraints(4, 3));
+    // Max velocity and max accelerations are just defaults, we should move them to constants
+    PathPlannerTrajectory blue1 =
+        PathPlanner.loadPath("Blue April ID 1", new PathConstraints(4, 3));
+    PathPlannerTrajectory blue2 =
+        PathPlanner.loadPath("Blue April ID 2", new PathConstraints(4, 3));
+    PathPlannerTrajectory blue3 =
+        PathPlanner.loadPath("Blue April ID 3", new PathConstraints(4, 3));
     PathPlannerTrajectory red4 = PathPlanner.loadPath("Red April ID 4", new PathConstraints(4, 3));
     PathPlannerTrajectory red5 = PathPlanner.loadPath("Red April ID 5", new PathConstraints(4, 3));
     PathPlannerTrajectory red6 = PathPlanner.loadPath("Red April ID 6", new PathConstraints(4, 3));
@@ -90,7 +92,7 @@ public class RobotContainer {
     pathMap.put("Red ID 4", red4);
     pathMap.put("Red ID 5", red5);
     pathMap.put("Red ID 6", red6);
-    
+
     // TODO: Change path based on which one is chosen
     return m_simpledrive.followTrajectoryCommand(blue1, true);
   }

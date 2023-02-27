@@ -2,30 +2,25 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.*;
 import com.pathplanner.lib.commands.PPRamseteCommand;
-
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.RamseteController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
-
-import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-
 
 public class TalonDrive extends SubsystemBase {
 
@@ -47,19 +42,23 @@ public class TalonDrive extends SubsystemBase {
 
   // Creates Odometry object to store the pose of the robot
   // Todo: fill in the values of the arguments
-  private final DifferentialDriveOdometry m_odometry = 
-    new DifferentialDriveOdometry(
-      Rotation2d.fromDegrees(getAccelX()), 0.0, 0.0);
-  //private double keepAngle = 0.0; // Double to store the current target keepAngle in radians
+  private final DifferentialDriveOdometry m_odometry =
+      new DifferentialDriveOdometry(Rotation2d.fromDegrees(getAccelX()), 0.0, 0.0);
+  // private double keepAngle = 0.0; // Double to store the current target keepAngle in radians
+
+  private Pose2d m_pose = new Pose2d(0, 0, new Rotation2d(0));
+
+  // private final DifferentialDriveKinematics m_kinematics =
+  //    new DifferentialDriveKinematics(Units.inchesToMeters(Constants.trackWidthInches));
 
   private final DifferentialDrive m_robotDrive;
 
   /** Creates a new ExampleSubsystem. */
   public TalonDrive() {
 
-    m_leftFront.setInverted(true);
-    m_leftMid.setInverted(true);
-    m_leftBack.setInverted(true);
+    m_leftFront.setInverted(false);
+    m_leftMid.setInverted(false);
+    m_leftBack.setInverted(false);
     m_rightFront.setInverted(false);
     m_rightMid.setInverted(false);
     m_rightBack.setInverted(false);
@@ -95,32 +94,31 @@ public class TalonDrive extends SubsystemBase {
   }
 
   private void resetOdometry(Pose2d pose2D) {
-    //TODO: implement, hook up to drive
+    // TODO: implement, hook up to drive
     navxAhrs.reset();
     navxAhrs.setAngleAdjustment(pose2D.getRotation().getDegrees());
-    //keepAngle = navxAhrs.getRotation2d().getRadians();
-    m_odometry.resetPosition(navxAhrs.getRotation2d().times(-1.0), 0.0, 
-    0.0, pose2D );
-    //m_autoOdometry.resetPosition(pose2D, navxAhrs.getRotation2d().times(-1.0));
+    // keepAngle = navxAhrs.getRotation2d().getRadians();
+    m_odometry.resetPosition(navxAhrs.getRotation2d().times(-1.0), 0.0, 0.0, pose2D);
+    // m_autoOdometry.resetPosition(pose2D, navxAhrs.getRotation2d().times(-1.0));
   }
 
   private Pose2d getPose() {
-    //TODO: implement, hook up to drive
-    //Pose2d pose = m_odometry.getPoseMeters();
-    //Translation2d position = pose.getTranslation();
-    //SmartDashboard.putNumber("Robot X", position.getX());
-    //SmartDashboard.putNumber("Robot Y", position.getY());
-    //SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
+    // TODO: implement, hook up to drive
+    // Pose2d pose = m_odometry.getPoseMeters();
+    // Translation2d position = pose.getTranslation();
+    // SmartDashboard.putNumber("Robot X", position.getX());
+    // SmartDashboard.putNumber("Robot Y", position.getY());
+    // SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
     return m_odometry.getPoseMeters();
   }
 
   private DifferentialDriveWheelSpeeds getWheelSpeeds() {
-    //TODO: implement, hook up to drive
+    // TODO: implement, hook up to drive
     return new DifferentialDriveWheelSpeeds();
   }
 
   private void outputVolts(double leftVolts, double rightVolts) {
-    //TODO: implement, hook up to drive
+    // TODO: implement, hook up to drive
     m_leftMotorGroup.setVoltage(leftVolts);
     m_rightMotorGroup.setVoltage(rightVolts);
   }
@@ -129,28 +127,34 @@ public class TalonDrive extends SubsystemBase {
     double ksStaticGain = 0.0;
     double kvVelocityGain = 0.0;
     double kaAccelerationGain = 0.0;
-    //TODO: change this code to work with differential drive, might need to make our own controller command, don't see one in WPI lib
+    // TODO: change this code to work with differential drive, might need to make our own controller
+    // command, don't see one in WPI lib
     return new SequentialCommandGroup(
-        new InstantCommand(() -> {
-          // Reset odometry for the first path you run during auto
-          if(isFirstPath){
-              this.resetOdometry(traj.getInitialPose());
-          }
-        }),
+        new InstantCommand(
+            () -> {
+              // Reset odometry for the first path you run during auto
+              if (isFirstPath) {
+                this.resetOdometry(traj.getInitialPose());
+              }
+            }),
         new PPRamseteCommand(
-            traj, 
+            traj,
             this::getPose, // Pose supplier
             new RamseteController(),
             new SimpleMotorFeedforward(ksStaticGain, kvVelocityGain, kaAccelerationGain),
             new DifferentialDriveKinematics(0.0), // DifferentialDriveKinematics
             this::getWheelSpeeds, // DifferentialDriveWheelSpeeds supplier
-            new PIDController(0.0, 0.0, 0.0), // Left controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
-            new PIDController(0.0, 0.0, 0.0), // Right controller (usually the same values as left controller)
+            new PIDController(
+                0.0, 0.0,
+                0.0), // Left controller. Tune these values for your robot. Leaving them 0 will only
+            // use feedforwards.
+            new PIDController(
+                0.0, 0.0, 0.0), // Right controller (usually the same values as left controller)
             this::outputVolts, // Voltage biconsumer
-            true, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
+            true, // Should the path be automatically mirrored depending on alliance color.
+            // Optional, defaults to true
             this // Requires this drive subsystem
-        )
-    );
+            ));
   }
 
   /**
@@ -166,6 +170,11 @@ public class TalonDrive extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    m_pose =
+        m_odometry.update(
+            navxAhrs.getRotation2d().times(-1.0),
+            m_leftFront.getSelectedSensorPosition(),
+            m_rightFront.getSelectedSensorPosition());
   }
 
   @Override
@@ -197,9 +206,7 @@ public class TalonDrive extends SubsystemBase {
     return m_rightFront.getSelectedSensorPosition();
   }
 
-  /**
-   * Motor enum for getting motor controller specific values
-   */
+  /** Motor enum for getting motor controller specific values */
   public enum Motors {
     LEFT_FRONT(0),
     LEFT_MID(1),

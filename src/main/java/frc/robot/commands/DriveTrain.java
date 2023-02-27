@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.TalonDrive;
@@ -26,11 +27,17 @@ public class DriveTrain extends CommandBase {
     System.out.println(subsystem.toString());
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_subsystem);
+
+    SmartDashboard.putData(subsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    System.out.println("TankDrive initialized");
+    m_subsystem.resetEncoders();
+    m_subsystem.resetGyro();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -41,7 +48,7 @@ public class DriveTrain extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    // m_drivetrain.drive(0.0, 0.0);
+    m_subsystem.drive(0.0, 0.0);
     System.out.println("TankDrive interrupted");
   }
 

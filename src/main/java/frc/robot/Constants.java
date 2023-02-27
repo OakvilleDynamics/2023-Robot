@@ -30,17 +30,22 @@ public final class Constants {
   public static final int joystickGuardrailOff = 7;
 
   // constants for pnuematicControllers
-  public static final int pcmModuleAlpha = 4;
-  public static final int pcmModuleBravo = 5;
+  public static final int pcmModuleAlpha = 20;
+  public static final int pcmModuleBravo = 21;
 
   // constants for the pneumatic channels
-  public static final int pneumaticGearControllerID = 1;
-  public static final int pneumaticFrontJackControllerID = 3;
-  public static final int pneumaticBackJackControllerID = 2;
-  public static final int pneumaticClawControllerID = 4;
-  public static final int pneumaticRampForwardChannel = 5;
-  public static final int pneumaticRampReverseChannel = 6;
-  public static final int pneumaticGuardrailControllerID = 7;
+  public static final int pneumaticChannelTransmission = 0;
+  public static final int pneumaticChannelJackBackSuck = 1;
+  public static final int pneumaticChannelJackFrontBlow = 2;
+  public static final int pneumaticChannelJackFrontSuck = 3;
+  public static final int pneumaticChannelJackBackBlow = 4;
+  public static final int pneumaticChannelTransmissionBlowoff = 5;
+
+  public static final int pneumaticClawControllerID = 5;
+  public static final int pneumaticGuardrailControllerID = 6;
+
+  public static final int pneumaticRampForwardChannel = 7;
+  public static final int pneumaticRampReverseChannel = 0;
 
   // constants for motor controllers
   public static final int talonDriveLeftFrontID = 10;

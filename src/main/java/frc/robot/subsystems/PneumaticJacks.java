@@ -6,45 +6,48 @@
 // https://docs.wpilib.org/en/stable/docs/software/hardware-apis/pneumatics/pneumatics.html#using-the-frc-control-system-to-control-pneumatics
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class PneumaticJacks extends SubsystemBase {
 
-  public Solenoid m_frontSolenoid = null;
-  public Solenoid m_backSolenoid = null;
+  public DoubleSolenoid m_frontSolenoid = null;
+  public DoubleSolenoid m_backSolenoid = null;
 
   // intialize the pneumatic brakes
   public PneumaticJacks() {
 
     m_frontSolenoid =
-        new Solenoid(
-            Constants.pcmModuleBravo,
-            PneumaticsModuleType.CTREPCM,
-            Constants.pneumaticFrontJackControllerID);
-    m_backSolenoid =
-        new Solenoid(
+        new DoubleSolenoid(
             Constants.pcmModuleAlpha,
             PneumaticsModuleType.CTREPCM,
-            Constants.pneumaticBackJackControllerID);
+            Constants.pneumaticChannelJackFrontBlow,
+            Constants.pneumaticChannelJackFrontSuck);
+    m_backSolenoid =
+        new DoubleSolenoid(
+            Constants.pcmModuleAlpha,
+            PneumaticsModuleType.CTREPCM,
+            Constants.pneumaticChannelJackBackBlow,
+            Constants.pneumaticChannelJackBackSuck);
   }
 
   public void frontOn() {
-    m_frontSolenoid.set(true);
+    m_frontSolenoid.set(Value.kForward);
   }
 
   public void frontOff() {
-    m_frontSolenoid.set(false);
+    m_frontSolenoid.set(Value.kReverse);
   }
 
   public void backOn() {
-    m_backSolenoid.set(true);
+    m_backSolenoid.set(Value.kForward);
   }
 
   public void backOff() {
-    m_backSolenoid.set(false);
+    m_backSolenoid.set(Value.kReverse);
   }
 
   @Override
