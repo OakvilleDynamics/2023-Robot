@@ -4,45 +4,47 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.components.EncodingMotor;
-import frc.robot.components.SparkMax;
 
 /*We need an arm that can use an extendo-pneumatics function, and can limit how much the arm tilts/it's angle
  * There needs to be a manual and automatic stop for the arm angle limiter, and when its been met the extendo
  * arm can extend */
 public class Arm extends SubsystemBase {
   // Inits motors
-  private EncodingMotor bottomArm =
-      new SparkMax(Constants.sparkArmBottomDeviceID, Constants.bottomArmInverted);
-  private EncodingMotor topArm =
-      new SparkMax(Constants.sparkArmTopDeviceID, Constants.topArmInverted);
+  private CANSparkMax bottomArm =
+      new CANSparkMax(Constants.sparkArmBottomDeviceID, MotorType.kBrushed);
+  private CANSparkMax topArm = new CANSparkMax(Constants.sparkArmTopDeviceID, MotorType.kBrushed);
 
-  public Arm() {}
+  public Arm() {
+    bottomArm.setInverted(Constants.bottomArmInverted);
+    topArm.setInverted(Constants.topArmInverted);
+  }
 
   public void bottomArmUp() {
-    bottomArm.setForward();
+    bottomArm.set(Constants.bottomArmSpeed);
   }
 
   public void bottomArmDown() {
-    bottomArm.setReverse();
+    bottomArm.set(-Constants.bottomArmSpeed);
   }
 
   public void bottomArmStop() {
-    bottomArm.setStop();
+    bottomArm.set(0);
   }
 
   public void topArmUp() {
-    topArm.setForward();
+    topArm.set(Constants.topArmSpeed);
   }
 
   public void topArmDown() {
-    topArm.setReverse();
+    topArm.set(-Constants.topArmSpeed);
   }
 
   public void topArmStop() {
-    topArm.setStop();
+    topArm.set(0);
   }
 
   @Override

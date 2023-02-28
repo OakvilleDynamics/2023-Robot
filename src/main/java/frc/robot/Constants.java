@@ -74,6 +74,9 @@ public final class Constants {
   public static final double turntableRotateLeft =
       -0.99; // We set this to -0.99 due to some bug that caused the arm to not turn when set to
   // -1.0
+
+  public static final double bottomArmSpeed = 0.5;
+  public static final double topArmSpeed = 0.5;
   public static final double turntableRotateRight = 1.0;
   public static final double turntableRotateStop = 0.0;
 
