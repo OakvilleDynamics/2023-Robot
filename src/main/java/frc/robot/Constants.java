@@ -21,6 +21,8 @@ public final class Constants {
   // constants for jack button assignments
   public static final int joystickButtonFrontJackOn = 7;
   public static final int joystickButtonBackJackOn = 8;
+  public static final int joystickButtonFrontJackOff = 9;
+  public static final int joystickButtonBackJackOff = 10;
   // Constants for claw button assignments
   public static final int joystickButtonClawOn = 1;
   // Constants for ramp button assignments
