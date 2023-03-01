@@ -6,8 +6,6 @@ import frc.robot.Constants;
 import frc.robot.subsystems.PneumaticJacks;
 
 public class Jacks extends CommandBase {
-  private boolean m_isBackJackOn = false;
-  private boolean m_isFrontJackOn = false;
   // subsystems
   private final PneumaticJacks m_Jacks;
 
@@ -21,33 +19,29 @@ public class Jacks extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_Jacks.frontOff();
+    m_Jacks.backOff();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
     if (driverJoystick.getRawButton(Constants.joystickButtonFrontJackOn) == true) {
-      if (m_isFrontJackOn) {
-        m_Jacks.frontOff();
-        m_isFrontJackOn = false;
-        System.out.println("Jacks - front Off");
-      } else {
-        m_Jacks.frontOn();
-        m_isFrontJackOn = true;
-        System.out.println("Jacks - front On");
-      }
+      m_Jacks.frontOn();
+      System.out.println("Jacks - front On");
+    } else if (driverJoystick.getRawButton(Constants.joystickButtonFrontJackOff) == true) {
+      m_Jacks.frontOff();
+      System.out.println("Jacks - front Off");
     }
+
     if (driverJoystick.getRawButton(Constants.joystickButtonBackJackOn) == true) {
-      if (m_isBackJackOn) {
-        m_Jacks.backOff();
-        m_isBackJackOn = false;
-        System.out.println("Jacks - back Off");
-      } else {
-        m_Jacks.backOn();
-        m_isBackJackOn = true;
-        System.out.println("Jacks - back On");
-      }
+      m_Jacks.backOn();
+      System.out.println("Jacks - back On");
+    } else if (driverJoystick.getRawButton(Constants.joystickButtonBackJackOff) == true) {
+      m_Jacks.backOff();
+      System.out.println("Jacks - back Off");
     }
   }
 

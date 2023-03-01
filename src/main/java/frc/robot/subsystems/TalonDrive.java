@@ -3,9 +3,22 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
+import com.pathplanner.lib.*;
+import com.pathplanner.lib.commands.PPRamseteCommand;
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.RamseteController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -21,17 +34,28 @@ public class TalonDrive extends SubsystemBase {
   private WPI_TalonSRX m_rightMid = new WPI_TalonSRX(Constants.talonDriveRightMidID);
   private WPI_TalonSRX m_rightBack = new WPI_TalonSRX(Constants.talonDriveRightBackID);
 
+  MotorControllerGroup m_leftMotorGroup;
+  MotorControllerGroup m_rightMotorGroup;
+
   // Inits navX
   private AHRS navxAhrs = new AHRS(SPI.Port.kMXP);
+
+  // Creates Odometry object to store the pose of the robot
+  // Todo: fill in the values of the arguments
+  private final DifferentialDriveOdometry m_odometry =
+      new DifferentialDriveOdometry(
+          Rotation2d.fromDegrees(getAccelX()), getLeftDistanceMeters(), getRightDistanceMeters());
+
+  private Pose2d m_pose = new Pose2d(0, 0, new Rotation2d(0));
 
   private final DifferentialDrive m_robotDrive;
 
   /** Creates a new ExampleSubsystem. */
   public TalonDrive() {
 
-    m_leftFront.setInverted(true);
-    m_leftMid.setInverted(true);
-    m_leftBack.setInverted(true);
+    m_leftFront.setInverted(false);
+    m_leftMid.setInverted(false);
+    m_leftBack.setInverted(false);
     m_rightFront.setInverted(false);
     m_rightMid.setInverted(false);
     m_rightBack.setInverted(false);
@@ -39,10 +63,10 @@ public class TalonDrive extends SubsystemBase {
     m_leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
     m_rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
 
-    MotorControllerGroup left = new MotorControllerGroup(m_leftBack, m_leftFront, m_leftMid);
-    MotorControllerGroup right = new MotorControllerGroup(m_rightBack, m_rightFront, m_rightMid);
+    m_leftMotorGroup = new MotorControllerGroup(m_leftBack, m_leftFront, m_leftMid);
+    m_rightMotorGroup = new MotorControllerGroup(m_rightBack, m_rightFront, m_rightMid);
     // add m_leftMid to left and m_rightMid to right when we change to 6 motor drivetrain
-    m_robotDrive = new DifferentialDrive(left, right);
+    m_robotDrive = new DifferentialDrive(m_leftMotorGroup, m_rightMotorGroup);
   }
 
   // Assigns motors
@@ -66,6 +90,107 @@ public class TalonDrive extends SubsystemBase {
     m_robotDrive.arcadeDrive(-y, -x);
   }
 
+  private void resetOdometry(Pose2d pose2D) {
+    System.out.println("Reseting Odometry");
+    // TODO: implement, hook up to drive
+    navxAhrs.reset();
+    navxAhrs.setAngleAdjustment(pose2D.getRotation().getDegrees());
+    // keepAngle = navxAhrs.getRotation2d().getRadians();
+    m_odometry.resetPosition(
+        navxAhrs.getRotation2d().times(-1.0),
+        getLeftDistanceMeters(),
+        getRightDistanceMeters(),
+        pose2D);
+    // m_autoOdometry.resetPosition(pose2D, navxAhrs.getRotation2d().times(-1.0));
+  }
+
+  private Pose2d getPose() {
+    System.out.println("Getting pose");
+    // TODO: Hook into shuffleboard if we want
+    // Pose2d pose = m_odometry.getPoseMeters();
+    // Translation2d position = pose.getTranslation();
+    // SmartDashboard.putNumber("Robot X", position.getX());
+    // SmartDashboard.putNumber("Robot Y", position.getY());
+    // SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
+    return m_odometry.getPoseMeters();
+  }
+
+  private DifferentialDriveWheelSpeeds getWheelSpeeds() {
+    System.out.println("Getting and setting Wheel Speeds");
+    return new DifferentialDriveWheelSpeeds(getLeftVelocity(), getRightVelocity());
+  }
+
+  private int getRightVelocity() {
+    // Encoders are on the left and right front motor controllers
+    int velocity = m_rightFront.getSensorCollection().getQuadratureVelocity();
+    System.out.println("Right velocity: " + velocity);
+    return velocity;
+  }
+
+  private int getLeftVelocity() {
+    // Encoders are on the left and right front motor controllers
+    int velocity = m_leftFront.getSensorCollection().getQuadratureVelocity();
+    System.out.println("Left velocity: " + velocity);
+    return velocity;
+  }
+
+  private int getRightDistanceMeters() {
+    int distance = m_rightFront.getSensorCollection().getQuadraturePosition();
+    System.out.println("Right distance meters: " + distance);
+    return distance;
+  }
+
+  private int getLeftDistanceMeters() {
+    int distance = m_leftFront.getSensorCollection().getQuadraturePosition();
+    System.out.println("Left distance meters: " + distance);
+    return distance;
+  }
+
+  private void outputVolts(double leftVolts, double rightVolts) {
+    System.out.println("Set output volts left: " + leftVolts + " right: " + rightVolts);
+    m_leftMotorGroup.setVoltage(leftVolts);
+    m_rightMotorGroup.setVoltage(rightVolts);
+  }
+
+  public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
+    System.out.println("Following Trajectory");
+    return new SequentialCommandGroup(
+        new InstantCommand(
+            () -> {
+              // Reset odometry for the first path you run during auto
+              if (isFirstPath) {
+                this.resetOdometry(traj.getInitialPose());
+              }
+            }),
+        new PPRamseteCommand(
+            traj,
+            this::getPose, // Pose supplier
+            new RamseteController(),
+            new SimpleMotorFeedforward(
+                Constants.motorFeedStaticGain,
+                Constants.motorFeedVelocityGain,
+                Constants.motorFeedAccelerationGain),
+            new DifferentialDriveKinematics(
+                Constants.trackWidthMeters), // DifferentialDriveKinematics
+            this::getWheelSpeeds, // DifferentialDriveWheelSpeeds supplier
+            new PIDController(
+                Constants.pidControllerProportionalCoefficient,
+                Constants.pidControllerIntegralCoefficient,
+                Constants
+                    .pidControllerDerivativeCoefficient), // Left controller. Tune these values for
+            // your robot. Leaving them 0 will only use feedforwards.
+            new PIDController(
+                Constants.pidControllerProportionalCoefficient,
+                Constants.pidControllerIntegralCoefficient,
+                Constants.pidControllerDerivativeCoefficient), // Right controller (usually the same
+            // values as left controller)
+            this::outputVolts, // Voltage biconsumer
+            true, // Should the path be automatically mirrored depending on alliance color.
+            // Optional, defaults to true
+            this // Requires this drive subsystem
+            ));
+  }
+
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).
    *
@@ -79,6 +204,11 @@ public class TalonDrive extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    m_pose =
+        m_odometry.update(
+            navxAhrs.getRotation2d().times(-1.0),
+            m_leftFront.getSelectedSensorPosition(),
+            m_rightFront.getSelectedSensorPosition());
   }
 
   @Override
@@ -110,9 +240,7 @@ public class TalonDrive extends SubsystemBase {
     return m_rightFront.getSelectedSensorPosition();
   }
 
-  /**
-   * Motor enum for getting motor controller specific values
-   */
+  /** Motor enum for getting motor controller specific values */
   public enum Motors {
     LEFT_FRONT(0),
     LEFT_MID(1),

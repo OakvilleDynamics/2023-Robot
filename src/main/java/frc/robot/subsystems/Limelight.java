@@ -269,9 +269,7 @@ public class Limelight {
       limelight.getEntry("ledMode").setNumber(mode.value);
     }
 
-    /**
-     * LED modes for the Limelight
-     */
+    /** LED modes for the Limelight */
     public enum LEDMode {
       USE_CURRENT_PIPELINE(0),
       FORCE_OFF(1),
@@ -298,9 +296,7 @@ public class Limelight {
       limelight.getEntry("camMode").setNumber(mode.value);
     }
 
-    /**
-     * Camera modes for the Limelight
-     */
+    /** Camera modes for the Limelight */
     public enum CameraMode {
       VISION_PROCESSOR(0),
       DRIVER_CAMERA(1);
@@ -338,9 +334,7 @@ public class Limelight {
       limelight.getEntry("stream").setNumber(mode.value);
     }
 
-    /**
-     * Stream modes for the Limelight
-     */
+    /** Stream modes for the Limelight */
     public enum StreamMode {
       STANDARD(0),
       PIP_MAIN(1),

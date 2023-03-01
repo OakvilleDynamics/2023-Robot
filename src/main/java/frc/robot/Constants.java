@@ -21,6 +21,8 @@ public final class Constants {
   // constants for jack button assignments
   public static final int joystickButtonFrontJackOn = 7;
   public static final int joystickButtonBackJackOn = 8;
+  public static final int joystickButtonFrontJackOff = 9;
+  public static final int joystickButtonBackJackOff = 10;
   // Constants for claw button assignments
   public static final int joystickButtonClawOn = 1;
   // Constants for ramp button assignments
@@ -30,17 +32,22 @@ public final class Constants {
   public static final int joystickGuardrailOff = 7;
 
   // constants for pnuematicControllers
-  public static final int pcmModuleAlpha = 4;
-  public static final int pcmModuleBravo = 5;
+  public static final int pcmModuleAlpha = 20;
+  public static final int pcmModuleBravo = 21;
 
   // constants for the pneumatic channels
-  public static final int pneumaticGearControllerID = 1;
-  public static final int pneumaticFrontJackControllerID = 3;
-  public static final int pneumaticBackJackControllerID = 2;
-  public static final int pneumaticClawControllerID = 4;
-  public static final int pneumaticRampForwardChannel = 5;
-  public static final int pneumaticRampReverseChannel = 6;
-  public static final int pneumaticGuardrailControllerID = 7;
+  public static final int pneumaticChannelTransmission = 0;
+  public static final int pneumaticChannelJackBackSuck = 1;
+  public static final int pneumaticChannelJackFrontBlow = 2;
+  public static final int pneumaticChannelJackFrontSuck = 3;
+  public static final int pneumaticChannelJackBackBlow = 4;
+  public static final int pneumaticChannelTransmissionBlowoff = 5;
+
+  public static final int pneumaticClawControllerID = 5;
+  public static final int pneumaticGuardrailControllerID = 6;
+
+  public static final int pneumaticRampForwardChannel = 7;
+  public static final int pneumaticRampReverseChannel = 0;
 
   // constants for motor controllers
   public static final int talonDriveLeftFrontID = 10;
@@ -53,6 +60,17 @@ public final class Constants {
   public static final int sparkTurretDeviceID = 16;
   public static final int sparkArmBottomDeviceID = 17;
   public static final int sparkArmTopDeviceID = 18;
+
+  // Motor feed constants for autonomous code for drive train
+  public static final double motorFeedStaticGain = 0.0;
+  public static final double motorFeedVelocityGain = 0.0;
+  public static final double motorFeedAccelerationGain = 0.0;
+  // PIDController Coefficients, left and right value are usually the same
+  public static final double pidControllerProportionalCoefficient = 0.0;
+  public static final double pidControllerIntegralCoefficient = 0.0;
+  public static final double pidControllerDerivativeCoefficient = 0.0;
+  // Distance between left and right wheels
+  public static final double trackWidthMeters = 0.0;
 
   // constants for PWM motors
 
@@ -69,6 +87,9 @@ public final class Constants {
   public static final double turntableRotateLeft =
       -0.99; // We set this to -0.99 due to some bug that caused the arm to not turn when set to
   // -1.0
+
+  public static final double bottomArmSpeed = 0.5;
+  public static final double topArmSpeed = 0.5;
   public static final double turntableRotateRight = 1.0;
   public static final double turntableRotateStop = 0.0;
 
