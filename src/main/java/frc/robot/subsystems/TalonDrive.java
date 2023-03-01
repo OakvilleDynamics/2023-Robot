@@ -43,13 +43,10 @@ public class TalonDrive extends SubsystemBase {
   // Creates Odometry object to store the pose of the robot
   // Todo: fill in the values of the arguments
   private final DifferentialDriveOdometry m_odometry =
-      new DifferentialDriveOdometry(Rotation2d.fromDegrees(getAccelX()), 0.0, 0.0);
-  // private double keepAngle = 0.0; // Double to store the current target keepAngle in radians
+      new DifferentialDriveOdometry(
+          Rotation2d.fromDegrees(getAccelX()), getLeftDistanceMeters(), getRightDistanceMeters());
 
   private Pose2d m_pose = new Pose2d(0, 0, new Rotation2d(0));
-
-  // private final DifferentialDriveKinematics m_kinematics =
-  //    new DifferentialDriveKinematics(Units.inchesToMeters(Constants.trackWidthInches));
 
   private final DifferentialDrive m_robotDrive;
 
@@ -94,16 +91,22 @@ public class TalonDrive extends SubsystemBase {
   }
 
   private void resetOdometry(Pose2d pose2D) {
+    System.out.println("Reseting Odometry");
     // TODO: implement, hook up to drive
     navxAhrs.reset();
     navxAhrs.setAngleAdjustment(pose2D.getRotation().getDegrees());
     // keepAngle = navxAhrs.getRotation2d().getRadians();
-    m_odometry.resetPosition(navxAhrs.getRotation2d().times(-1.0), 0.0, 0.0, pose2D);
+    m_odometry.resetPosition(
+        navxAhrs.getRotation2d().times(-1.0),
+        getLeftDistanceMeters(),
+        getRightDistanceMeters(),
+        pose2D);
     // m_autoOdometry.resetPosition(pose2D, navxAhrs.getRotation2d().times(-1.0));
   }
 
   private Pose2d getPose() {
-    // TODO: implement, hook up to drive
+    System.out.println("Getting pose");
+    // TODO: Hook into shuffleboard if we want
     // Pose2d pose = m_odometry.getPoseMeters();
     // Translation2d position = pose.getTranslation();
     // SmartDashboard.putNumber("Robot X", position.getX());
@@ -113,22 +116,44 @@ public class TalonDrive extends SubsystemBase {
   }
 
   private DifferentialDriveWheelSpeeds getWheelSpeeds() {
-    // TODO: implement, hook up to drive
-    return new DifferentialDriveWheelSpeeds();
+    System.out.println("Getting and setting Wheel Speeds");
+    return new DifferentialDriveWheelSpeeds(getLeftVelocity(), getRightVelocity());
+  }
+
+  private int getRightVelocity() {
+    // Encoders are on the left and right front motor controllers
+    int velocity = m_rightFront.getSensorCollection().getQuadratureVelocity();
+    System.out.println("Right velocity: " + velocity);
+    return velocity;
+  }
+
+  private int getLeftVelocity() {
+    // Encoders are on the left and right front motor controllers
+    int velocity = m_leftFront.getSensorCollection().getQuadratureVelocity();
+    System.out.println("Left velocity: " + velocity);
+    return velocity;
+  }
+
+  private int getRightDistanceMeters() {
+    int distance = m_rightFront.getSensorCollection().getQuadraturePosition();
+    System.out.println("Right distance meters: " + distance);
+    return distance;
+  }
+
+  private int getLeftDistanceMeters() {
+    int distance = m_leftFront.getSensorCollection().getQuadraturePosition();
+    System.out.println("Left distance meters: " + distance);
+    return distance;
   }
 
   private void outputVolts(double leftVolts, double rightVolts) {
-    // TODO: implement, hook up to drive
+    System.out.println("Set output volts left: " + leftVolts + " right: " + rightVolts);
     m_leftMotorGroup.setVoltage(leftVolts);
     m_rightMotorGroup.setVoltage(rightVolts);
   }
 
   public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
-    double ksStaticGain = 0.0;
-    double kvVelocityGain = 0.0;
-    double kaAccelerationGain = 0.0;
-    // TODO: change this code to work with differential drive, might need to make our own controller
-    // command, don't see one in WPI lib
+    System.out.println("Following Trajectory");
     return new SequentialCommandGroup(
         new InstantCommand(
             () -> {
@@ -141,15 +166,24 @@ public class TalonDrive extends SubsystemBase {
             traj,
             this::getPose, // Pose supplier
             new RamseteController(),
-            new SimpleMotorFeedforward(ksStaticGain, kvVelocityGain, kaAccelerationGain),
-            new DifferentialDriveKinematics(0.0), // DifferentialDriveKinematics
+            new SimpleMotorFeedforward(
+                Constants.motorFeedStaticGain,
+                Constants.motorFeedVelocityGain,
+                Constants.motorFeedAccelerationGain),
+            new DifferentialDriveKinematics(
+                Constants.trackWidthMeters), // DifferentialDriveKinematics
             this::getWheelSpeeds, // DifferentialDriveWheelSpeeds supplier
             new PIDController(
-                0.0, 0.0,
-                0.0), // Left controller. Tune these values for your robot. Leaving them 0 will only
-            // use feedforwards.
+                Constants.pidControllerProportionalCoefficient,
+                Constants.pidControllerIntegralCoefficient,
+                Constants
+                    .pidControllerDerivativeCoefficient), // Left controller. Tune these values for
+            // your robot. Leaving them 0 will only use feedforwards.
             new PIDController(
-                0.0, 0.0, 0.0), // Right controller (usually the same values as left controller)
+                Constants.pidControllerProportionalCoefficient,
+                Constants.pidControllerIntegralCoefficient,
+                Constants.pidControllerDerivativeCoefficient), // Right controller (usually the same
+            // values as left controller)
             this::outputVolts, // Voltage biconsumer
             true, // Should the path be automatically mirrored depending on alliance color.
             // Optional, defaults to true

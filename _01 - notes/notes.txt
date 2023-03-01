@@ -1,0 +1,2 @@
+from root of this repo run the following:
+./gradlew :spotlessApply

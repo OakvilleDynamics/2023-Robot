@@ -61,6 +61,17 @@ public final class Constants {
   public static final int sparkArmBottomDeviceID = 17;
   public static final int sparkArmTopDeviceID = 18;
 
+  // Motor feed constants for autonomous code for drive train
+  public static final double motorFeedStaticGain = 0.0;
+  public static final double motorFeedVelocityGain = 0.0;
+  public static final double motorFeedAccelerationGain = 0.0;
+  // PIDController Coefficients, left and right value are usually the same
+  public static final double pidControllerProportionalCoefficient = 0.0;
+  public static final double pidControllerIntegralCoefficient = 0.0;
+  public static final double pidControllerDerivativeCoefficient = 0.0;
+  // Distance between left and right wheels
+  public static final double trackWidthMeters = 0.0;
+
   // constants for PWM motors
 
   // LOGICAL CONSTANTS FOR OPERATIONS
