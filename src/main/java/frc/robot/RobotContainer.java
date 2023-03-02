@@ -31,12 +31,12 @@ public class RobotContainer {
   public final PneumaticRamp m_ramp = new PneumaticRamp();
 
   // Max velocity and max accelerations are just defaults, we should move them to constants
-  PathPlannerTrajectory blue1 = PathPlanner.loadPath("Blue April ID 1", new PathConstraints(4, 3));
-  PathPlannerTrajectory blue2 = PathPlanner.loadPath("Blue April ID 2", new PathConstraints(4, 3));
-  PathPlannerTrajectory blue3 = PathPlanner.loadPath("Blue April ID 3", new PathConstraints(4, 3));
-  PathPlannerTrajectory red4 = PathPlanner.loadPath("Red April ID 4", new PathConstraints(4, 3));
-  PathPlannerTrajectory red5 = PathPlanner.loadPath("Red April ID 5", new PathConstraints(4, 3));
-  PathPlannerTrajectory red6 = PathPlanner.loadPath("Red April ID 6", new PathConstraints(4, 3));
+  PathPlannerTrajectory blue6 = PathPlanner.loadPath("Blue April ID 6", new PathConstraints(4, 3));
+  PathPlannerTrajectory blue7 = PathPlanner.loadPath("Blue April ID 7", new PathConstraints(4, 3));
+  PathPlannerTrajectory blue8 = PathPlanner.loadPath("Blue April ID 8", new PathConstraints(4, 3));
+  PathPlannerTrajectory red1 = PathPlanner.loadPath("Red April ID 1", new PathConstraints(4, 3));
+  PathPlannerTrajectory red2 = PathPlanner.loadPath("Red April ID 2", new PathConstraints(4, 3));
+  PathPlannerTrajectory red3 = PathPlanner.loadPath("Red April ID 3", new PathConstraints(4, 3));
   PathPlannerTrajectory testPath = PathPlanner.loadPath("TestSimplePath", new PathConstraints(4, 3));
 
   SendableChooser<PathPlannerTrajectory> chooser = new SendableChooser<>();
@@ -56,12 +56,12 @@ public class RobotContainer {
     m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
 
     chooser.setDefaultOption("Do nothing", null);
-    chooser.addOption("Blue 1", blue1);
-    chooser.addOption("Blue 2", blue2);
-    chooser.addOption("Blue 3", blue3);
-    chooser.addOption("Red 4", red4);
-    chooser.addOption("Red 5", red5);
-    chooser.addOption("Red 6", red6);
+    chooser.addOption("Red AprilTag 1", red1);
+    chooser.addOption("Red AprilTag 2", red2);
+    chooser.addOption("Red AprilTag 3", red3);
+    chooser.addOption("Blue AprilTag 6", blue6);
+    chooser.addOption("Blue AprilTag 7", blue7);
+    chooser.addOption("Blue AprilTag 8", blue8);
     chooser.addOption("Test Path", testPath);
 
     SmartDashboard.putData("Autonomous Chooser", chooser);
