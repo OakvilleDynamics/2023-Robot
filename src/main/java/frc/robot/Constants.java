@@ -69,8 +69,8 @@ public final class Constants {
   public static final double pidControllerProportionalCoefficient = 0.0;
   public static final double pidControllerIntegralCoefficient = 0.0;
   public static final double pidControllerDerivativeCoefficient = 0.0;
-  // Distance between left and right wheels
-  public static final double trackWidthMeters = 0.0;
+  // Distance between the center of the left and right wheels
+  public static final double trackWidthMeters = 0.6223;
 
   // constants for PWM motors
 
