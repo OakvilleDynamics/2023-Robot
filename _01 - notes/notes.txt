@@ -7,3 +7,5 @@ type "Start Tool", chose Shuffleboard.
 2. Simulate the robot code, chose Autonomous in drive station 
 3. Choose the path 
 
+https://docs.wpilib.org/en/stable/docs/software/dashboards/shuffleboard/index.html
+
