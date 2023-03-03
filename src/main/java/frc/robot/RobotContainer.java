@@ -28,7 +28,7 @@ public class RobotContainer {
   private final TalonDrive m_simpledrive = new TalonDrive();
   public final PneumaticJacks m_Jacks = new PneumaticJacks();
   public final PneumaticShift m_Shift = new PneumaticShift();
-  public final PneumaticRamp m_ramp = new PneumaticRamp();
+  public final RobotRamp m_ramp = new RobotRamp();
 
   // Max velocity and max accelerations are just defaults, we should move them to constants
   PathPlannerTrajectory blue6 = PathPlanner.loadPath("Blue April ID 6", new PathConstraints(4, 3));
@@ -37,7 +37,8 @@ public class RobotContainer {
   PathPlannerTrajectory red1 = PathPlanner.loadPath("Red April ID 1", new PathConstraints(4, 3));
   PathPlannerTrajectory red2 = PathPlanner.loadPath("Red April ID 2", new PathConstraints(4, 3));
   PathPlannerTrajectory red3 = PathPlanner.loadPath("Red April ID 3", new PathConstraints(4, 3));
-  PathPlannerTrajectory testPath = PathPlanner.loadPath("TestSimplePath", new PathConstraints(4, 3));
+  PathPlannerTrajectory testPath =
+      PathPlanner.loadPath("TestSimplePath", new PathConstraints(4, 3));
 
   SendableChooser<PathPlannerTrajectory> chooser = new SendableChooser<>();
 

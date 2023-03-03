@@ -7,18 +7,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.PneumaticRamp;
+import frc.robot.subsystems.RobotRamp;
 
 public class MoveRamp extends CommandBase {
   private boolean m_isRampUp = false;
 
   // subsystems
-  private final PneumaticRamp m_Ramp;
+  private final RobotRamp m_Ramp;
 
   // controllers
   private final Joystick driverJoystick = new Joystick(Constants.driverJoystickID);
 
-  public MoveRamp(PneumaticRamp subsystem) {
+  public MoveRamp(RobotRamp subsystem) {
     m_Ramp = subsystem;
     addRequirements(m_Ramp);
   }
