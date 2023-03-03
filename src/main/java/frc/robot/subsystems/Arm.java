@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -17,6 +18,9 @@ public class Arm extends SubsystemBase {
   private CANSparkMax bottomArm =
       new CANSparkMax(Constants.sparkArmBottomDeviceID, MotorType.kBrushed);
   private CANSparkMax topArm = new CANSparkMax(Constants.sparkArmTopDeviceID, MotorType.kBrushed);
+
+  private RelativeEncoder bottomArmEncoder = bottomArm.getEncoder();
+  private RelativeEncoder topArmEncoder = topArm.getEncoder();
 
   public Arm() {
     bottomArm.setInverted(Constants.bottomArmInverted);
@@ -45,6 +49,14 @@ public class Arm extends SubsystemBase {
 
   public void topArmStop() {
     topArm.set(0);
+  }
+
+  public double getBottomArmEncoder() {
+    return bottomArmEncoder.getPosition();
+  }
+
+  public double getTopArmEncoder() {
+    return topArmEncoder.getPosition();
   }
 
   @Override
