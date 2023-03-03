@@ -160,6 +160,9 @@ public class TalonDrive extends SubsystemBase {
               // Reset odometry for the first path you run during auto
               if (isFirstPath) {
                 this.resetOdometry(traj.getInitialPose());
+                System.out.println("First autonomous path run.");
+              } else {
+                System.out.println("Not first autonomous path run.");
               }
             }),
         new PPRamseteCommand(

@@ -30,14 +30,44 @@ public class RobotContainer {
   public final PneumaticShift m_Shift = new PneumaticShift();
   public final PneumaticRamp m_ramp = new PneumaticRamp();
 
+  private int m_autonomousRuns = 0;
+
   // Max velocity and max accelerations are just defaults, we should move them to constants
-  PathPlannerTrajectory blue6 = PathPlanner.loadPath("Blue April ID 6", new PathConstraints(4, 3));
-  PathPlannerTrajectory blue7 = PathPlanner.loadPath("Blue April ID 7", new PathConstraints(4, 3));
-  PathPlannerTrajectory blue8 = PathPlanner.loadPath("Blue April ID 8", new PathConstraints(4, 3));
-  PathPlannerTrajectory red1 = PathPlanner.loadPath("Red April ID 1", new PathConstraints(4, 3));
-  PathPlannerTrajectory red2 = PathPlanner.loadPath("Red April ID 2", new PathConstraints(4, 3));
-  PathPlannerTrajectory red3 = PathPlanner.loadPath("Red April ID 3", new PathConstraints(4, 3));
-  PathPlannerTrajectory testPath = PathPlanner.loadPath("TestSimplePath", new PathConstraints(4, 3));
+  PathPlannerTrajectory blue6 =
+      PathPlanner.loadPath(
+          "Blue April ID 6",
+          new PathConstraints(
+              Constants.pathDriveTrainMaxVelocity, Constants.pathDriveTrainMaxAcceleration));
+  PathPlannerTrajectory blue7 =
+      PathPlanner.loadPath(
+          "Blue April ID 7",
+          new PathConstraints(
+              Constants.pathDriveTrainMaxVelocity, Constants.pathDriveTrainMaxAcceleration));
+  PathPlannerTrajectory blue8 =
+      PathPlanner.loadPath(
+          "Blue April ID 8",
+          new PathConstraints(
+              Constants.pathDriveTrainMaxVelocity, Constants.pathDriveTrainMaxAcceleration));
+  PathPlannerTrajectory red1 =
+      PathPlanner.loadPath(
+          "Red April ID 1",
+          new PathConstraints(
+              Constants.pathDriveTrainMaxVelocity, Constants.pathDriveTrainMaxAcceleration));
+  PathPlannerTrajectory red2 =
+      PathPlanner.loadPath(
+          "Red April ID 2",
+          new PathConstraints(
+              Constants.pathDriveTrainMaxVelocity, Constants.pathDriveTrainMaxAcceleration));
+  PathPlannerTrajectory red3 =
+      PathPlanner.loadPath(
+          "Red April ID 3",
+          new PathConstraints(
+              Constants.pathDriveTrainMaxVelocity, Constants.pathDriveTrainMaxAcceleration));
+  PathPlannerTrajectory testPath =
+      PathPlanner.loadPath(
+          "TestSimplePath",
+          new PathConstraints(
+              Constants.pathDriveTrainMaxVelocity, Constants.pathDriveTrainMaxAcceleration));
 
   SendableChooser<PathPlannerTrajectory> chooser = new SendableChooser<>();
 
@@ -104,6 +134,10 @@ public class RobotContainer {
       return null;
     }
 
-    return m_simpledrive.followTrajectoryCommand(trajectory, true);
+    // In the game we will only ever run one path per robot run but when we test we may run
+    // it more then once so we need to let the drive train know if this is the first path so
+    // it can reset the odometer
+    boolean isFirstPath = (m_autonomousRuns++ == 0);
+    return m_simpledrive.followTrajectoryCommand(trajectory, isFirstPath);
   }
 }
