@@ -104,4 +104,15 @@ public final class Constants {
 
   public static final boolean topArmInverted = false;
   public static double rampSpeed = 0.5;
+
+  public static enum ClawObjectType {
+    Cone,
+    Cube
+  };
+
+  public static enum ClawObjectPlacement {
+    Top,
+    Middle,
+    Hybrid
+  };
 }

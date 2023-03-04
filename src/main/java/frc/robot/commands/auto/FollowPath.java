@@ -13,11 +13,8 @@ import frc.robot.subsystems.TalonDrive;
 
 public class FollowPath extends SequentialCommandGroup {
 
-  private final TalonDrive m_drive;
-
   public FollowPath(TalonDrive drivetrain, PathPlannerTrajectory traj, boolean isFirstPath) {
-    System.out.println("Following Trajectory");
-    m_drive = drivetrain;
+    System.out.println("Following path trajectory");
 
     addCommands(
         new InstantCommand(
@@ -56,7 +53,7 @@ public class FollowPath extends SequentialCommandGroup {
                 drivetrain.outputVolts(leftVolts, rightVolts), // Voltage biconsumer
             true, // Should the path be automatically mirrored depending on alliance color.
             // Optional, defaults to true
-            m_drive // Requires this drive subsystem
+            drivetrain // Requires this drive subsystem
             ));
   }
 }
