@@ -6,6 +6,9 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -18,9 +21,17 @@ public class Arm extends SubsystemBase {
       new CANSparkMax(Constants.sparkArmBottomDeviceID, MotorType.kBrushed);
   private CANSparkMax topArm = new CANSparkMax(Constants.sparkArmTopDeviceID, MotorType.kBrushed);
 
+  private DoubleSolenoid extendArmDoubleSolenoid =
+      new DoubleSolenoid(
+          Constants.pcmModuleAlpha,
+          PneumaticsModuleType.CTREPCM,
+          Constants.pneumaticChannelArmExtend,
+          Constants.pneumaticChannelArmRetract);
+
   public Arm() {
     bottomArm.setInverted(Constants.bottomArmInverted);
     topArm.setInverted(Constants.topArmInverted);
+    retractArm();
   }
 
   public void bottomArmUp() {
@@ -45,6 +56,18 @@ public class Arm extends SubsystemBase {
 
   public void topArmStop() {
     topArm.set(0);
+  }
+
+  public void extendArm() {
+    extendArmDoubleSolenoid.set(Value.kForward);
+  }
+
+  public void retractArm() {
+    extendArmDoubleSolenoid.set(Value.kReverse);
+  }
+
+  public void stopArm() {
+    extendArmDoubleSolenoid.set(Value.kOff);
   }
 
   @Override

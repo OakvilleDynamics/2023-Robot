@@ -4,32 +4,39 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class PneumaticClaw extends SubsystemBase {
 
-  public Solenoid m_clawSolenoid = null;
+  public DoubleSolenoid m_clawSolenoid = null;
 
   public PneumaticClaw() {
 
     m_clawSolenoid =
-        new Solenoid(
-            Constants.pcmModuleAlpha,
+        new DoubleSolenoid(
+            Constants.pcmModuleBravo,
             PneumaticsModuleType.CTREPCM,
-            Constants.pneumaticClawControllerID);
+            Constants.pneumaticClawOpen,
+            Constants.pneumaticClawClosed);
   }
 
-  public void clawOn() {
+  public void clawOpen() {
 
-    m_clawSolenoid.set(true);
+    m_clawSolenoid.set(Value.kForward);
   }
 
   public void clawOff() {
 
-    m_clawSolenoid.set(false);
+    m_clawSolenoid.set(Value.kOff);
+  }
+
+  public void clawClose() {
+
+    m_clawSolenoid.set(Value.kReverse);
   }
 
   @Override

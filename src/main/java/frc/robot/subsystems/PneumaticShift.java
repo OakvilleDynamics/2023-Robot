@@ -23,8 +23,8 @@ public class PneumaticShift extends SubsystemBase {
         new DoubleSolenoid(
             Constants.pcmModuleAlpha,
             PneumaticsModuleType.CTREPCM,
-            Constants.pneumaticChannelTransmission,
-            Constants.pneumaticChannelTransmissionBlowoff);
+            Constants.pneumaticChannelTransmissionHigh,
+            Constants.pneumaticChannelTransmissionLow);
   }
   // turn the brakes on
   public void lowGear() {
