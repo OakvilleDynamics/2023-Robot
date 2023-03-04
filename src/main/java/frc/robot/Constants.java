@@ -43,8 +43,8 @@ public final class Constants {
   public static final int pneumaticChannelJackBackBlow = 4;
   public static final int pneumaticChannelTransmissionBlowoff = 5;
 
-  public static final int pneumaticClawControllerID = 5;
-  public static final int pneumaticGuardrailControllerID = 6;
+  public static final int pneumaticClawControllerID = 6;
+  public static final int pneumaticGuardrailControllerID = 7;
 
   public static final int pneumaticRampForwardChannel = 7;
   public static final int pneumaticRampReverseChannel = 0;
@@ -115,4 +115,13 @@ public final class Constants {
     Middle,
     Hybrid
   };
+
+  public static enum AutoPathChoice {
+    Red1,
+    Red2,
+    Red3,
+    Blue6,
+    Blue7,
+    Blue8
+  }
 }

@@ -1,7 +1,7 @@
 package frc.robot.commands.auto;
 
 import com.pathplanner.lib.*;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.ClawObjectPlacement;
 import frc.robot.Constants.ClawObjectType;
@@ -22,17 +22,8 @@ public class PlaceObject extends SequentialCommandGroup {
     // arm to transport location, back up, allow driver control again.
 
     addCommands(
-        new InstantCommand(
-            () -> {
-              System.out.println("Extend arm to proper height.");
-            }),
-        new InstantCommand(
-            () -> {
-              System.out.println("Open claw.");
-            }),
-        new InstantCommand(
-            () -> {
-              System.out.println("Return arm to transport location.");
-            }));
+        new PrintCommand("Extend arm to proper height."),
+        new PrintCommand("Open claw."),
+        new PrintCommand("Return arm to transport location."));
   }
 }
