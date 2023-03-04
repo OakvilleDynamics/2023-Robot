@@ -28,7 +28,7 @@ public class RobotContainer {
   private final TalonDrive m_simpledrive = new TalonDrive();
   public final PneumaticJacks m_Jacks = new PneumaticJacks();
   public final PneumaticShift m_Shift = new PneumaticShift();
-  public final PneumaticRamp m_ramp = new PneumaticRamp();
+  public final RobotRamp m_ramp = new RobotRamp();
 
   private int m_autonomousRuns = 0;
 

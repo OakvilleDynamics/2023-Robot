@@ -61,6 +61,9 @@ public final class Constants {
   public static final int sparkArmBottomDeviceID = 17;
   public static final int sparkArmTopDeviceID = 18;
 
+  public static final int victorRampLeftDeviceID = 19;
+  public static final int victorRampRightDeviceID = 20;
+
   // Motor feed constants for autonomous code for drive train
   public static final double motorFeedStaticGain = 0.0;
   public static final double motorFeedVelocityGain = 0.0;
@@ -100,4 +103,5 @@ public final class Constants {
   public static final boolean bottomArmInverted = false;
 
   public static final boolean topArmInverted = false;
+  public static double rampSpeed = 0.5;
 }
