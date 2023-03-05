@@ -9,24 +9,25 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static final int driverControllerPort = 0;
-  public static final int armControllerPort = 1;
-
   // PHYSICAL DEVICE IDS
 
-  // creates the joystick identifications, 0 is for the drivetrain, 1 is for the arm and other
-  // functions
+  // Joystick Identifications
   public static final int driverJoystickID = 0;
   public static final int armJoystickID = 1;
+
   // constants for jack button assignments
   public static final int joystickButtonFrontJackOn = 7;
   public static final int joystickButtonBackJackOn = 8;
   public static final int joystickButtonFrontJackOff = 9;
   public static final int joystickButtonBackJackOff = 10;
+
   // Constants for claw button assignments
   public static final int joystickButtonClawOn = 1;
+  public static final int joystickButtonClawOff = 2;
+
   // Constants for ramp button assignments
   public static final int joystickButtonRamp = 4;
+
   // Constants for guardrail button assignments
   public static final int joystickGuardrailOn = 6;
   public static final int joystickGuardrailOff = 7;
@@ -36,18 +37,16 @@ public final class Constants {
   public static final int pcmModuleBravo = 26;
 
   // constants for the pneumatic channels
-  public static final int pneumaticChannelTransmission = 0;
-  public static final int pneumaticChannelJackBackSuck = 1;
-  public static final int pneumaticChannelJackFrontBlow = 2;
-  public static final int pneumaticChannelJackFrontSuck = 3;
-  public static final int pneumaticChannelJackBackBlow = 4;
-  public static final int pneumaticChannelTransmissionBlowoff = 5;
-
-  public static final int pneumaticClawControllerID = 6;
-  public static final int pneumaticGuardrailControllerID = 7;
-
-  public static final int pneumaticRampForwardChannel = 7;
-  public static final int pneumaticRampReverseChannel = 0;
+  public static final int pneumaticChannelJackFrontUp = 0;
+  public static final int pneumaticChannelJackFrontDown = 1;
+  public static final int pneumaticChannelJackBackUp = 2;
+  public static final int pneumaticChannelJackBackDown = 3;
+  public static final int pneumaticChannelTransmissionHigh = 4;
+  public static final int pneumaticChannelTransmissionLow = 5;
+  public static final int pneumaticChannelArmRetract = 6;
+  public static final int pneumaticChannelArmExtend = 7;
+  public static final int pneumaticClawOpen = 0;
+  public static final int pneumaticClawClosed = 1;
 
   // constants for motor controllers
   public static final int talonDriveLeftFrontID = 10;
@@ -68,10 +67,12 @@ public final class Constants {
   public static final double motorFeedStaticGain = 0.0;
   public static final double motorFeedVelocityGain = 0.0;
   public static final double motorFeedAccelerationGain = 0.0;
+
   // PIDController Coefficients, left and right value are usually the same
   public static final double pidControllerProportionalCoefficient = 0.0;
   public static final double pidControllerIntegralCoefficient = 0.0;
   public static final double pidControllerDerivativeCoefficient = 0.0;
+
   // Distance between the center of the left and right wheels
   public static final double trackWidthMeters = 0.6223;
 
@@ -90,19 +91,18 @@ public final class Constants {
   // constants for turret control directions
   public static final int joystickTurretLeft = 3;
   public static final int joystickTurretRight = 4;
+
   // constants for turret rotation subsystem
-  public static final double turntableRotateLeft =
-      -0.99; // We set this to -0.99 due to some bug that caused the arm to not turn when set to
-  // -1.0
+  public static final double turntableRotateRight = 1.0;
+  public static final double turntableRotateStop = 0.0;
+  public static final double turntableRotateLeft = -1.0;
 
   public static final double bottomArmSpeed = 0.5;
   public static final double topArmSpeed = 0.5;
-  public static final double turntableRotateRight = 1.0;
-  public static final double turntableRotateStop = 0.0;
-
   public static final boolean bottomArmInverted = false;
-
   public static final boolean topArmInverted = false;
+
+  // constants for ramp motor rotation speed
   public static double rampSpeed = 0.5;
 
   public static enum ClawObjectType {

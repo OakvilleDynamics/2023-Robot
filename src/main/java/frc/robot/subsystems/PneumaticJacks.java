@@ -24,14 +24,14 @@ public class PneumaticJacks extends SubsystemBase {
         new DoubleSolenoid(
             Constants.pcmModuleAlpha,
             PneumaticsModuleType.CTREPCM,
-            Constants.pneumaticChannelJackFrontBlow,
-            Constants.pneumaticChannelJackFrontSuck);
+            Constants.pneumaticChannelJackFrontDown,
+            Constants.pneumaticChannelJackFrontUp);
     m_backSolenoid =
         new DoubleSolenoid(
             Constants.pcmModuleAlpha,
             PneumaticsModuleType.CTREPCM,
-            Constants.pneumaticChannelJackBackBlow,
-            Constants.pneumaticChannelJackBackSuck);
+            Constants.pneumaticChannelJackBackDown,
+            Constants.pneumaticChannelJackBackUp);
   }
 
   public void frontOn() {

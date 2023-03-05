@@ -6,8 +6,6 @@ import frc.robot.Constants;
 import frc.robot.subsystems.PneumaticClaw;
 
 public class Claw extends CommandBase {
-  private boolean m_isClawOn = false;
-
   // subsystems
   private final PneumaticClaw m_Claw;
 
@@ -26,22 +24,20 @@ public class Claw extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
     if (controllerJoystick.getRawButton(Constants.joystickButtonClawOn) == true) {
-      if (m_isClawOn) {
-        m_Claw.clawOn();
-        m_isClawOn = true;
-        System.out.println("Claw On");
-      } else {
-        m_Claw.clawOff();
-        m_isClawOn = false;
-        System.out.println("Claw Off");
-      }
+      m_Claw.clawOpen();
+      System.out.println("Claw Open");
+    }
+    if (controllerJoystick.getRawButton(Constants.joystickButtonClawOff) == true) {
+      m_Claw.clawClose();
+      System.out.println("Claw Closed");
     }
   }
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_Claw.clawOff();
+  }
 
   // Returns true when the command should end.
   @Override

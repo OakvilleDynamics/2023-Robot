@@ -360,6 +360,7 @@ public class Limelight {
       limelight.getEntry("snapshot").setNumber(mode.value);
     }
 
+    /** Snapshot modes for the Limelight */
     public enum SnapshotMode {
       STOP(0),
       TAKE_TWO_PER_SECOND(1);
