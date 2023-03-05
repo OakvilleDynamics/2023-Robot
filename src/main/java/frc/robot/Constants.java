@@ -26,11 +26,12 @@ public final class Constants {
   public static final int joystickButtonClawOff = 2;
 
   // Constants for ramp button assignments
-  public static final int joystickButtonRamp = 4;
+  public static final int joystickButtonRampUp = 3;
+  public static final int joystickButtonRampDown = 4;
 
-  // Constants for guardrail button assignments
-  public static final int joystickGuardrailOn = 6;
-  public static final int joystickGuardrailOff = 7;
+  // constants for turret control directions
+  public static final int joystickTurretLeft = 3;
+  public static final int joystickTurretRight = 4;  
 
   // constants for pnuematicControllers
   public static final int pcmModuleAlpha = 25;
@@ -88,19 +89,33 @@ public final class Constants {
   public static final double gearThrottleHigh = -1.0;
   public static final double gearThrottleLow = 1.0;
 
-  // constants for turret control directions
-  public static final int joystickTurretLeft = 3;
-  public static final int joystickTurretRight = 4;
 
   // constants for turret rotation subsystem
   public static final double turntableRotateRight = 1.0;
   public static final double turntableRotateStop = 0.0;
   public static final double turntableRotateLeft = -1.0;
 
-  public static final double bottomArmSpeed = 0.5;
-  public static final double topArmSpeed = 0.5;
+  // constants for the bottom stage of the arm
   public static final boolean bottomArmInverted = false;
+  public static final double bottomArmSpeed = 0.5;
+  public static final double bottomArmP = 0.1;
+  public static final double bottomArmI = 1e-4;
+  public static final double bottomArmD = 1;
+  public static final double bottomArmIZone = 0;
+  public static final double bottomArmFF = 0;
+  public static final double bottomArmMinOutput = 0;
+  public static final double bottomArmMaxOutput = 0;
+
+  // constants for the top stage of the arm
   public static final boolean topArmInverted = false;
+  public static final double topArmSpeed = 0.5;
+  public static final double topArmP = 0;
+  public static final double topArmI = 0;
+  public static final double topArmD = 0;
+  public static final double topArmIZone = 0;
+  public static final double topArmFF = 0;
+  public static final double topArmMinOutput = 0;
+  public static final double topArmMaxOutput = 0;
 
   // constants for ramp motor rotation speed
   public static double rampSpeed = 0.5;

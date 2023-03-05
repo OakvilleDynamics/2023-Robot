@@ -15,10 +15,7 @@ public class AutoLevel extends SequentialCommandGroup {
         new InstantCommand(
             () -> {
               drive.autoLevel();
-            }
-        ),
-        new PrintCommand("Robot balancing is complete.")
-
-    );
+            }),
+        new PrintCommand("Robot balancing is complete."));
   }
 }

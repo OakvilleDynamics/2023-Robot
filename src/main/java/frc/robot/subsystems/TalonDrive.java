@@ -62,6 +62,8 @@ public class TalonDrive extends SubsystemBase {
     m_rightMotorGroup = new MotorControllerGroup(m_rightBack, m_rightFront, m_rightMid);
     // add m_leftMid to left and m_rightMid to right when we change to 6 motor drivetrain
     m_robotDrive = new DifferentialDrive(m_leftMotorGroup, m_rightMotorGroup);
+
+    System.out.println("Drivetrain is initialized");
   }
 
   // Assigns motors
@@ -433,9 +435,7 @@ public class TalonDrive extends SubsystemBase {
     navxAhrs.reset();
   }
 
-  /**
-   * Levels the robot out on the ground, or in this case the charge station
-   */
+  /** Levels the robot out on the ground, or in this case the charge station */
   public void autoLevel() {
     double pitch = getPitch();
     double pitchRadians = Math.toRadians(pitch);

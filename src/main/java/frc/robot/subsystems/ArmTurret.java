@@ -21,6 +21,8 @@ public class ArmTurret extends SubsystemBase {
     turntable.setInverted(true);
 
     m_turntableEncoder = turntable.getEncoder(Type.kQuadrature, 8192);
+
+    System.out.println("ArmTurret is ready");
   }
 
   public void rotateLeft() {

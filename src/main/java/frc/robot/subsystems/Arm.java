@@ -5,8 +5,10 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.SparkMaxRelativeEncoder.Type;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -34,13 +36,38 @@ public class Arm extends SubsystemBase {
           Constants.pneumaticChannelArmExtend,
           Constants.pneumaticChannelArmRetract);
 
+  private SparkMaxPIDController bottomArmPIDController = bottomArm.getPIDController();
+  private SparkMaxPIDController topArmPIDController = topArm.getPIDController();
+  /** Creates a new Arm. */
   public Arm() {
     bottomArm.setInverted(Constants.bottomArmInverted);
     topArm.setInverted(Constants.topArmInverted);
     retractArm();
 
+    System.out.println("Arm is retracted");
+
     m_bottomEncoder = bottomArm.getEncoder(Type.kQuadrature, 8192);
     m_topEncoder = bottomArm.getEncoder(Type.kQuadrature, 8192);
+
+    bottomArmPIDController.setP(Constants.bottomArmP);
+    bottomArmPIDController.setI(Constants.bottomArmI);
+    bottomArmPIDController.setD(Constants.bottomArmD);
+    bottomArmPIDController.setIZone(Constants.bottomArmIZone);
+    bottomArmPIDController.setFF(Constants.bottomArmFF);
+    bottomArmPIDController.setOutputRange(
+        Constants.bottomArmMinOutput, Constants.bottomArmMaxOutput);
+
+    topArmPIDController.setP(Constants.topArmP);
+    topArmPIDController.setI(Constants.topArmI);
+    topArmPIDController.setD(Constants.topArmD);
+    topArmPIDController.setIZone(Constants.topArmIZone);
+    topArmPIDController.setFF(Constants.topArmFF);
+    topArmPIDController.setOutputRange(Constants.topArmMinOutput, Constants.topArmMaxOutput);
+
+    bottomArmPIDController.setReference(0, ControlType.kPosition);
+    topArmPIDController.setReference(0, ControlType.kPosition);
+
+    System.out.println("Arm is ready");
   }
 
   public void bottomArmUp() {

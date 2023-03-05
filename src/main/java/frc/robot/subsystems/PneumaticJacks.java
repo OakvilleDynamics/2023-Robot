@@ -36,6 +36,8 @@ public class PneumaticJacks extends SubsystemBase {
 
     SmartDashboard.putString("Front Jacks", "Off");
     SmartDashboard.putString("Back Jacks", "Off");
+
+    System.out.println("PneumaticJacks subsystem initialized");
   }
 
   public void frontOn() {

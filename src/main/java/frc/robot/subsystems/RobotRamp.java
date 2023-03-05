@@ -18,7 +18,7 @@ public class RobotRamp extends SubsystemBase {
   public RobotRamp() {
     rampMotorLeft.setInverted(false);
     rampMotorRight.setInverted(true);
-
+    System.out.println("Robot ramp subsystem initialized.");
     SmartDashboard.putString("Ramp Position", "Up");
   }
 

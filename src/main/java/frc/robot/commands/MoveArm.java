@@ -51,7 +51,10 @@ public class MoveArm extends CommandBase {
   }
 
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_armSubsystem.bottomArmStop();
+    m_armSubsystem.topArmStop();
+  }
 
   @Override
   public boolean isFinished() {

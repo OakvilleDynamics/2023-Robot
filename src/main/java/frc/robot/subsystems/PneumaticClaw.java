@@ -25,6 +25,8 @@ public class PneumaticClaw extends SubsystemBase {
             Constants.pneumaticClawClosed);
 
     SmartDashboard.putString("Claw", "Off");
+
+    System.out.println("PneumaticClaw subsystem initialized");
   }
 
   public void clawOpen() {

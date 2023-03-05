@@ -28,6 +28,8 @@ public class PneumaticShift extends SubsystemBase {
             Constants.pneumaticChannelTransmissionLow);
 
     SmartDashboard.putString("Gear Shift", "Low");
+
+    System.out.println("PneumaticShift subsystem initialized");
   }
 
   /** Engage low gear */
