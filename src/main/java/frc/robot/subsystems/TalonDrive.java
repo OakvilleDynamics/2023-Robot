@@ -429,4 +429,20 @@ public class TalonDrive extends SubsystemBase {
   public void resetGyro() {
     navxAhrs.reset();
   }
+
+  /**
+   * Levels the robot out on the ground, or in this case the charge station
+   */
+  public void autoLevel() {
+    double pitch = getPitch();
+    double pitchRadians = Math.toRadians(pitch);
+
+    if (pitch > 0) {
+      drive(pitchRadians, 0);
+    } else if (pitch < 0) {
+      drive(-pitchRadians, 0);
+    } else {
+      drive(0, 0);
+    }
+  }
 }
