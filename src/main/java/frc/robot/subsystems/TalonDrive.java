@@ -5,12 +5,14 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -40,8 +42,6 @@ public class TalonDrive extends SubsystemBase {
 
   public final DifferentialDriveKinematics kinematics =
       new DifferentialDriveKinematics(Constants.trackWidthMeters);
-
-  private Pose2d m_pose = new Pose2d(0, 0, new Rotation2d(0));
 
   private final DifferentialDrive m_robotDrive;
 
@@ -87,27 +87,35 @@ public class TalonDrive extends SubsystemBase {
 
   public void resetOdometry(Pose2d pose2D) {
     System.out.println("Reseting Odometry");
-    // TODO: implement, hook up to drive
     navxAhrs.reset();
     navxAhrs.setAngleAdjustment(pose2D.getRotation().getDegrees());
-    // keepAngle = navxAhrs.getRotation2d().getRadians();
     m_odometry.resetPosition(
         navxAhrs.getRotation2d().times(-1.0),
         getLeftDistanceMeters(),
         getRightDistanceMeters(),
         pose2D);
-    // m_autoOdometry.resetPosition(pose2D, navxAhrs.getRotation2d().times(-1.0));
   }
 
   public Pose2d getPose() {
     System.out.println("Getting pose");
-    // TODO: Hook into shuffleboard if we want
-    // Pose2d pose = m_odometry.getPoseMeters();
-    // Translation2d position = pose.getTranslation();
-    // SmartDashboard.putNumber("Robot X", position.getX());
-    // SmartDashboard.putNumber("Robot Y", position.getY());
-    // SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
     return m_odometry.getPoseMeters();
+  }
+
+  private void postToSmartDashboard() {
+    Pose2d pose = m_odometry.getPoseMeters();
+    Translation2d position = pose.getTranslation();
+    SmartDashboard.putNumber("Robot X", position.getX());
+    SmartDashboard.putNumber("Robot Y", position.getY());
+    SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
+  }
+
+  /**
+   * Function to retrieve latest robot gyro angle.
+   *
+   * @return Rotation2d object containing Gyro angle
+   */
+  public Rotation2d getGyro() {
+    return navxAhrs.getRotation2d();
   }
 
   public DifferentialDriveWheelSpeeds getWheelSpeeds() {
@@ -159,12 +167,7 @@ public class TalonDrive extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
-    m_pose =
-        m_odometry.update(
-            navxAhrs.getRotation2d().times(-1.0),
-            m_leftFront.getSelectedSensorPosition(),
-            m_rightFront.getSelectedSensorPosition());
+    postToSmartDashboard();
   }
 
   @Override

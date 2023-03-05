@@ -6,9 +6,12 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxRelativeEncoder.Type;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -21,6 +24,9 @@ public class Arm extends SubsystemBase {
       new CANSparkMax(Constants.sparkArmBottomDeviceID, MotorType.kBrushed);
   private CANSparkMax topArm = new CANSparkMax(Constants.sparkArmTopDeviceID, MotorType.kBrushed);
 
+  private RelativeEncoder m_bottomEncoder;
+  private RelativeEncoder m_topEncoder;
+
   private DoubleSolenoid extendArmDoubleSolenoid =
       new DoubleSolenoid(
           Constants.pcmModuleAlpha,
@@ -32,6 +38,9 @@ public class Arm extends SubsystemBase {
     bottomArm.setInverted(Constants.bottomArmInverted);
     topArm.setInverted(Constants.topArmInverted);
     retractArm();
+
+    m_bottomEncoder = bottomArm.getEncoder(Type.kQuadrature, 8192);
+    m_topEncoder = bottomArm.getEncoder(Type.kQuadrature, 8192);
   }
 
   public void bottomArmUp() {
@@ -73,5 +82,7 @@ public class Arm extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Top Arm Pos", m_topEncoder.getPosition());
+    SmartDashboard.putNumber("Bottom Arm Pos", m_bottomEncoder.getPosition());
   }
 }

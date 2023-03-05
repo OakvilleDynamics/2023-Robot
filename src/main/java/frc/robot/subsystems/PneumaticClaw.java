@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -22,23 +23,25 @@ public class PneumaticClaw extends SubsystemBase {
             PneumaticsModuleType.CTREPCM,
             Constants.pneumaticClawOpen,
             Constants.pneumaticClawClosed);
+
+    SmartDashboard.putString("Claw", "Off");
   }
 
   public void clawOpen() {
     System.out.println("Claw open.");
+    SmartDashboard.putString("Claw", "Open");
     m_clawSolenoid.set(Value.kForward);
   }
 
   public void clawOff() {
     System.out.println("Claw off.");
+    SmartDashboard.putString("Claw", "Off");
     m_clawSolenoid.set(Value.kOff);
   }
 
   public void clawClose() {
     System.out.println("Claw close.");
+    SmartDashboard.putString("Claw", "Closed");
     m_clawSolenoid.set(Value.kReverse);
   }
-
-  @Override
-  public void periodic() {}
 }

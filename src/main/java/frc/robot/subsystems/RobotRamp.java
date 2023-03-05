@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -17,18 +18,22 @@ public class RobotRamp extends SubsystemBase {
   public RobotRamp() {
     rampMotorLeft.setInverted(false);
     rampMotorRight.setInverted(true);
+
+    SmartDashboard.putString("Ramp Position", "Up");
   }
 
   /** Ramp up */
   public void rampUp() {
     rampMotorLeft.set(ControlMode.PercentOutput, Constants.rampSpeed);
     rampMotorRight.set(ControlMode.PercentOutput, Constants.rampSpeed);
+    SmartDashboard.putString("Ramp Position", "Up");
   }
 
   /** Ramp down */
   public void rampDown() {
     rampMotorLeft.set(ControlMode.PercentOutput, -Constants.rampSpeed);
     rampMotorRight.set(ControlMode.PercentOutput, -Constants.rampSpeed);
+    SmartDashboard.putString("Ramp Position", "Down");
   }
 
   /** Ramp stop */
@@ -58,5 +63,7 @@ public class RobotRamp extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Left Motor Temp", rampMotorLeft.getTemperature());
+    SmartDashboard.putNumber("Right Motor Temp", rampMotorRight.getTemperature());
   }
 }
