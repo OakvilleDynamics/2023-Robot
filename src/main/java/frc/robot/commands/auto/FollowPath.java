@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
 import frc.robot.subsystems.TalonDrive;
 
+// This was a simpler command while we were iterating on the autonomous commands, this works
+// with a path but will not work with stop events, for that we moved to full autonomous command
+// with the RamseteAutoBuilder in the RobotContainter
 public class FollowPath extends SequentialCommandGroup {
 
   public FollowPath(TalonDrive drivetrain, PathPlannerTrajectory traj, boolean isFirstPath) {

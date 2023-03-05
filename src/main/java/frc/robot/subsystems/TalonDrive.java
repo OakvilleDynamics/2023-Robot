@@ -3,9 +3,9 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
-import com.pathplanner.lib.*;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI;
@@ -37,6 +37,9 @@ public class TalonDrive extends SubsystemBase {
   private final DifferentialDriveOdometry m_odometry =
       new DifferentialDriveOdometry(
           Rotation2d.fromDegrees(getAccelX()), getLeftDistanceMeters(), getRightDistanceMeters());
+
+  public final DifferentialDriveKinematics kinematics =
+      new DifferentialDriveKinematics(Constants.trackWidthMeters);
 
   private Pose2d m_pose = new Pose2d(0, 0, new Rotation2d(0));
 

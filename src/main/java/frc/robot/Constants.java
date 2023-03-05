@@ -32,8 +32,8 @@ public final class Constants {
   public static final int joystickGuardrailOff = 7;
 
   // constants for pnuematicControllers
-  public static final int pcmModuleAlpha = 20;
-  public static final int pcmModuleBravo = 21;
+  public static final int pcmModuleAlpha = 25;
+  public static final int pcmModuleBravo = 26;
 
   // constants for the pneumatic channels
   public static final int pneumaticChannelTransmission = 0;
@@ -124,4 +124,8 @@ public final class Constants {
     Blue7,
     Blue8
   }
+
+  public static final String PlaceObjectMarker = "PlaceObject";
+  public static final String PickupObjectMarker = "PickUpObject";
+  public static final String AutoLevelMarker = "ChargeStationLevel";
 }

@@ -4,21 +4,21 @@
 
 package frc.robot;
 
-import java.util.List;
-
-import com.pathplanner.lib.*;
-import com.pathplanner.lib.PathPlannerTrajectory.EventMarker;
-import com.pathplanner.lib.commands.FollowPathWithEvents;
+import com.pathplanner.lib.auto.PIDConstants;
+import com.pathplanner.lib.auto.RamseteAutoBuilder;
+import edu.wpi.first.math.controller.RamseteController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.Constants.AutoPathChoice;
+import frc.robot.Constants.*;
 import frc.robot.commands.*;
 import frc.robot.commands.auto.*;
 import frc.robot.components.AutoPath;
 import frc.robot.subsystems.*;
+import java.util.HashMap;
 
 /* This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -38,12 +38,31 @@ public class RobotContainer {
   public final RobotRamp m_ramp = new RobotRamp();
   public final PneumaticClaw m_claw = new PneumaticClaw();
 
-  private int m_autonomousRuns = 0;
-
   SendableChooser<AutoPath> chooser = new SendableChooser<>();
 
   // Autonomous Commands
-  // private final Command m_placeobject = new PlaceObject(m_turret);
+  HashMap<String, Command> m_eventMap = new HashMap<String, Command>();
+  RamseteAutoBuilder m_autoBuilder =
+      new RamseteAutoBuilder(
+          m_simpledrive
+              ::getPose, // Pose2d consumer, used to reset odometry at the beginning of auto
+          (pose) -> m_simpledrive.resetOdometry(pose), // Consumer<Pose2d> resetPose,
+          new RamseteController(), // RamseteController controller,
+          m_simpledrive.kinematics, // DifferentialDriveKinematics
+          new SimpleMotorFeedforward(
+              Constants.motorFeedStaticGain,
+              Constants.motorFeedVelocityGain,
+              Constants.motorFeedAccelerationGain), // SimpleMotorFeedforward
+          m_simpledrive::getWheelSpeeds, // Supplier<DifferentialDriveWheelSpeeds> speedsSupplier,
+          new PIDConstants(5.0, 0.0, 0.0), // PIDConstants driveConstants,
+          (leftVolts, rightVolts) ->
+              m_simpledrive.outputVolts(
+                  leftVolts,
+                  rightVolts), // Module states consumer used to output to the drive subsystem
+          m_eventMap, // Map<String, Command> eventMap,
+          m_simpledrive // The drive subsystem. Used to properly set the requirements of path
+          // following commands
+          );
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -55,6 +74,14 @@ public class RobotContainer {
     m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
     m_Shift.setDefaultCommand(new GearShift(m_Shift));
     m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
+
+    m_eventMap.put(
+        Constants.PlaceObjectMarker,
+        new PlaceObject(m_arm, m_claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
+    m_eventMap.put(
+        Constants.PickupObjectMarker,
+        new PickupObject(m_arm, m_claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
+    m_eventMap.put(Constants.AutoLevelMarker, new AutoLevel(m_simpledrive));
 
     chooser.setDefaultOption("Do nothing", null);
     chooser.addOption(
@@ -112,21 +139,6 @@ public class RobotContainer {
       return null;
     }
 
-    // In the game we will only ever run one path per robot run but when we test we may run
-    // it more then once so we need to let the drive train know if this is the first path so
-    // it can reset the odometer
-    boolean isFirstPath = (m_autonomousRuns++ == 0);
-    PathPlannerTrajectory trajectory = autoPath.getTrajectory();
-    List<EventMarker> markers = trajectory.getMarkers();
-    markers.forEach((marker) -> {
-      System.out.println("Marker names: " + String.join(",", marker.names));
-    });
-    FollowPathWithEvents command =
-        new FollowPathWithEvents(
-            new FollowPath(m_simpledrive, trajectory, isFirstPath),
-            trajectory.getMarkers(),
-            autoPath.getEventMap());
-
-    return command;
+    return m_autoBuilder.fullAuto(autoPath.getPathGroup());
   }
 }

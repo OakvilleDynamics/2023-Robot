@@ -1,7 +1,5 @@
 package frc.robot.commands.auto;
 
-import com.pathplanner.lib.*;
-
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
