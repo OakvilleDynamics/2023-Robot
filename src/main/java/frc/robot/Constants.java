@@ -33,8 +33,8 @@ public final class Constants {
   public static final int joystickGuardrailOff = 7;
 
   // constants for pnuematicControllers
-  public static final int pcmModuleAlpha = 20;
-  public static final int pcmModuleBravo = 21;
+  public static final int pcmModuleAlpha = 25;
+  public static final int pcmModuleBravo = 26;
 
   // constants for the pneumatic channels
   public static final int pneumaticChannelJackFrontUp = 0;
@@ -76,6 +76,12 @@ public final class Constants {
   // Distance between the center of the left and right wheels
   public static final double trackWidthMeters = 0.6223;
 
+  // Right now the paths will use the same max velocity and acceleration
+  public static final double pathDriveTrainMaxVelocity = 4;
+  public static final double pathDriveTrainMaxAcceleration = 3;
+
+  // constants for PWM motors
+
   // LOGICAL CONSTANTS FOR OPERATIONS
 
   // identifiers for gear shift
@@ -98,4 +104,28 @@ public final class Constants {
 
   // constants for ramp motor rotation speed
   public static double rampSpeed = 0.5;
+
+  public static enum ClawObjectType {
+    Cone,
+    Cube
+  };
+
+  public static enum ClawObjectPlacement {
+    Top,
+    Middle,
+    Hybrid
+  };
+
+  public static enum AutoPathChoice {
+    Red1,
+    Red2,
+    Red3,
+    Blue6,
+    Blue7,
+    Blue8
+  }
+
+  public static final String PlaceObjectMarker = "PlaceObject";
+  public static final String PickupObjectMarker = "PickUpObject";
+  public static final String AutoLevelMarker = "ChargeStationLevel";
 }

@@ -1,2 +1,11 @@
-from root of this repo run the following:
+To run spotless from root of this repo, run the following:
 ./gradlew :spotlessApply
+
+To run autonomous path with shuffleboard, 
+1. Chose the W in top right, in the drop down in the middle of the screen 
+type "Start Tool", chose Shuffleboard.
+2. Simulate the robot code, chose Autonomous in drive station 
+3. Choose the path 
+
+https://docs.wpilib.org/en/stable/docs/software/dashboards/shuffleboard/index.html
+

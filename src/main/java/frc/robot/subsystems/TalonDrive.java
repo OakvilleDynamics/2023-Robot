@@ -3,11 +3,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
-import com.pathplanner.lib.*;
-import com.pathplanner.lib.commands.PPRamseteCommand;
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.RamseteController;
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
@@ -16,9 +11,6 @@ import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -45,6 +37,9 @@ public class TalonDrive extends SubsystemBase {
   private final DifferentialDriveOdometry m_odometry =
       new DifferentialDriveOdometry(
           Rotation2d.fromDegrees(getAccelX()), getLeftDistanceMeters(), getRightDistanceMeters());
+
+  public final DifferentialDriveKinematics kinematics =
+      new DifferentialDriveKinematics(Constants.trackWidthMeters);
 
   private Pose2d m_pose = new Pose2d(0, 0, new Rotation2d(0));
 
@@ -90,7 +85,7 @@ public class TalonDrive extends SubsystemBase {
     m_robotDrive.arcadeDrive(-y, -x);
   }
 
-  private void resetOdometry(Pose2d pose2D) {
+  public void resetOdometry(Pose2d pose2D) {
     System.out.println("Reseting Odometry");
     // TODO: implement, hook up to drive
     navxAhrs.reset();
@@ -104,7 +99,7 @@ public class TalonDrive extends SubsystemBase {
     // m_autoOdometry.resetPosition(pose2D, navxAhrs.getRotation2d().times(-1.0));
   }
 
-  private Pose2d getPose() {
+  public Pose2d getPose() {
     System.out.println("Getting pose");
     // TODO: Hook into shuffleboard if we want
     // Pose2d pose = m_odometry.getPoseMeters();
@@ -115,80 +110,41 @@ public class TalonDrive extends SubsystemBase {
     return m_odometry.getPoseMeters();
   }
 
-  private DifferentialDriveWheelSpeeds getWheelSpeeds() {
+  public DifferentialDriveWheelSpeeds getWheelSpeeds() {
     System.out.println("Getting and setting Wheel Speeds");
     return new DifferentialDriveWheelSpeeds(getLeftVelocity(), getRightVelocity());
   }
 
-  private int getRightVelocity() {
+  public int getRightVelocity() {
     // Encoders are on the left and right front motor controllers
     int velocity = m_rightFront.getSensorCollection().getQuadratureVelocity();
     System.out.println("Right velocity: " + velocity);
     return velocity;
   }
 
-  private int getLeftVelocity() {
+  public int getLeftVelocity() {
     // Encoders are on the left and right front motor controllers
     int velocity = m_leftFront.getSensorCollection().getQuadratureVelocity();
     System.out.println("Left velocity: " + velocity);
     return velocity;
   }
 
-  private int getRightDistanceMeters() {
+  public int getRightDistanceMeters() {
     int distance = m_rightFront.getSensorCollection().getQuadraturePosition();
     System.out.println("Right distance meters: " + distance);
     return distance;
   }
 
-  private int getLeftDistanceMeters() {
+  public int getLeftDistanceMeters() {
     int distance = m_leftFront.getSensorCollection().getQuadraturePosition();
     System.out.println("Left distance meters: " + distance);
     return distance;
   }
 
-  private void outputVolts(double leftVolts, double rightVolts) {
+  public void outputVolts(double leftVolts, double rightVolts) {
     System.out.println("Set output volts left: " + leftVolts + " right: " + rightVolts);
     m_leftMotorGroup.setVoltage(leftVolts);
     m_rightMotorGroup.setVoltage(rightVolts);
-  }
-
-  public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
-    System.out.println("Following Trajectory");
-    return new SequentialCommandGroup(
-        new InstantCommand(
-            () -> {
-              // Reset odometry for the first path you run during auto
-              if (isFirstPath) {
-                this.resetOdometry(traj.getInitialPose());
-              }
-            }),
-        new PPRamseteCommand(
-            traj,
-            this::getPose, // Pose supplier
-            new RamseteController(),
-            new SimpleMotorFeedforward(
-                Constants.motorFeedStaticGain,
-                Constants.motorFeedVelocityGain,
-                Constants.motorFeedAccelerationGain),
-            new DifferentialDriveKinematics(
-                Constants.trackWidthMeters), // DifferentialDriveKinematics
-            this::getWheelSpeeds, // DifferentialDriveWheelSpeeds supplier
-            new PIDController(
-                Constants.pidControllerProportionalCoefficient,
-                Constants.pidControllerIntegralCoefficient,
-                Constants
-                    .pidControllerDerivativeCoefficient), // Left controller. Tune these values for
-            // your robot. Leaving them 0 will only use feedforwards.
-            new PIDController(
-                Constants.pidControllerProportionalCoefficient,
-                Constants.pidControllerIntegralCoefficient,
-                Constants.pidControllerDerivativeCoefficient), // Right controller (usually the same
-            // values as left controller)
-            this::outputVolts, // Voltage biconsumer
-            true, // Should the path be automatically mirrored depending on alliance color.
-            // Optional, defaults to true
-            this // Requires this drive subsystem
-            ));
   }
 
   /**

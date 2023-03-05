@@ -174,19 +174,19 @@
     {
       "position": 0.9988636363636363,
       "names": [
-        "placeObject"
+        "PlaceObject"
       ]
     },
     {
       "position": 3.9718039772727263,
       "names": [
-        "event"
+        "PickUpObject"
       ]
     },
     {
       "position": 6.0,
       "names": [
-        "CargeStationLevel"
+        "ChargeStationLevel"
       ]
     }
   ]
