@@ -16,7 +16,7 @@ public class PneumaticShift extends SubsystemBase {
 
   public DoubleSolenoid gearSolenoid = null;
 
-  // intialize the pneumatic brakes
+  // intialize the pneumatic gear shifter
   public PneumaticShift() {
 
     gearSolenoid =
@@ -26,13 +26,18 @@ public class PneumaticShift extends SubsystemBase {
             Constants.pneumaticChannelTransmissionHigh,
             Constants.pneumaticChannelTransmissionLow);
   }
-  // turn the brakes on
+
+  /**
+   * Engage low gear
+   */
   public void lowGear() {
 
     gearSolenoid.set(Value.kForward);
   }
 
-  // turn the brakes off
+  /**
+   * Engage high gear
+   */
   public void highGear() {
 
     gearSolenoid.set(Value.kReverse);
