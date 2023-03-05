@@ -27,17 +27,13 @@ public class PneumaticShift extends SubsystemBase {
             Constants.pneumaticChannelTransmissionLow);
   }
 
-  /**
-   * Engage low gear
-   */
+  /** Engage low gear */
   public void lowGear() {
 
     gearSolenoid.set(Value.kForward);
   }
 
-  /**
-   * Engage high gear
-   */
+  /** Engage high gear */
   public void highGear() {
 
     gearSolenoid.set(Value.kReverse);

@@ -25,7 +25,7 @@ public class PlaceObject extends SequentialCommandGroup {
         new PrintCommand("Extend arm to proper height."),
         new InstantCommand(
             () -> {
-              claw.clawOff();
+              claw.clawOpen();
             }),
         new PrintCommand("Return arm to transport location."));
   }

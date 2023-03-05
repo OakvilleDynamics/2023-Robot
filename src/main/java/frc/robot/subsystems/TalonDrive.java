@@ -5,12 +5,14 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -87,27 +89,32 @@ public class TalonDrive extends SubsystemBase {
 
   public void resetOdometry(Pose2d pose2D) {
     System.out.println("Reseting Odometry");
-    // TODO: implement, hook up to drive
     navxAhrs.reset();
     navxAhrs.setAngleAdjustment(pose2D.getRotation().getDegrees());
-    // keepAngle = navxAhrs.getRotation2d().getRadians();
     m_odometry.resetPosition(
         navxAhrs.getRotation2d().times(-1.0),
         getLeftDistanceMeters(),
         getRightDistanceMeters(),
         pose2D);
-    // m_autoOdometry.resetPosition(pose2D, navxAhrs.getRotation2d().times(-1.0));
   }
 
   public Pose2d getPose() {
     System.out.println("Getting pose");
-    // TODO: Hook into shuffleboard if we want
-    // Pose2d pose = m_odometry.getPoseMeters();
-    // Translation2d position = pose.getTranslation();
-    // SmartDashboard.putNumber("Robot X", position.getX());
-    // SmartDashboard.putNumber("Robot Y", position.getY());
-    // SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
+    Pose2d pose = m_odometry.getPoseMeters();
+    Translation2d position = pose.getTranslation();
+    SmartDashboard.putNumber("Robot X", position.getX());
+    SmartDashboard.putNumber("Robot Y", position.getY());
+    SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
     return m_odometry.getPoseMeters();
+  }
+
+  /**
+   * Function to retrieve latest robot gyro angle.
+   *
+   * @return Rotation2d object containing Gyro angle
+   */
+  public Rotation2d getGyro() {
+    return navxAhrs.getRotation2d();
   }
 
   public DifferentialDriveWheelSpeeds getWheelSpeeds() {
