@@ -23,12 +23,12 @@ public class PneumaticClaw extends SubsystemBase {
   }
 
   public void clawOn() {
-
+    System.out.println("Claw on - close.");
     m_clawSolenoid.set(true);
   }
 
   public void clawOff() {
-
+    System.out.println("Claw off - open.");
     m_clawSolenoid.set(false);
   }
 

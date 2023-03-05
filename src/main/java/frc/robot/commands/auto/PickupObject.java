@@ -1,5 +1,6 @@
 package frc.robot.commands.auto;
 
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.ClawObjectPlacement;
@@ -18,7 +19,10 @@ public class PickupObject extends SequentialCommandGroup {
 
     addCommands(
         new PrintCommand("Extend arm to proper height."),
-        new PrintCommand("Close claw."),
+        new InstantCommand(
+            () -> {
+              claw.clawOn();
+            }),
         new PrintCommand("Return arm to transport location."));
   }
 }

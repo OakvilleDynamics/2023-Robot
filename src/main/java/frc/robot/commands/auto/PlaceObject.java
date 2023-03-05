@@ -1,6 +1,8 @@
 package frc.robot.commands.auto;
 
 import com.pathplanner.lib.*;
+
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.ClawObjectPlacement;
@@ -23,7 +25,10 @@ public class PlaceObject extends SequentialCommandGroup {
 
     addCommands(
         new PrintCommand("Extend arm to proper height."),
-        new PrintCommand("Open claw."),
+        new InstantCommand(
+            () -> {
+              claw.clawOff();
+            }),
         new PrintCommand("Return arm to transport location."));
   }
 }

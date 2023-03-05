@@ -4,7 +4,10 @@
 
 package frc.robot;
 
+import java.util.List;
+
 import com.pathplanner.lib.*;
+import com.pathplanner.lib.PathPlannerTrajectory.EventMarker;
 import com.pathplanner.lib.commands.FollowPathWithEvents;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -114,6 +117,10 @@ public class RobotContainer {
     // it can reset the odometer
     boolean isFirstPath = (m_autonomousRuns++ == 0);
     PathPlannerTrajectory trajectory = autoPath.getTrajectory();
+    List<EventMarker> markers = trajectory.getMarkers();
+    markers.forEach((marker) -> {
+      System.out.println("Marker names: " + String.join(",", marker.names));
+    });
     FollowPathWithEvents command =
         new FollowPathWithEvents(
             new FollowPath(m_simpledrive, trajectory, isFirstPath),

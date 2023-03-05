@@ -60,74 +60,54 @@ public class AutoPath {
               Constants.pathDriveTrainMaxVelocity, Constants.pathDriveTrainMaxAcceleration));
 
   public AutoPath(AutoPathChoice autoPathChoice, TalonDrive drive, Arm arm, PneumaticClaw claw) {
+    //All paths place and pickup objects
+    m_eventMap.put(
+        PlaceObjectMarker,
+        new PlaceObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
+    m_eventMap.put(
+        PickupObjectMarker,
+        new PickupObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
+
     switch (autoPathChoice) {
       case Red1:
         // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
         // park outside of community turned toward community
         m_trajectory = red1;
-        m_eventMap.put(
-            PlaceObjectMarker,
-            new PlaceObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
-        m_eventMap.put(
-            PickupObjectMarker,
-            new PickupObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
         break;
       case Red2:
         // Drive forward, place cone on top poll, drive over charging station and out of Community,
         // pick up second cone, park on top of charging station level, turned toward community
         m_trajectory = red2;
-        m_eventMap.put(
-            PlaceObjectMarker,
-            new PlaceObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
-        m_eventMap.put(
-            PickupObjectMarker,
-            new PickupObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
-        m_eventMap.put(AutoLevelMarker, new AutoLevel(drive));
+        //TODO: Documentation for FollowPathWithEvents 
+        //eventMap Map of event marker names to the commands 
+        //that should run when reaching that marker. This SHOULD NOT contain any commands requiring
+        //the same subsystems as the path following command. 
+        //m_eventMap.put(AutoLevelMarker, new AutoLevel(drive));
         break;
       case Red3:
         // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
         // park outside of community turned toward community
         m_trajectory = red3;
-        m_eventMap.put(
-            PlaceObjectMarker,
-            new PlaceObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
-        m_eventMap.put(
-            PickupObjectMarker,
-            new PickupObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
         break;
       case Blue6:
         // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
         // park outside of community turned toward community
         m_trajectory = blue6;
-        m_eventMap.put(
-            PlaceObjectMarker,
-            new PlaceObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
-        m_eventMap.put(
-            PickupObjectMarker,
-            new PickupObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
         break;
       case Blue7:
         // Drive forward, place cone on top poll, drive over charging station and out of Community,
         // pick up cube, park on top of charging station level, turned toward community
         m_trajectory = blue7;
-        m_eventMap.put(
-            PlaceObjectMarker,
-            new PlaceObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
-        m_eventMap.put(
-            PickupObjectMarker,
-            new PickupObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
-        m_eventMap.put(AutoLevelMarker, new AutoLevel(drive));
+        //TODO: Documentation for FollowPathWithEvents 
+        //eventMap Map of event marker names to the commands 
+        //that should run when reaching that marker. This SHOULD NOT contain any commands requiring
+        //the same subsystems as the path following command. 
+        //m_eventMap.put(AutoLevelMarker, new AutoLevel(drive));
         break;
       case Blue8:
         // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
         // park outside of community turned toward community
         m_trajectory = blue8;
-        m_eventMap.put(
-            PlaceObjectMarker,
-            new PlaceObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
-        m_eventMap.put(
-            PickupObjectMarker,
-            new PickupObject(arm, claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
         break;
     }
     ;
