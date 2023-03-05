@@ -3,6 +3,9 @@ package frc.robot.subsystems;
 // This talon srx import is different than the TalonDrive import
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxRelativeEncoder.Type;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -12,8 +15,12 @@ public class ArmTurret extends SubsystemBase {
   private CANSparkMax turntable =
       new CANSparkMax(Constants.sparkTurretDeviceID, MotorType.kBrushed);
 
+  private RelativeEncoder m_turntableEncoder;
+
   public ArmTurret() {
     turntable.setInverted(true);
+
+    m_turntableEncoder = turntable.getEncoder(Type.kQuadrature, 8192);
   }
 
   public void rotateLeft() {
@@ -26,5 +33,11 @@ public class ArmTurret extends SubsystemBase {
 
   public void rotateStop() {
     turntable.set(Constants.turntableRotateStop);
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Arm Turret", m_turntableEncoder.getPosition());
   }
 }

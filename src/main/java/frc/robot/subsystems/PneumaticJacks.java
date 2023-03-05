@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -32,24 +33,28 @@ public class PneumaticJacks extends SubsystemBase {
             PneumaticsModuleType.CTREPCM,
             Constants.pneumaticChannelJackBackDown,
             Constants.pneumaticChannelJackBackUp);
+
+    SmartDashboard.putString("Front Jacks", "Off");
+    SmartDashboard.putString("Back Jacks", "Off");
   }
 
   public void frontOn() {
     m_frontSolenoid.set(Value.kForward);
+    SmartDashboard.putString("Front Jacks", "On");
   }
 
   public void frontOff() {
     m_frontSolenoid.set(Value.kReverse);
+    SmartDashboard.putString("Front Jacks", "Off");
   }
 
   public void backOn() {
     m_backSolenoid.set(Value.kForward);
+    SmartDashboard.putString("Back Jacks", "On");
   }
 
   public void backOff() {
     m_backSolenoid.set(Value.kReverse);
+    SmartDashboard.putString("Back Jacks", "Off");
   }
-
-  @Override
-  public void periodic() {}
 }
