@@ -21,7 +21,7 @@ public class PickupObject extends SequentialCommandGroup {
         new PrintCommand("Extend arm to proper height."),
         new InstantCommand(
             () -> {
-              claw.clawOn();
+              claw.clawClose();
             }),
         new PrintCommand("Return arm to transport location."));
   }
