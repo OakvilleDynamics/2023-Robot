@@ -16,6 +16,7 @@ public class MoveArm extends CommandBase {
 
   // controllers
   private final Joystick armJoystick = new Joystick(Constants.armJoystickID);
+  private final Joystick controllerJoystick = new Joystick(Constants.armJoystickID);
 
   public MoveArm(Arm subsystem) {
     m_armSubsystem = subsystem;
@@ -47,6 +48,16 @@ public class MoveArm extends CommandBase {
       m_armSubsystem.topArmDown();
     } else {
       m_armSubsystem.topArmStop();
+    }
+
+    if (controllerJoystick.getRawButton(Constants.joystickButtonExtendClaw) == true) {
+      m_armSubsystem.extendArm();
+      System.out.println("Arm Extending");
+    }
+
+     if (controllerJoystick.getRawButton(Constants.joystickButtonRetractClaw) == true) {
+      m_armSubsystem.retractArm();
+      System.out.println("Arm Closing");
     }
   }
 
