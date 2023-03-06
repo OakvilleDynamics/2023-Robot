@@ -51,9 +51,9 @@ public class TalonDrive extends SubsystemBase {
     m_leftFront.setInverted(false);
     m_leftMid.setInverted(false);
     m_leftBack.setInverted(false);
-    m_rightFront.setInverted(false);
-    m_rightMid.setInverted(false);
-    m_rightBack.setInverted(false);
+    m_rightFront.setInverted(true);
+    m_rightMid.setInverted(true);
+    m_rightBack.setInverted(true);
 
     m_leftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
     m_rightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);

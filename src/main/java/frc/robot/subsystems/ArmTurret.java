@@ -18,7 +18,7 @@ public class ArmTurret extends SubsystemBase {
   private RelativeEncoder m_turntableEncoder;
 
   public ArmTurret() {
-    turntable.setInverted(true);
+    turntable.setInverted(false);
 
     m_turntableEncoder = turntable.getEncoder(Type.kQuadrature, 8192);
 

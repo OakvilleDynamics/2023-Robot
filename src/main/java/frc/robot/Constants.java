@@ -52,12 +52,12 @@ public final class Constants {
   public static final int pneumaticClawClosed = 1;
 
   // constants for motor controllers
-  public static final int talonDriveLeftFrontID = 10;
-  public static final int talonDriveLeftMidID = 11;
-  public static final int talonDriveLeftBackID = 12;
-  public static final int talonDriveRightFrontID = 13;
-  public static final int talonDriveRightMidID = 14;
-  public static final int talonDriveRightBackID = 15;
+  public static final int talonDriveLeftFrontID = 13;
+  public static final int talonDriveLeftMidID = 14;
+  public static final int talonDriveLeftBackID = 15;
+  public static final int talonDriveRightFrontID = 10;
+  public static final int talonDriveRightMidID = 11;
+  public static final int talonDriveRightBackID = 12;
 
   public static final int sparkTurretDeviceID = 16;
   public static final int sparkArmBottomDeviceID = 17;
@@ -99,7 +99,7 @@ public final class Constants {
 
   // constants for the bottom stage of the arm
   public static final boolean bottomArmInverted = false;
-  public static final double bottomArmSpeed = 0.5;
+  public static final double bottomArmSpeed = 1.0;
   public static final double bottomArmP = 0.1;
   public static final double bottomArmI = 1e-4;
   public static final double bottomArmD = 1;
@@ -110,7 +110,7 @@ public final class Constants {
 
   // constants for the top stage of the arm
   public static final boolean topArmInverted = false;
-  public static final double topArmSpeed = 0.5;
+  public static final double topArmSpeed = 1.0;
   public static final double topArmP = 0;
   public static final double topArmI = 0;
   public static final double topArmD = 0;

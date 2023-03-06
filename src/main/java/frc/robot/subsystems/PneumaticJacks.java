@@ -41,22 +41,22 @@ public class PneumaticJacks extends SubsystemBase {
   }
 
   public void frontOn() {
-    m_frontSolenoid.set(Value.kForward);
+    m_frontSolenoid.set(Value.kReverse);
     SmartDashboard.putString("Front Jacks", "On");
   }
 
   public void frontOff() {
-    m_frontSolenoid.set(Value.kReverse);
+    m_frontSolenoid.set(Value.kForward);
     SmartDashboard.putString("Front Jacks", "Off");
   }
 
   public void backOn() {
-    m_backSolenoid.set(Value.kForward);
+    m_backSolenoid.set(Value.kReverse);
     SmartDashboard.putString("Back Jacks", "On");
   }
 
   public void backOff() {
-    m_backSolenoid.set(Value.kReverse);
+    m_backSolenoid.set(Value.kForward);
     SmartDashboard.putString("Back Jacks", "Off");
   }
 }
