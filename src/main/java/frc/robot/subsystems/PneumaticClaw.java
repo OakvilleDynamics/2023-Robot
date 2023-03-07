@@ -30,19 +30,16 @@ public class PneumaticClaw extends SubsystemBase {
   }
 
   public void clawOpen() {
-    System.out.println("Claw open.");
     SmartDashboard.putString("Claw", "Open");
     m_clawSolenoid.set(Value.kForward);
   }
 
   public void clawOff() {
-    System.out.println("Claw off.");
     SmartDashboard.putString("Claw", "Off");
     m_clawSolenoid.set(Value.kOff);
   }
 
   public void clawClose() {
-    System.out.println("Claw close.");
     SmartDashboard.putString("Claw", "Closed");
     m_clawSolenoid.set(Value.kReverse);
   }

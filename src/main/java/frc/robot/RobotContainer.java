@@ -74,6 +74,7 @@ public class RobotContainer {
     m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
     m_Shift.setDefaultCommand(new GearShift(m_Shift));
     m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
+    m_claw.setDefaultCommand(new Claw(m_claw));
 
     m_eventMap.put(
         Constants.PlaceObjectMarker,

@@ -55,7 +55,7 @@ public class MoveArm extends CommandBase {
       System.out.println("Arm Extending");
     }
 
-     if (controllerJoystick.getRawButton(Constants.joystickButtonRetractClaw) == true) {
+    if (controllerJoystick.getRawButton(Constants.joystickButtonRetractClaw) == true) {
       m_armSubsystem.retractArm();
       System.out.println("Arm Closing");
     }

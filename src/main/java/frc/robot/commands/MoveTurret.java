@@ -24,8 +24,10 @@ public class MoveTurret extends CommandBase {
   public void execute() {
     if (driveJoystick.getRawButton(Constants.joystickTurretLeft) == true) {
       m_turret.rotateLeft();
+      System.out.println("Rotating Turret Left");
     } else if (driveJoystick.getRawButton(Constants.joystickTurretRight) == true) {
       m_turret.rotateRight();
+      System.out.println("Rotating Turret Right");
     } else {
       m_turret.rotateStop();
     }

@@ -33,7 +33,7 @@ public final class Constants {
 
   // constants for turret control directions
   public static final int joystickTurretLeft = 3;
-  public static final int joystickTurretRight = 4;  
+  public static final int joystickTurretRight = 4;
 
   // constants for pnuematicControllers
   public static final int pcmModuleAlpha = 25;
@@ -90,7 +90,6 @@ public final class Constants {
   // identifiers for gear shift
   public static final double gearThrottleHigh = -1.0;
   public static final double gearThrottleLow = 1.0;
-
 
   // constants for turret rotation subsystem
   public static final double turntableRotateRight = 1.0;

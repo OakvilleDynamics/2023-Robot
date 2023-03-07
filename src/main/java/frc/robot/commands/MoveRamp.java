@@ -31,12 +31,10 @@ public class MoveRamp extends CommandBase {
     if (driverJoystick.getRawButton(Constants.joystickButtonRampUp) == true) {
       m_Ramp.rampUp();
       System.out.println("Ramp - up");
-    }
-    else if (driverJoystick.getRawButton(Constants.joystickButtonRampDown) == true) {
+    } else if (driverJoystick.getRawButton(Constants.joystickButtonRampDown) == true) {
       m_Ramp.rampDown();
       System.out.println("Ramp - down");
-    }
-    else {
+    } else {
       m_Ramp.rampStop();
     }
   }
