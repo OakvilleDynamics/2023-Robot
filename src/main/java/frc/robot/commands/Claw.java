@@ -29,8 +29,8 @@ public class Claw extends CommandBase {
       System.out.println("Claw open.");
     } else if (controllerJoystick.getRawButton(Constants.joystickButtonClawOff) == true) {
       m_Claw.clawClose();
-      System.out.println("Claw close."); }
-    else {
+      System.out.println("Claw close.");
+    } else {
       m_Claw.clawOff();
     }
   }

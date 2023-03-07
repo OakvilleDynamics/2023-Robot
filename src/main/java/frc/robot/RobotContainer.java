@@ -42,27 +42,6 @@ public class RobotContainer {
 
   // Autonomous Commands
   HashMap<String, Command> m_eventMap = new HashMap<String, Command>();
-  RamseteAutoBuilder m_autoBuilder =
-      new RamseteAutoBuilder(
-          m_simpledrive
-              ::getPose, // Pose2d consumer, used to reset odometry at the beginning of auto
-          (pose) -> m_simpledrive.resetOdometry(pose), // Consumer<Pose2d> resetPose,
-          new RamseteController(), // RamseteController controller,
-          m_simpledrive.kinematics, // DifferentialDriveKinematics
-          new SimpleMotorFeedforward(
-              Constants.motorFeedStaticGain,
-              Constants.motorFeedVelocityGain,
-              Constants.motorFeedAccelerationGain), // SimpleMotorFeedforward
-          m_simpledrive::getWheelSpeeds, // Supplier<DifferentialDriveWheelSpeeds> speedsSupplier,
-          new PIDConstants(5.0, 0.0, 0.0), // PIDConstants driveConstants,
-          (leftVolts, rightVolts) ->
-              m_simpledrive.outputVolts(
-                  leftVolts,
-                  rightVolts), // Module states consumer used to output to the drive subsystem
-          m_eventMap, // Map<String, Command> eventMap,
-          m_simpledrive // The drive subsystem. Used to properly set the requirements of path
-          // following commands
-          );
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -139,6 +118,32 @@ public class RobotContainer {
     if (autoPath == null) {
       return null;
     }
+
+    RamseteAutoBuilder m_autoBuilder =
+        new RamseteAutoBuilder(
+            m_simpledrive
+                ::getPose, // Pose2d consumer, used to reset odometry at the beginning of auto
+            (pose) -> m_simpledrive.resetOdometry(pose), // Consumer<Pose2d> resetPose,
+            new RamseteController(), // RamseteController controller,
+            m_simpledrive.kinematics, // DifferentialDriveKinematics
+            new SimpleMotorFeedforward(
+                Constants.motorFeedStaticGain,
+                Constants.motorFeedVelocityGain,
+                Constants.motorFeedAccelerationGain), // SimpleMotorFeedforward
+            m_simpledrive::getWheelSpeeds, // Supplier<DifferentialDriveWheelSpeeds> speedsSupplier,
+            new PIDConstants(
+                Constants.pidControllerProportionalCoefficient,
+                Constants.pidControllerIntegralCoefficient,
+                Constants.pidControllerDerivativeCoefficient), // PIDConstants driveConstants,
+            (leftVolts, rightVolts) ->
+                m_simpledrive.outputVolts(
+                    leftVolts,
+                    rightVolts), // Module states consumer used to output to the drive subsystem
+            m_eventMap, // Map<String, Command> eventMap,
+            autoPath.getUseAllianceColor(),
+            m_simpledrive // The drive subsystem. Used to properly set the requirements of path
+            // following commands
+            );
 
     return m_autoBuilder.fullAuto(autoPath.getPathGroup());
   }

@@ -88,7 +88,7 @@ public class TalonDrive extends SubsystemBase {
   }
 
   public void resetOdometry(Pose2d pose2D) {
-    System.out.println("Reseting Odometry");
+    // System.out.println("Reseting Odometry");
     navxAhrs.reset();
     navxAhrs.setAngleAdjustment(pose2D.getRotation().getDegrees());
     m_odometry.resetPosition(
@@ -99,7 +99,7 @@ public class TalonDrive extends SubsystemBase {
   }
 
   public Pose2d getPose() {
-    System.out.println("Getting pose");
+    // System.out.println("Getting pose");
     return m_odometry.getPoseMeters();
   }
 
@@ -121,33 +121,33 @@ public class TalonDrive extends SubsystemBase {
   }
 
   public DifferentialDriveWheelSpeeds getWheelSpeeds() {
-    System.out.println("Getting and setting Wheel Speeds");
+    // System.out.println("Getting and setting Wheel Speeds");
     return new DifferentialDriveWheelSpeeds(getLeftVelocity(), getRightVelocity());
   }
 
   public int getRightVelocity() {
     // Encoders are on the left and right front motor controllers
     int velocity = m_rightFront.getSensorCollection().getQuadratureVelocity();
-    System.out.println("Right velocity: " + velocity);
+    // System.out.println("Right velocity: " + velocity);
     return velocity;
   }
 
   public int getLeftVelocity() {
     // Encoders are on the left and right front motor controllers
     int velocity = m_leftFront.getSensorCollection().getQuadratureVelocity();
-    System.out.println("Left velocity: " + velocity);
+    // System.out.println("Left velocity: " + velocity);
     return velocity;
   }
 
   public int getRightDistanceMeters() {
     int distance = m_rightFront.getSensorCollection().getQuadraturePosition();
-    System.out.println("Right distance meters: " + distance);
+    // System.out.println("Right distance meters: " + distance);
     return distance;
   }
 
   public int getLeftDistanceMeters() {
     int distance = m_leftFront.getSensorCollection().getQuadraturePosition();
-    System.out.println("Left distance meters: " + distance);
+    // System.out.println("Left distance meters: " + distance);
     return distance;
   }
 
