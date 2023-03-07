@@ -2,13 +2,13 @@
   "waypoints": [
     {
       "anchorPoint": {
-        "x": 3.57795538662506,
-        "y": 0.6153192242098773
+        "x": 3.2511110284554166,
+        "y": 0.6663485527440904
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.089089252196456,
-        "y": 0.6153192242098772
+        "x": 2.998534673655095,
+        "y": 0.659872235954339
       },
       "holonomicAngle": 0,
       "isReversal": false,
@@ -24,50 +24,54 @@
     },
     {
       "anchorPoint": {
-        "x": 2.249869325810081,
-        "y": 0.6256616259661104
+        "x": 2.156613490987358,
+        "y": 0.6274906520055801
       },
       "prevControl": {
-        "x": 1.546436587727983,
-        "y": 0.6256616259661104
+        "x": 2.6617662005880005,
+        "y": 0.6339669687953317
       },
       "nextControl": {
-        "x": 2.993801131915631,
-        "y": 0.6256616259661104
+        "x": 1.6514607813867155,
+        "y": 0.6210143352158285
       },
       "holonomicAngle": 0,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
-      "isStopPoint": false,
+      "isStopPoint": true,
       "stopEvent": {
-        "names": [],
-        "executionBehavior": "parallel",
+        "names": [
+          "PlaceObject"
+        ],
+        "executionBehavior": "sequential",
         "waitBehavior": "none",
         "waitTime": 0
       }
     },
     {
       "anchorPoint": {
-        "x": 7.084136942559599,
-        "y": 0.9275595540476808
+        "x": 6.346790453956789,
+        "y": 0.8217801556981345
       },
       "prevControl": {
-        "x": 6.084136942559599,
-        "y": 0.9275595540476808
+        "x": 5.373373285623213,
+        "y": 0.592740821972588
       },
       "nextControl": {
-        "x": 8.084136942559603,
-        "y": 0.9275595540476808
+        "x": 7.337666922788818,
+        "y": 1.0549275601291996
       },
       "holonomicAngle": 0,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
-      "isStopPoint": false,
+      "isStopPoint": true,
       "stopEvent": {
-        "names": [],
-        "executionBehavior": "parallel",
+        "names": [
+          "PickUpObject"
+        ],
+        "executionBehavior": "sequential",
         "waitBehavior": "none",
         "waitTime": 0
       }
@@ -95,18 +99,5 @@
       }
     }
   ],
-  "markers": [
-    {
-      "position": 0.8,
-      "names": [
-        "PlaceObject"
-      ]
-    },
-    {
-      "position": 2.0,
-      "names": [
-        "PickUpObject"
-      ]
-    }
-  ]
+  "markers": []
 }

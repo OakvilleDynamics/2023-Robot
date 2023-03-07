@@ -12,40 +12,52 @@ import java.util.List;
 
 public class AutoPath {
   List<PathPlannerTrajectory> m_trajectory = null;
+  boolean m_useAllianceColor = false;
 
   public AutoPath(AutoPathChoice autoPathChoice, TalonDrive drive, Arm arm, PneumaticClaw claw) {
     // Determine path name
+    // We are utilizing the useAllianceColor of the RamseteAutoBuilder command to mirror the blue paths
+    // for the red
     String pathName = "";
     switch (autoPathChoice) {
       case Red1:
         // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
         // park outside of community turned toward community
-        pathName = "Red April ID 1";
+        //pathName = "Red April ID 1";
+        pathName = "Blue April ID 8";
+        m_useAllianceColor = true;
         break;
       case Red2:
         // Drive forward, place cone on top poll, drive over charging station and out of Community,
         // pick up second cone, park on top of charging station level, turned toward community
-        pathName = "Red April ID 2";
+        //pathName = "Red April ID 2";
+        pathName = "Blue April ID 7";
+        m_useAllianceColor = true;
         break;
       case Red3:
         // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
         // park outside of community turned toward community
-        pathName = "Red April ID 3";
+        //pathName = "Red April ID 3";
+        pathName = "Blue April ID 6";
+        m_useAllianceColor = true;
         break;
       case Blue6:
         // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
         // park outside of community turned toward community
         pathName = "Blue April ID 6";
+        m_useAllianceColor = false;
         break;
       case Blue7:
         // Drive forward, place cone on top poll, drive over charging station and out of Community,
         // pick up cube, park on top of charging station level, turned toward community
         pathName = "Blue April ID 7";
+        m_useAllianceColor = false;
         break;
       case Blue8:
         // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
         // park outside of community turned toward community
         pathName = "Blue April ID 8";
+        m_useAllianceColor = false;
         break;
     }
 
@@ -62,5 +74,10 @@ public class AutoPath {
 
   public List<PathPlannerTrajectory> getPathGroup() {
     return m_trajectory;
+  }
+
+  public boolean getUseAllianceColor() {
+
+    return m_useAllianceColor;
   }
 }
