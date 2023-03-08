@@ -52,6 +52,8 @@ public final class Constants {
   public static final int pneumaticClawClosed = 1;
 
   // constants for motor controllers
+  public static final boolean talonDriveLeftInverted = false;
+  public static final boolean talonDriveRightInverted = true;
   public static final int talonDriveLeftFrontID = 13;
   public static final int talonDriveLeftMidID = 14;
   public static final int talonDriveLeftBackID = 15;
@@ -91,11 +93,6 @@ public final class Constants {
   public static final double gearThrottleHigh = -1.0;
   public static final double gearThrottleLow = 1.0;
 
-  // constants for turret rotation subsystem
-  public static final double turntableRotateRight = 1.0;
-  public static final double turntableRotateStop = 0.0;
-  public static final double turntableRotateLeft = -1.0;
-
   // constants for the bottom stage of the arm
   public static final boolean bottomArmInverted = false;
   public static final double bottomArmSpeed = 1.0;
@@ -117,6 +114,17 @@ public final class Constants {
   public static final double topArmFF = 0;
   public static final double topArmMinOutput = 0;
   public static final double topArmMaxOutput = 0;
+
+  // constants for the arm turret
+  public static final boolean turretInverted = false;
+  public static final double turretSpeed = 1.0;
+  public static final double turntableP = 0;
+  public static final double turntableI = 0;
+  public static final double turntableD = 0;
+  public static final double turntableFF = 0;
+  public static final double turntableIZone = 0;
+  public static final double turntableMinOutput = 0;
+  public static final double turntableMaxOutput = 0;
 
   // constants for ramp motor rotation speed
   public static double rampSpeed = 0.5;
