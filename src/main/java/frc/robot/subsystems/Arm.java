@@ -79,9 +79,9 @@ public class Arm extends SubsystemBase {
   public void bottomArmUp() {
     // Check for if the top arm has cleared the superstructure before allowing the bottom arm
     // to move
-    //if (m_topEncoder.getPosition() > Constants.topArmThreshold) {
+    // if (m_topEncoder.getPosition() > Constants.topArmThreshold) {
     bottomArm.set(Constants.bottomArmSpeed);
-    //}
+    // }
   }
 
   public void bottomArmDown() {
