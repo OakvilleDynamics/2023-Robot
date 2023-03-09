@@ -93,9 +93,15 @@ public final class Constants {
   public static final double gearThrottleHigh = -1.0;
   public static final double gearThrottleLow = 1.0;
 
+  // constants for turret rotation subsystem
+  public static final double turntableRotateRight = 0.50;
+  public static final double turntableRotateStop = 0.0;
+  public static final double turntableRotateLeft = -0.50;
+
   // constants for the bottom stage of the arm
   public static final boolean bottomArmInverted = false;
   public static final double bottomArmSpeed = 1.0;
+  public static final double bottomArmSoftCloseSpeed = 0.5;
   public static final double bottomArmP = 0.1;
   public static final double bottomArmI = 1e-4;
   public static final double bottomArmD = 1;
@@ -107,6 +113,7 @@ public final class Constants {
   // constants for the top stage of the arm
   public static final boolean topArmInverted = false;
   public static final double topArmSpeed = 1.0;
+  public static final double topArmSoftCloseSpeed = 0.5;
   public static final double topArmP = 0;
   public static final double topArmI = 0;
   public static final double topArmD = 0;
@@ -114,6 +121,7 @@ public final class Constants {
   public static final double topArmFF = 0;
   public static final double topArmMinOutput = 0;
   public static final double topArmMaxOutput = 0;
+  public static final double topArmThreshold = 0;
 
   // constants for the arm turret
   public static final boolean turretInverted = false;

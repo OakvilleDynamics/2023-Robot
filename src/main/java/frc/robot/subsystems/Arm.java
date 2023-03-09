@@ -38,6 +38,9 @@ public class Arm extends SubsystemBase {
 
   private SparkMaxPIDController bottomArmPIDController = bottomArm.getPIDController();
   private SparkMaxPIDController topArmPIDController = topArm.getPIDController();
+
+  private static final double conversionFactor = 360;
+
   /** Creates a new Arm. */
   public Arm() {
     bottomArm.setInverted(Constants.bottomArmInverted);
@@ -47,7 +50,7 @@ public class Arm extends SubsystemBase {
     System.out.println("Arm is retracted");
 
     m_bottomEncoder = bottomArm.getEncoder(Type.kQuadrature, 8192);
-    m_topEncoder = bottomArm.getEncoder(Type.kQuadrature, 8192);
+    m_topEncoder = topArm.getEncoder(Type.kQuadrature, 8192);
 
     bottomArmPIDController.setP(Constants.bottomArmP);
     bottomArmPIDController.setI(Constants.bottomArmI);
@@ -67,15 +70,22 @@ public class Arm extends SubsystemBase {
     bottomArmPIDController.setReference(0, ControlType.kPosition);
     topArmPIDController.setReference(0, ControlType.kPosition);
 
+    m_topEncoder.setPositionConversionFactor(conversionFactor);
+    m_bottomEncoder.setPositionConversionFactor(conversionFactor);
+
     System.out.println("Arm is ready");
   }
 
   public void bottomArmUp() {
+    // Check for if the top arm has cleared the superstructure before allowing the bottom arm
+    // to move
+    // if (m_topEncoder.getPosition() > Constants.topArmThreshold) {
     bottomArm.set(Constants.bottomArmSpeed);
+    // }
   }
 
   public void bottomArmDown() {
-    bottomArm.set(-Constants.bottomArmSpeed);
+    bottomArm.set(-Constants.bottomArmSoftCloseSpeed);
   }
 
   public void bottomArmStop() {
@@ -87,7 +97,7 @@ public class Arm extends SubsystemBase {
   }
 
   public void topArmDown() {
-    topArm.set(-Constants.topArmSpeed);
+    topArm.set(-Constants.topArmSoftCloseSpeed);
   }
 
   public void topArmStop() {

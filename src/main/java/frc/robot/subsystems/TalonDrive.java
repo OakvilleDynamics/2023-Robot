@@ -109,6 +109,7 @@ public class TalonDrive extends SubsystemBase {
     SmartDashboard.putNumber("Robot X", position.getX());
     SmartDashboard.putNumber("Robot Y", position.getY());
     SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
+    SmartDashboard.putData("TankDrive", m_robotDrive);
   }
 
   /**

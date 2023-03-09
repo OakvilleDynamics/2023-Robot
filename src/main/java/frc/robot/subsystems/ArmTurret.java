@@ -19,6 +19,7 @@ public class ArmTurret extends SubsystemBase {
 
   private RelativeEncoder m_turntableEncoder;
 
+  private static final double conversionFactor = 360;
   private SparkMaxPIDController turntablePIDController = turntable.getPIDController();
 
   public ArmTurret() {
@@ -26,6 +27,9 @@ public class ArmTurret extends SubsystemBase {
 
     m_turntableEncoder = turntable.getEncoder(Type.kQuadrature, 8192);
 
+    m_turntableEncoder.setInverted(true);
+
+    m_turntableEncoder.setPositionConversionFactor(conversionFactor);
     turntablePIDController.setP(Constants.turntableP);
     turntablePIDController.setI(Constants.turntableI);
     turntablePIDController.setD(Constants.turntableD);

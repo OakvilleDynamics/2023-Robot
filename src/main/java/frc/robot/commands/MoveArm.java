@@ -32,10 +32,12 @@ public class MoveArm extends CommandBase {
     double armJoystickY = armJoystick.getY();
     if (Math.abs(armJoystickY) < deadZone) {
       m_armSubsystem.bottomArmStop();
-    } else if (armJoystickY < 0) {
-      m_armSubsystem.bottomArmDown();
     } else if (armJoystickY > 0) {
+      m_armSubsystem.bottomArmDown();
+      System.out.println("Bottom Arm Moving Down");
+    } else if (armJoystickY < 0) {
       m_armSubsystem.bottomArmUp();
+      System.out.println("Bottom Arm Moving Up");
     }
 
     // controls the top arm with the pov stick on the handle
@@ -44,8 +46,10 @@ public class MoveArm extends CommandBase {
       m_armSubsystem.topArmStop();
     } else if (hatPos >= 315 || hatPos <= 45) {
       m_armSubsystem.topArmUp();
+      System.out.println("Top Arm Moving Up");
     } else if (hatPos >= 135 && hatPos <= 225) {
       m_armSubsystem.topArmDown();
+      System.out.println("Top Arm Moving Down");
     } else {
       m_armSubsystem.topArmStop();
     }
@@ -57,7 +61,7 @@ public class MoveArm extends CommandBase {
 
     if (controllerJoystick.getRawButton(Constants.joystickButtonRetractClaw) == true) {
       m_armSubsystem.retractArm();
-      System.out.println("Arm Closing");
+      System.out.println("Arm Retracting");
     }
   }
 
