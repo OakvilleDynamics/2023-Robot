@@ -17,11 +17,16 @@ public class ArmTurret extends SubsystemBase {
 
   private RelativeEncoder m_turntableEncoder;
 
+  private static final double conversionFactor = 360;
+
   public ArmTurret() {
     turntable.setInverted(false);
 
     m_turntableEncoder = turntable.getEncoder(Type.kQuadrature, 8192);
 
+    m_turntableEncoder.setInverted(true);
+
+    m_turntableEncoder.setPositionConversionFactor(conversionFactor);
     System.out.println("ArmTurret is ready");
   }
 
