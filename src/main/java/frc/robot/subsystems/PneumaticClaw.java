@@ -19,7 +19,7 @@ public class PneumaticClaw extends SubsystemBase {
 
     m_clawSolenoid =
         new DoubleSolenoid(
-            Constants.pcmModuleBravo,
+            Constants.pcmModuleAlpha,
             PneumaticsModuleType.CTREPCM,
             Constants.pneumaticClawOpen,
             Constants.pneumaticClawClosed);

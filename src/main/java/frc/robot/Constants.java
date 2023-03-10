@@ -17,19 +17,22 @@ public final class Constants {
 
   // constants for jack button assignments
   public static final int joystickButtonFrontJackOn = 7;
-  public static final int joystickButtonBackJackOn = 8;
-  public static final int joystickButtonFrontJackOff = 9;
+  public static final int joystickButtonBackJackOn = 9;
+  public static final int joystickButtonFrontJackOff = 8;
   public static final int joystickButtonBackJackOff = 10;
+  // JACKS ARE NO LONGER ON ROBOT
 
   // Constants for claw button assignments
   public static final int joystickButtonClawOn = 1;
   public static final int joystickButtonClawOff = 2;
-  public static final int joystickButtonExtendClaw = 5;
-  public static final int joystickButtonRetractClaw = 6;
+  public static final int joystickButtonExtendClaw = 3;
+  public static final int joystickButtonRetractClaw = 4;
+  // EXTENDO IS NOT ON ROBOT ANYMORE
 
   // Constants for ramp button assignments
   public static final int joystickButtonRampUp = 3;
   public static final int joystickButtonRampDown = 4;
+  // RAMP IS NO LONGER ON ROBOT
 
   // constants for turret control directions
   public static final int joystickTurretLeft = 3;
@@ -95,7 +98,7 @@ public final class Constants {
 
   // constants for the bottom stage of the arm
   public static final boolean bottomArmInverted = false;
-  public static final double bottomArmSpeed = 1.0;
+  public static final double bottomArmSpeed = 0.5;
   public static final double bottomArmP = 0.1;
   public static final double bottomArmI = 1e-4;
   public static final double bottomArmD = 1;
@@ -117,7 +120,7 @@ public final class Constants {
 
   // constants for the arm turret
   public static final boolean turretInverted = false;
-  public static final double turretSpeed = 1.0;
+  public static final double turretSpeed = 0.75;
   public static final double turntableP = 0;
   public static final double turntableI = 0;
   public static final double turntableD = 0;
@@ -146,7 +149,7 @@ public final class Constants {
     Red3,
     Blue6,
     Blue7,
-    Blue8
+    Blue8, EmergencyPathTop
   }
 
   public static final String PlaceObjectMarker = "PlaceObject";

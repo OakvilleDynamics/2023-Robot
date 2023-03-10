@@ -42,7 +42,7 @@ public class DriveTrain extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.drive(driverJoystick.getX(), driverJoystick.getY());
+    m_subsystem.drive(driverJoystick.getTwist(), driverJoystick.getY());
   }
 
   // Called once the command ends or is interrupted.

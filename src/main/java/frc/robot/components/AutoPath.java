@@ -59,6 +59,13 @@ public class AutoPath {
         pathName = "Blue April ID 8";
         m_useAllianceColor = false;
         break;
+        case EmergencyPathTop:
+        // Drive forward, place cone on top poll, drive out of Community, pick up second cone,
+        // park outside of community turned toward community
+        //pathName = "Red April ID 1";
+        pathName = "Blue April ID 8";
+        m_useAllianceColor = true;
+        break;
     }
 
     // This will load the file "Example Path Group.path" and generate it with a max velocity of 4
