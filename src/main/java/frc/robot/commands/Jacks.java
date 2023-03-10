@@ -10,7 +10,7 @@ public class Jacks extends CommandBase {
   private final PneumaticJacks m_Jacks;
 
   // controllers
-  private final Joystick driverJoystick = new Joystick(Constants.driverJoystickID);
+  private final Joystick controllerJoystick = new Joystick(Constants.armJoystickID);
 
   public Jacks(PneumaticJacks subsystem) {
     m_Jacks = subsystem;
@@ -28,18 +28,19 @@ public class Jacks extends CommandBase {
   @Override
   public void execute() {
 
-    if (driverJoystick.getRawButton(Constants.joystickButtonFrontJackOn) == true) {
+    if (controllerJoystick.getRawButton(Constants.joystickButtonFrontJackOn) == true) {
       m_Jacks.frontOn();
       System.out.println("Jacks - front On");
-    } else if (driverJoystick.getRawButton(Constants.joystickButtonFrontJackOff) == true) {
+    } else if (controllerJoystick.getRawButton(Constants.joystickButtonFrontJackOff) == true) {
       m_Jacks.frontOff();
       System.out.println("Jacks - front Off");
     }
+    // solenoids for jacks and claw are swapped, so we changed the controls for jacks and claw (constants)
 
-    if (driverJoystick.getRawButton(Constants.joystickButtonBackJackOn) == true) {
+    if (controllerJoystick.getRawButton(Constants.joystickButtonBackJackOn) == true) {
       m_Jacks.backOn();
       System.out.println("Jacks - back On");
-    } else if (driverJoystick.getRawButton(Constants.joystickButtonBackJackOff) == true) {
+    } else if (controllerJoystick.getRawButton(Constants.joystickButtonBackJackOff) == true) {
       m_Jacks.backOff();
       System.out.println("Jacks - back Off");
     }

@@ -24,8 +24,8 @@ public final class Constants {
   // TO BE THE CORRECT BUTTONS (TEMPORARY CHANGE)
 
   // Constants for claw button assignments
-  public static final int joystickButtonClawOn = 7;
-  public static final int joystickButtonClawOff = 9;
+  public static final int joystickButtonClawOn = 2;
+  public static final int joystickButtonClawOff = 1;
   public static final int joystickButtonExtendClaw = 5;
   public static final int joystickButtonRetractClaw = 6;
 

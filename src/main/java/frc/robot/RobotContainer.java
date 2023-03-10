@@ -144,7 +144,8 @@ public class RobotContainer {
             m_simpledrive // The drive subsystem. Used to properly set the requirements of path
             // following commands
             );
-
+    m_Shift.lowGear();
+    // specifically calls low gear before running auto
     return m_autoBuilder.fullAuto(autoPath.getPathGroup());
   }
 }
