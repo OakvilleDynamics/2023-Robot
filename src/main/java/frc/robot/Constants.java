@@ -16,14 +16,16 @@ public final class Constants {
   public static final int armJoystickID = 1;
 
   // constants for jack button assignments
-  public static final int joystickButtonFrontJackOn = 7;
+  public static final int joystickButtonFrontJackOn = 1;
   public static final int joystickButtonBackJackOn = 8;
-  public static final int joystickButtonFrontJackOff = 9;
+  public static final int joystickButtonFrontJackOff = 2;
   public static final int joystickButtonBackJackOff = 10;
+  // JACKS AND CLAW ARE SWITCHED IN SOLENOIDS, I HAVE SWAPPED THE JOYSTICK CONTROLS 
+  // TO BE THE CORRECT BUTTONS (TEMPORARY CHANGE)
 
   // Constants for claw button assignments
-  public static final int joystickButtonClawOn = 1;
-  public static final int joystickButtonClawOff = 2;
+  public static final int joystickButtonClawOn = 7;
+  public static final int joystickButtonClawOff = 9;
   public static final int joystickButtonExtendClaw = 5;
   public static final int joystickButtonRetractClaw = 6;
 
@@ -154,7 +156,7 @@ public final class Constants {
     Red3,
     Blue6,
     Blue7,
-    Blue8
+    Blue8, EmergencyPCharge
   }
 
   public static final String PlaceObjectMarker = "PlaceObject";
