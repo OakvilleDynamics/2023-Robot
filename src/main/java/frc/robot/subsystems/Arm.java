@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.ControlType;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
@@ -47,6 +48,9 @@ public class Arm extends SubsystemBase {
     topArm.setInverted(Constants.topArmInverted);
     retractArm();
 
+    bottomArm.setIdleMode(IdleMode.kBrake);
+    topArm.setIdleMode(IdleMode.kBrake);
+
     System.out.println("Arm is retracted");
 
     m_bottomEncoder = bottomArm.getEncoder(Type.kQuadrature, 8192);
@@ -80,6 +84,7 @@ public class Arm extends SubsystemBase {
     // Check for if the top arm has cleared the superstructure before allowing the bottom arm
     // to move
     // if (m_topEncoder.getPosition() > Constants.topArmThreshold) {
+
     bottomArm.set(Constants.bottomArmSpeed);
     // }
   }
