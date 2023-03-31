@@ -20,7 +20,7 @@ public final class Constants {
   public static final int joystickButtonBackJackOn = 8;
   public static final int joystickButtonFrontJackOff = 2;
   public static final int joystickButtonBackJackOff = 10;
-  // JACKS AND CLAW ARE SWITCHED IN SOLENOIDS, I HAVE SWAPPED THE JOYSTICK CONTROLS 
+  // JACKS AND CLAW ARE SWITCHED IN SOLENOIDS, I HAVE SWAPPED THE JOYSTICK CONTROLS
   // TO BE THE CORRECT BUTTONS (TEMPORARY CHANGE)
 
   // Constants for claw button assignments
@@ -76,7 +76,7 @@ public final class Constants {
   public static final double motorFeedAccelerationGain = 0.0;
 
   // PIDController Coefficients, left and right value are usually the same
-  public static final double pidControllerProportionalCoefficient = 0.0;
+  public static final double pidControllerProportionalCoefficient = 1.0;
   public static final double pidControllerIntegralCoefficient = 0.0;
   public static final double pidControllerDerivativeCoefficient = 0.0;
 
@@ -156,7 +156,8 @@ public final class Constants {
     Red3,
     Blue6,
     Blue7,
-    Blue8, EmergencyPCharge
+    Blue8,
+    EmergencyPCharge
   }
 
   public static final String PlaceObjectMarker = "PlaceObject";

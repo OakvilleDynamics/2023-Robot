@@ -35,7 +35,8 @@ public class Jacks extends CommandBase {
       m_Jacks.frontOff();
       System.out.println("Jacks - front Off");
     }
-    // solenoids for jacks and claw are swapped, so we changed the controls for jacks and claw (constants)
+    // solenoids for jacks and claw are swapped, so we changed the controls for jacks and claw
+    // (constants)
 
     if (controllerJoystick.getRawButton(Constants.joystickButtonBackJackOn) == true) {
       m_Jacks.backOn();
