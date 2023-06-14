@@ -37,6 +37,7 @@ public class RobotContainer {
   public final PneumaticShift m_Shift = new PneumaticShift();
   public final RobotRamp m_ramp = new RobotRamp();
   public final PneumaticClaw m_claw = new PneumaticClaw();
+  public final SparkClaw m_sparkClaw = new SparkClaw();
 
   SendableChooser<AutoPath> chooser = new SendableChooser<>();
 

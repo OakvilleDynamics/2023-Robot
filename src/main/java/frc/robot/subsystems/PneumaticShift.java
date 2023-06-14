@@ -22,7 +22,7 @@ public class PneumaticShift extends SubsystemBase {
 
     gearSolenoid =
         new DoubleSolenoid(
-            Constants.pcmModuleAlpha,
+            Constants.pcmModuleBravo,
             PneumaticsModuleType.CTREPCM,
             Constants.pneumaticChannelTransmissionHigh,
             Constants.pneumaticChannelTransmissionLow);
