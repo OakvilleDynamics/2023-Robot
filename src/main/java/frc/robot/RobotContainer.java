@@ -31,11 +31,11 @@ public class RobotContainer {
 
   // The robot's subsystems
   public final Arm m_arm = new Arm();
-  public final ArmTurret m_turret = new ArmTurret();
+  // public final ArmTurret m_turret = new ArmTurret();
   private final TalonDrive m_simpledrive = new TalonDrive();
   public final PneumaticJacks m_Jacks = new PneumaticJacks();
   public final PneumaticShift m_Shift = new PneumaticShift();
-  public final RobotRamp m_ramp = new RobotRamp();
+  // public final RobotRamp m_ramp = new RobotRamp();
   public final PneumaticClaw m_claw = new PneumaticClaw();
   public final SparkClaw m_sparkClaw = new SparkClaw();
 
@@ -49,11 +49,11 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     m_arm.setDefaultCommand(new MoveArm(m_arm));
-    m_turret.setDefaultCommand(new MoveTurret(m_turret));
+    // m_turret.setDefaultCommand(new MoveTurret(m_turret));
     m_simpledrive.setDefaultCommand(new DriveTrain(m_simpledrive));
     m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
     m_Shift.setDefaultCommand(new GearShift(m_Shift));
-    m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
+    // m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
     m_claw.setDefaultCommand(new Claw(m_claw));
 
     m_eventMap.put(

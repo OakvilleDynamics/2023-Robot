@@ -170,7 +170,7 @@ public class TalonDrive extends SubsystemBase {
 
   @Override
   public void periodic() {
-    postToSmartDashboard();
+    // postToSmartDashboard();
   }
 
   @Override
