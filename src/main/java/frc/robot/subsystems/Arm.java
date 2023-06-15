@@ -25,7 +25,8 @@ public class Arm extends SubsystemBase {
   // Inits motors
   private CANSparkMax bottomArm =
       new CANSparkMax(Constants.sparkArmBottomDeviceID, MotorType.kBrushed);
-  private CANSparkMax topArm = new CANSparkMax(Constants.sparkArmTopDeviceID, MotorType.kBrushed);
+  // private CANSparkMax topArm = new CANSparkMax(Constants.sparkArmTopDeviceID,
+  // MotorType.kBrushed);
 
   private RelativeEncoder m_bottomEncoder;
   private RelativeEncoder m_topEncoder;
@@ -38,23 +39,23 @@ public class Arm extends SubsystemBase {
           Constants.pneumaticChannelArmRetract);
 
   private SparkMaxPIDController bottomArmPIDController = bottomArm.getPIDController();
-  private SparkMaxPIDController topArmPIDController = topArm.getPIDController();
+  // private SparkMaxPIDController topArmPIDController = topArm.getPIDController();
 
   private static final double conversionFactor = 360;
 
   /** Creates a new Arm. */
   public Arm() {
     bottomArm.setInverted(Constants.bottomArmInverted);
-    topArm.setInverted(Constants.topArmInverted);
+    // topArm.setInverted(Constants.topArmInverted);
     retractArm();
 
     bottomArm.setIdleMode(IdleMode.kBrake);
-    topArm.setIdleMode(IdleMode.kBrake);
+    // topArm.setIdleMode(IdleMode.kBrake);
 
     System.out.println("Arm is retracted");
 
     m_bottomEncoder = bottomArm.getEncoder(Type.kQuadrature, 8192);
-    m_topEncoder = topArm.getEncoder(Type.kQuadrature, 8192);
+    // m_topEncoder = topArm.getEncoder(Type.kQuadrature, 8192);
 
     bottomArmPIDController.setP(Constants.bottomArmP);
     bottomArmPIDController.setI(Constants.bottomArmI);
@@ -64,15 +65,15 @@ public class Arm extends SubsystemBase {
     bottomArmPIDController.setOutputRange(
         Constants.bottomArmMinOutput, Constants.bottomArmMaxOutput);
 
-    topArmPIDController.setP(Constants.topArmP);
-    topArmPIDController.setI(Constants.topArmI);
-    topArmPIDController.setD(Constants.topArmD);
-    topArmPIDController.setIZone(Constants.topArmIZone);
-    topArmPIDController.setFF(Constants.topArmFF);
-    topArmPIDController.setOutputRange(Constants.topArmMinOutput, Constants.topArmMaxOutput);
+    // topArmPIDController.setP(Constants.topArmP);
+    // topArmPIDController.setI(Constants.topArmI);
+    // topArmPIDController.setD(Constants.topArmD);
+    // topArmPIDController.setIZone(Constants.topArmIZone);
+    // topArmPIDController.setFF(Constants.topArmFF);
+    // topArmPIDController.setOutputRange(Constants.topArmMinOutput, Constants.topArmMaxOutput);
 
     bottomArmPIDController.setReference(0, ControlType.kPosition);
-    topArmPIDController.setReference(0, ControlType.kPosition);
+    // topArmPIDController.setReference(0, ControlType.kPosition);
 
     m_topEncoder.setPositionConversionFactor(conversionFactor);
     m_bottomEncoder.setPositionConversionFactor(conversionFactor);
@@ -98,15 +99,15 @@ public class Arm extends SubsystemBase {
   }
 
   public void topArmUp() {
-    topArm.set(Constants.topArmSpeed);
+    // topArm.set(Constants.topArmSpeed);
   }
 
   public void topArmDown() {
-    topArm.set(-Constants.topArmSoftCloseSpeed);
+    // topArm.set(-Constants.topArmSoftCloseSpeed);
   }
 
   public void topArmStop() {
-    topArm.set(0);
+    // topArm.set(0);
   }
 
   public void extendArm() {
