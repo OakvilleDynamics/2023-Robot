@@ -33,10 +33,10 @@ public class RobotContainer {
   public final Arm m_arm = new Arm();
   // public final ArmTurret m_turret = new ArmTurret();
   private final TalonDrive m_simpledrive = new TalonDrive();
-  public final PneumaticJacks m_Jacks = new PneumaticJacks();
+  // public final PneumaticJacks m_Jacks = new PneumaticJacks();
   public final PneumaticShift m_Shift = new PneumaticShift();
   // public final RobotRamp m_ramp = new RobotRamp();
-  public final PneumaticClaw m_claw = new PneumaticClaw();
+  // public final PneumaticClaw m_claw = new PneumaticClaw();
   public final SparkClaw m_sparkClaw = new SparkClaw();
 
   SendableChooser<AutoPath> chooser = new SendableChooser<>();
@@ -51,32 +51,33 @@ public class RobotContainer {
     m_arm.setDefaultCommand(new MoveArm(m_arm));
     // m_turret.setDefaultCommand(new MoveTurret(m_turret));
     m_simpledrive.setDefaultCommand(new DriveTrain(m_simpledrive));
-    m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
+    // m_Jacks.setDefaultCommand(new Jacks(m_Jacks));
     m_Shift.setDefaultCommand(new GearShift(m_Shift));
     // m_ramp.setDefaultCommand(new MoveRamp(m_ramp));
-    m_claw.setDefaultCommand(new Claw(m_claw));
+    // m_claw.setDefaultCommand(new Claw(m_claw));
+    m_sparkClaw.setDefaultCommand(new SparkClawCmd(m_sparkClaw));
 
     m_eventMap.put(
         Constants.PlaceObjectMarker,
-        new PlaceObject(m_arm, m_claw, ClawObjectType.Cone, ClawObjectPlacement.Top));
+        new PlaceObject(m_arm, m_sparkClaw, ClawObjectType.Cone, ClawObjectPlacement.Top));
     m_eventMap.put(
         Constants.PickupObjectMarker,
-        new PickupObject(m_arm, m_claw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
+        new PickupObject(m_arm, m_sparkClaw, ClawObjectType.Cone, ClawObjectPlacement.Hybrid));
     m_eventMap.put(Constants.AutoLevelMarker, new AutoLevel(m_simpledrive));
 
     chooser.setDefaultOption("Do nothing", null);
     chooser.addOption(
-        "Red AprilTag 1", new AutoPath(AutoPathChoice.Red1, m_simpledrive, m_arm, m_claw));
+        "Red AprilTag 1", new AutoPath(AutoPathChoice.Red1, m_simpledrive, m_arm, m_sparkClaw));
     chooser.addOption(
-        "Red AprilTag 2", new AutoPath(AutoPathChoice.Red2, m_simpledrive, m_arm, m_claw));
+        "Red AprilTag 2", new AutoPath(AutoPathChoice.Red2, m_simpledrive, m_arm, m_sparkClaw));
     chooser.addOption(
-        "Red AprilTag 3", new AutoPath(AutoPathChoice.Red3, m_simpledrive, m_arm, m_claw));
+        "Red AprilTag 3", new AutoPath(AutoPathChoice.Red3, m_simpledrive, m_arm, m_sparkClaw));
     chooser.addOption(
-        "Blue AprilTag 6", new AutoPath(AutoPathChoice.Blue6, m_simpledrive, m_arm, m_claw));
+        "Blue AprilTag 6", new AutoPath(AutoPathChoice.Blue6, m_simpledrive, m_arm, m_sparkClaw));
     chooser.addOption(
-        "Blue AprilTag 7", new AutoPath(AutoPathChoice.Blue7, m_simpledrive, m_arm, m_claw));
+        "Blue AprilTag 7", new AutoPath(AutoPathChoice.Blue7, m_simpledrive, m_arm, m_sparkClaw));
     chooser.addOption(
-        "Blue AprilTag 8", new AutoPath(AutoPathChoice.Blue8, m_simpledrive, m_arm, m_claw));
+        "Blue AprilTag 8", new AutoPath(AutoPathChoice.Blue8, m_simpledrive, m_arm, m_sparkClaw));
     // chooser.addOption("Test Path", new AutoPath(AutoPathChoice.Red1, m_simpledrive, m_arm,
     // null));
 
