@@ -6,7 +6,6 @@ import com.pathplanner.lib.PathPlannerTrajectory;
 import frc.robot.Constants;
 import frc.robot.Constants.AutoPathChoice;
 import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.PneumaticClaw;
 import frc.robot.subsystems.SparkClaw;
 import frc.robot.subsystems.TalonDrive;
 import java.util.List;

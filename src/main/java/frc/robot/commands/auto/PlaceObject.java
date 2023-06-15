@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.ClawObjectPlacement;
 import frc.robot.Constants.ClawObjectType;
 import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.PneumaticClaw;
 import frc.robot.subsystems.SparkClaw;
 
 public class PlaceObject extends SequentialCommandGroup {
