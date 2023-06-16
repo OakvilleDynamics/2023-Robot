@@ -29,7 +29,7 @@ public class Arm extends SubsystemBase {
   // MotorType.kBrushed);
 
   private RelativeEncoder m_bottomEncoder;
-  private RelativeEncoder m_topEncoder;
+  // private RelativeEncoder m_topEncoder;
 
   private DoubleSolenoid extendArmDoubleSolenoid =
       new DoubleSolenoid(
@@ -75,7 +75,7 @@ public class Arm extends SubsystemBase {
     bottomArmPIDController.setReference(0, ControlType.kPosition);
     // topArmPIDController.setReference(0, ControlType.kPosition);
 
-    m_topEncoder.setPositionConversionFactor(conversionFactor);
+    // m_topEncoder.setPositionConversionFactor(conversionFactor);
     m_bottomEncoder.setPositionConversionFactor(conversionFactor);
 
     System.out.println("Arm is ready");
@@ -125,7 +125,7 @@ public class Arm extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Top Arm Pos", m_topEncoder.getPosition());
+    // SmartDashboard.putNumber("Top Arm Pos", m_topEncoder.getPosition());
     SmartDashboard.putNumber("Bottom Arm Pos", m_bottomEncoder.getPosition());
   }
 }

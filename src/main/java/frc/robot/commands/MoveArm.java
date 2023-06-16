@@ -29,15 +29,24 @@ public class MoveArm extends CommandBase {
   @Override
   public void execute() {
     // controls bottom arm with the joystick handle
-    double armJoystickY = armJoystick.getY();
-    if (Math.abs(armJoystickY) < deadZone) {
-      m_armSubsystem.bottomArmStop();
-    } else if (armJoystickY > 0) {
-      m_armSubsystem.bottomArmDown();
-      System.out.println("Bottom Arm Moving Down");
-    } else if (armJoystickY < 0) {
+    // double armJoystickY = armJoystick.getY();
+    // if (Math.abs(armJoystickY) < deadZone) {
+    //   m_armSubsystem.bottomArmStop();
+    // } else if (armJoystickY > 0) {
+    //   m_armSubsystem.bottomArmDown();
+    //   System.out.println("Bottom Arm Moving Down");
+    // } else if (armJoystickY < 0) {
+    //   m_armSubsystem.bottomArmUp();
+    //   System.out.println("Bottom Arm Moving Up");
+    // }
+
+    // controls the arm with buttons 3 and 5
+    if (armJoystick.getRawButton(2)) {
       m_armSubsystem.bottomArmUp();
-      System.out.println("Bottom Arm Moving Up");
+    } else if (armJoystick.getRawButton(4)) {
+      m_armSubsystem.bottomArmUp();
+    } else {
+      m_armSubsystem.stopArm();
     }
 
     // controls the top arm with the pov stick on the handle
