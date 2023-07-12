@@ -28,10 +28,10 @@ public class SparkClawCmd extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (controllerJoystick.getRawButton(Constants.joystickButtonClawOff) == true) {
+    if (controllerJoystick.getRawButton(Constants.joystickButtonReleaseClaw) == true) {
       m_Claw.releaseObject();
       System.out.println("Releasing the object from claw.");
-    } else if (controllerJoystick.getRawButton(Constants.joystickButtonClawOn) == true) {
+    } else if (controllerJoystick.getRawButton(Constants.joystickButtonPickupClaw) == true) {
       m_Claw.pickupObject();
       System.out.println("Picking up the object with claw.");
     } else {

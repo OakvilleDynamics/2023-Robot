@@ -18,9 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-/*We need an arm that can use an extendo-pneumatics function, and can limit how much the arm tilts/it's angle
- * There needs to be a manual and automatic stop for the arm angle limiter, and when its been met the extendo
- * arm can extend */
+/* Arm will limit power and wil go from 0% to 100% in a matter of seconds.   */
 public class Arm extends SubsystemBase {
   // Inits motors
   private CANSparkMax bottomArm =

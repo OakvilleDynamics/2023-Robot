@@ -24,7 +24,7 @@ public class Claw extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (controllerJoystick.getRawButton(Constants.joystickButtonClawOff) == true) {
+    /* if (controllerJoystick.getRawButton(Constants.joystickButtonClawOff) == true) {
       m_Claw.clawOpen();
       System.out.println("Claw open.");
     } else if (controllerJoystick.getRawButton(Constants.joystickButtonClawOn) == true) {
@@ -32,7 +32,7 @@ public class Claw extends CommandBase {
       System.out.println("Claw close.");
     } else {
       m_Claw.clawOff();
-    }
+    }*/
   }
   // Called once the command ends or is interrupted.
   @Override

@@ -24,10 +24,10 @@ public final class Constants {
   // TO BE THE CORRECT BUTTONS (TEMPORARY CHANGE)
 
   // Constants for claw button assignments
-  public static final int joystickButtonClawOn = 2;
-  public static final int joystickButtonClawOff = 1;
-  public static final int joystickButtonExtendClaw = 5;
-  public static final int joystickButtonRetractClaw = 6;
+  public static final int joystickButtonArmUp = 3;
+  public static final int joystickButtonArmDown = 4;
+  public static final int joystickButtonPickupClaw = 5;
+  public static final int joystickButtonReleaseClaw = 6;
 
   // Constants for ramp button assignments
   public static final int joystickButtonRampUp = 3;
@@ -102,8 +102,8 @@ public final class Constants {
 
   // constants for the bottom stage of the arm
   public static final boolean bottomArmInverted = false;
-  public static final double bottomArmSpeed = 1.0;
-  public static final double bottomArmSoftCloseSpeed = 0.5;
+  public static final double bottomArmSpeed = 0.2;
+  public static final double bottomArmSoftCloseSpeed = 0.2;
   public static final double bottomArmP = 0.1;
   public static final double bottomArmI = 1e-4;
   public static final double bottomArmD = 1;
