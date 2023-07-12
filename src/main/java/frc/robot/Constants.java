@@ -66,7 +66,7 @@ public final class Constants {
   public static final int sparkTurretDeviceID = 16;
   public static final int sparkArmBottomDeviceID = 17;
   public static final int sparkArmTopDeviceID = 18;
-
+  public static final int sparkClawDeviceID = 21;
   public static final int victorRampLeftDeviceID = 19;
   public static final int victorRampRightDeviceID = 20;
 
@@ -135,6 +135,10 @@ public final class Constants {
   public static final double turntableIZone = 0;
   public static final double turntableMinOutput = 0;
   public static final double turntableMaxOutput = 0;
+
+  public static final boolean clawInverted = false;
+  public static final double clawIntakeSpeed = 0.1;
+  public static final double clawReleaseSpeed = 1.0;
 
   // constants for ramp motor rotation speed
   public static double rampSpeed = 0.5;
