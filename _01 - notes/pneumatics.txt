@@ -1,11 +1,5 @@
 Feb 4, 2023 Pneumatics Notes
 
 1. Shifter - High/Low gear - single or double solenoid, not known yet
-2. Claw squeeze
-3. Claw extendo arm
-4. Claw Detent 1 - Double Solenoid
-5. Claw Detent 2 - Double Solenoid
-6. Back Ramp - Single Solenoid
-7. Side Rails - Left/Right (Front rail stationary)
-8. Front brakes - Single Solenoid
-9. Back brakes - Single Solenoid
+2.No Jacks 
+3. no brakes 
