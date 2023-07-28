@@ -1,1 +1,5 @@
+goals for GRC 
+
+fix issue with claw not working could be code issue or mechanical issue
+Get the arm code working and power limitation so it will not self-destruct 
 
