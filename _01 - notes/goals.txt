@@ -2,4 +2,5 @@ goals for GRC
 
 fix issue with claw not working could be code issue or mechanical issue
 Get the arm code working and power limitation so it will not self-destruct 
-
+add a bumper switch or some switch to code to tell it to stop
+claw go from 0rpm to 100rpm quickly
