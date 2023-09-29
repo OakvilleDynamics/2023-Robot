@@ -66,7 +66,7 @@ public final class Constants {
   public static final int sparkTurretDeviceID = 16;
   public static final int sparkArmBottomDeviceID = 17;
   public static final int sparkArmTopDeviceID = 18;
-  public static final int sparkClawDeviceID = 21;
+  public static final int sparkClawDeviceID = 16;
   public static final int victorRampLeftDeviceID = 19;
   public static final int victorRampRightDeviceID = 20;
 

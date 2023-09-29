@@ -10,13 +10,11 @@ import frc.robot.Constants;
 import frc.robot.subsystems.Arm;
 
 public class MoveArm extends CommandBase {
-  private final double deadZone = 0.3;
 
   private final Arm m_armSubsystem;
 
   // controllers
   private final Joystick armJoystick = new Joystick(Constants.armJoystickID);
-  private final Joystick controllerJoystick = new Joystick(Constants.armJoystickID);
 
   public MoveArm(Arm subsystem) {
     m_armSubsystem = subsystem;
@@ -41,12 +39,13 @@ public class MoveArm extends CommandBase {
     // }
 
     // controls the arm with buttons 3 and 5
-    if (armJoystick.getRawButton(Constants.joystickButtonArmUp) == true) {
-      m_armSubsystem.bottomArmUp();
-      System.out.println("Arm Moving Up");
-    } else if (armJoystick.getRawButton(Constants.joystickButtonArmDown) == true) {
+    // replace angle with a variable for the angle of the arm
+    if (armJoystick.getRawButton(Constants.joystickButtonArmDown) == true) {
       m_armSubsystem.bottomArmDown();
       System.out.println("Arm Moving Down");
+    } else if (armJoystick.getRawButton(Constants.joystickButtonArmUp) == true) {
+      m_armSubsystem.bottomArmUp();
+      System.out.println("Arm Moving up");
     } else {
       m_armSubsystem.bottomArmStop();
     }

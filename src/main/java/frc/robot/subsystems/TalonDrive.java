@@ -5,14 +5,12 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -101,15 +99,6 @@ public class TalonDrive extends SubsystemBase {
   public Pose2d getPose() {
     // System.out.println("Getting pose");
     return m_odometry.getPoseMeters();
-  }
-
-  private void postToSmartDashboard() {
-    Pose2d pose = m_odometry.getPoseMeters();
-    Translation2d position = pose.getTranslation();
-    SmartDashboard.putNumber("Robot X", position.getX());
-    SmartDashboard.putNumber("Robot Y", position.getY());
-    SmartDashboard.putNumber("Robot Gyro", getGyro().getRadians());
-    SmartDashboard.putData("TankDrive", m_robotDrive);
   }
 
   /**

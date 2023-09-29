@@ -60,6 +60,8 @@ public class AutoPath {
         pathName = "Blue April ID 8";
         m_useAllianceColor = false;
         break;
+      default:
+        break;
     }
 
     // This will load the file "Example Path Group.path" and generate it with a max velocity of 4

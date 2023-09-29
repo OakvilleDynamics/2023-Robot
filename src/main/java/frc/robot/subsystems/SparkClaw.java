@@ -22,7 +22,7 @@ public class SparkClaw extends SubsystemBase {
   public void pickupObject() {
     clawSparkMax.set(Constants.clawIntakeSpeed);
     if (clawSparkMax.getOutputCurrent() >= 30) {
-      clawSparkMax.set(0);
+      clawSparkMax.set(0.5);
     }
   }
 
@@ -39,4 +39,7 @@ public class SparkClaw extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Claw Current", clawSparkMax.getOutputCurrent());
   }
+
+public void bottomArmUp() {
+}
 }
