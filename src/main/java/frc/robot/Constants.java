@@ -74,7 +74,8 @@ public final class Constants {
   public static final double motorFeedStaticGain = 0.0;
   public static final double motorFeedVelocityGain = 0.0;
   public static final double motorFeedAccelerationGain = 0.0;
-
+  public static final double motorStallAmperageLimit = 10.0;
+  public static final double motorStallTemperatureLimit = 10.0;
   // PIDController Coefficients, left and right value are usually the same
   public static final double pidControllerProportionalCoefficient = 1.0;
   public static final double pidControllerIntegralCoefficient = 0.0;
