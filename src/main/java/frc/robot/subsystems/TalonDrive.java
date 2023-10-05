@@ -305,19 +305,13 @@ public class TalonDrive extends SubsystemBase {
   /*
    * Returns true if any motor is stalling
    */
-  public boolean motorIsStalling()
-  {
+  public boolean motorIsStalling() {
     boolean anyMotorIsStalling = false;
-    Motors[] motors = { 
-      m_leftFront = new WPI_TalonSRX(Constants.talonDriveLeftFrontID),
-      m_rightFront = new WPI_TalonSRX(Constants.talonDriveRightFrontID),
-      m_rightMid = new WPI_TalonSRX(Constants.talonDriveRightMidID),
-      m_rightBack = new WPI_TalonSRX(Constants.talonDriveRightBackID),
-      m_leftMid = new WPI_TalonSRX(Constants.talonDriveLeftMidID),
-      m_leftBack = new WPI_TalonSRX(Constants.talonDriveLeftBackID)
+    WPI_TalonSRX[] motors = {
+      m_leftFront, m_rightFront, m_rightMid, m_rightBack, m_leftMid, m_leftBack
     };
-    for (Motors motor : motors) {
-      anyMotorIsStalling = motor.getInputMotorCurrent() > Constants.motorStallAmperageLimit;
+    for (WPI_TalonSRX motor : motors) {
+      anyMotorIsStalling = motor.getSupplyCurrent() > Constants.motorStallAmperageLimit;
     }
     return anyMotorIsStalling;
   }
@@ -325,8 +319,8 @@ public class TalonDrive extends SubsystemBase {
    * Returns true if specified motor is stalling.
    * Idk i thought this might be useful. -BW
    */
-  @Override public boolean motorIsStalling(Motors motor) {   
-    return (motor.getInputMotorCurrent > Constants.motorStallAmperageLimit);
+  public boolean motorIsStallingSingle(WPI_TalonSRX motor) {
+    return (motor.getSupplyCurrent() > Constants.motorStallAmperageLimit);
   }
   /**
    * Gets the angle of the robot

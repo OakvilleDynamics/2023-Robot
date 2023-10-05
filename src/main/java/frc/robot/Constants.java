@@ -63,10 +63,8 @@ public final class Constants {
   public static final int talonDriveRightMidID = 11;
   public static final int talonDriveRightBackID = 12;
 
-  public static final int sparkTurretDeviceID = 16;
-  public static final int sparkArmBottomDeviceID = 17;
-  public static final int sparkArmTopDeviceID = 18;
   public static final int sparkClawDeviceID = 16;
+  public static final int sparkArmDeviceID = 17;
   public static final int victorRampLeftDeviceID = 19;
   public static final int victorRampRightDeviceID = 20;
 
@@ -103,8 +101,7 @@ public final class Constants {
 
   // constants for the bottom stage of the arm
   public static final boolean bottomArmInverted = false;
-  public static final double bottomArmSpeed = 0.2;
-  public static final double bottomArmSoftCloseSpeed = 0.2;
+  public static final double bottomArmSpeed = 0.5;
   public static final double bottomArmP = 0.1;
   public static final double bottomArmI = 1e-4;
   public static final double bottomArmD = 1;
@@ -138,8 +135,8 @@ public final class Constants {
   public static final double turntableMaxOutput = 0;
 
   public static final boolean clawInverted = false;
-  public static final double clawIntakeSpeed = 0.1;
-  public static final double clawReleaseSpeed = 1.0;
+  public static final double clawIntakeSpeed = 0.2;
+  public static final double clawReleaseSpeed = -1.0;
 
   // constants for ramp motor rotation speed
   public static double rampSpeed = 0.5;

@@ -39,8 +39,7 @@ public class GearShift extends CommandBase {
     if (driverJoystick.getThrottle() == Constants.gearThrottleLow) {
       m_Shift.lowGear();
     }
-
-    if (driverJoystick.getThrottle() == Constants.gearThrottleHigh) {
+    else if (driverJoystick.getThrottle() == Constants.gearThrottleHigh) {
       m_Shift.highGear();
     }
   }

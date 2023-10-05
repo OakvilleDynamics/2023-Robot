@@ -21,8 +21,7 @@ import frc.robot.Constants;
 /* Arm will limit power and wil go from 0% to 100% in a matter of seconds.   */
 public class Arm extends SubsystemBase {
   // Inits motors
-  private CANSparkMax bottomArm =
-      new CANSparkMax(Constants.sparkArmBottomDeviceID, MotorType.kBrushed);
+  private CANSparkMax bottomArm = new CANSparkMax(Constants.sparkArmDeviceID, MotorType.kBrushed);
   // private CANSparkMax topArm = new CANSparkMax(Constants.sparkArmTopDeviceID,
   // MotorType.kBrushed);
 
@@ -89,7 +88,7 @@ public class Arm extends SubsystemBase {
   }
 
   public void bottomArmDown() {
-    bottomArm.set(-Constants.bottomArmSoftCloseSpeed);
+    bottomArm.set(-Constants.bottomArmSpeed);
   }
 
   public void bottomArmStop() {

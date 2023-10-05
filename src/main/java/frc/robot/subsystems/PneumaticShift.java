@@ -9,23 +9,34 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class PneumaticShift extends SubsystemBase {
 
-  public DoubleSolenoid gearSolenoid = null;
+  // public DoubleSolenoid gearSolenoid = null;
+
+  public Solenoid singleSolenoid = null;
 
   // intialize the pneumatic gear shifter
   public PneumaticShift() {
 
-    gearSolenoid =
-        new DoubleSolenoid(
-            Constants.pcmModuleBravo,
-            PneumaticsModuleType.CTREPCM,
-            Constants.pneumaticChannelTransmissionHigh,
-            Constants.pneumaticChannelTransmissionLow);
+    singleSolenoid = new Solenoid(Constants.pcmModuleBravo ,PneumaticsModuleType.CTREPCM, 7);
+
+    /*
+     * We have switched the solenoids from a double to a single, keeping until removal
+     * is needed
+     * 
+     * gearSolenoid =
+     *    new DoubleSolenoid(
+     *         Constants.pcmModuleBravo,
+     *         PneumaticsModuleType.CTREPCM,
+     *         Constants.pneumaticChannelTransmissionHigh,
+     *         Constants.pneumaticChannelTransmissionLow);
+     */
+
 
     SmartDashboard.putString("Gear Shift", "Low");
 
@@ -34,15 +45,15 @@ public class PneumaticShift extends SubsystemBase {
 
   /** Engage low gear */
   public void lowGear() {
-
-    gearSolenoid.set(Value.kForward);
+    singleSolenoid.set(false);
+    // gearSolenoid.set(Value.kForward);
     SmartDashboard.putString("Gear Shift", "Low");
   }
 
   /** Engage high gear */
   public void highGear() {
-
-    gearSolenoid.set(Value.kReverse);
+    singleSolenoid.set(true);
+    // gearSolenoid.set(Value.kReverse);
     SmartDashboard.putString("Gear Shift", "High");
   }
 }
