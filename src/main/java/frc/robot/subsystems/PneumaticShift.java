@@ -6,8 +6,6 @@
 // https://docs.wpilib.org/en/stable/docs/software/hardware-apis/pneumatics/pneumatics.html#using-the-frc-control-system-to-control-pneumatics
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,12 +21,12 @@ public class PneumaticShift extends SubsystemBase {
   // intialize the pneumatic gear shifter
   public PneumaticShift() {
 
-    singleSolenoid = new Solenoid(Constants.pcmModuleBravo ,PneumaticsModuleType.CTREPCM, 7);
+    singleSolenoid = new Solenoid(Constants.pcmModuleBravo, PneumaticsModuleType.CTREPCM, 7);
 
     /*
      * We have switched the solenoids from a double to a single, keeping until removal
      * is needed
-     * 
+     *
      * gearSolenoid =
      *    new DoubleSolenoid(
      *         Constants.pcmModuleBravo,
@@ -36,7 +34,6 @@ public class PneumaticShift extends SubsystemBase {
      *         Constants.pneumaticChannelTransmissionHigh,
      *         Constants.pneumaticChannelTransmissionLow);
      */
-
 
     SmartDashboard.putString("Gear Shift", "Low");
 
